@@ -1,4 +1,4 @@
-package com.example.csseproject.orderStatus;
+package com.example.csseproject.OrderDetails;
 
 import androidx.appcompat.app.AppCompatActivity;
 
