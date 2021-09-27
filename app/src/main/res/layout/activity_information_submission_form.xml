@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="center_horizontal"
 
     tools:context=".ProfileView.informationSubmissionForm">
 
@@ -165,21 +165,26 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:gravity="bottom|end"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="100dp"
         android:orientation="horizontal">
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
-            android:background="@color/white"
+            android:background="@drawable/round_btn1"
             android:textColor="@color/black"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Create"
+            android:layout_marginRight="15dp"/>
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
-            android:background="@color/white"
+            android:background="@drawable/round_btn"
             android:textColor="@color/black"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="cancel" />
     </LinearLayout>
 
 
