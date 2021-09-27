@@ -111,7 +111,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="#C4C4C4"
-            android:padding="15dp"
+            android:padding="5dp"
             >
 
             <LinearLayout
@@ -123,7 +123,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Item #1"
+                    android:text="Add Item"
                     android:textSize="15dp" />
 
                 <LinearLayout
@@ -141,7 +141,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="right"
                         android:background="@color/purple_200"
-                        app:srcCompat="@drawable/cancel" />
+                        app:srcCompat="@drawable/add" />
                 </LinearLayout>
 
 
