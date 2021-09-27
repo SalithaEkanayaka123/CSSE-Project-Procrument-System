@@ -46,6 +46,11 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="View Status" />
+    <Button
+        android:id="@+id/informationsubmissionform"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Infromation submission" />
 
 
     <TextView
