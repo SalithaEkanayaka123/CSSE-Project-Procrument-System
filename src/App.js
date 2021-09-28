@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import UserManagement from "./pages/UserManagment/UserManagment";
 import Navbar from "./components/Navbar/Navbar";
 import PageHeader from "./components/PageHeader/PageHeader";
@@ -7,8 +7,13 @@ import PageHeader from "./components/PageHeader/PageHeader";
 function App() {
   return (
     <div>
-        <Navbar/>
-      <UserManagement/>
+        <BrowserRouter>
+            <Navbar/>
+            <Switch>
+                <Route exact path = "/home" component={HomePage}/>
+                <Route exact path = "/usermanage" component={UserManagement}/>
+            </Switch>
+        </BrowserRouter>
     </div>
   );
 }
