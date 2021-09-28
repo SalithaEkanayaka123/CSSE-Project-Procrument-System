@@ -24,7 +24,7 @@ const useStyles = makeStyles({
     },
     teacherContent: {
         borderRadius: 8.74,
-        maxWidth: "810%"
+        minWidth: "810px"
     },
     userTableHeader: {
         color: 'white',

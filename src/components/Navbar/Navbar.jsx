@@ -1,14 +1,15 @@
 import React from 'react'
-import { AppBar, Toolbar, Grid, InputBase, IconButton, Badge, makeStyles } from '@material-ui/core'
+import {AppBar, Toolbar, Grid, InputBase, IconButton, Badge, makeStyles, Typography} from '@material-ui/core'
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
-import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
-import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
-import SearchIcon from '@material-ui/icons/Search';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
+
 
 
 const useStyles = makeStyles(theme => ({
     root: {
-        backgroundColor: '#fff',
+        backgroundColor: '#727272',
+        color: '#000'
 
     },
     searchInput: {
@@ -21,10 +22,13 @@ const useStyles = makeStyles(theme => ({
         '& .MuiSvgIcon-root': {
             marginRight: theme.spacing(1)
         }
+    },
+    HeaderFont : {
+        fontSize:'30px'
     }
 }))
 
-export default function Header() {
+export default function Navbar() {
 
     const classes = useStyles();
 
@@ -34,11 +38,9 @@ export default function Header() {
                 <Grid container
                       alignItems="center">
                     <Grid item>
-                        <InputBase
-                            placeholder="Search topics"
-                            className={classes.searchInput}
-                            startAdornment={<SearchIcon fontSize="small" />}
-                        />
+                        <Typography className={classes.HeaderFont}>
+                            Procurement Management System
+                        </Typography>
                     </Grid>
                     <Grid item sm></Grid>
                     <Grid item>
@@ -49,11 +51,11 @@ export default function Header() {
                         </IconButton>
                         <IconButton>
                             <Badge badgeContent={3} color="primary">
-                                <ChatBubbleOutlineIcon fontSize="small" />
+                                <MailOutlineIcon fontSize="small" />
                             </Badge>
                         </IconButton>
                         <IconButton>
-                            <PowerSettingsNewIcon fontSize="small" />
+                            <AccountCircleIcon fontSize="small" />
                         </IconButton>
                     </Grid>
                 </Grid>
