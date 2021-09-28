@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/long_card_view_item"
         android:layout_width="330dp"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:elevation="2dp"
         app:cardBackgroundColor="#FFFFFF"
@@ -48,7 +48,6 @@
                 android:id="@+id/card_created_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
                 android:fontFamily="@font/raleway"
                 android:paddingLeft="10dp"
                 android:text="4d ago"
@@ -64,7 +63,7 @@
             android:orientation="vertical">
             <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:stretchColumns="1,2,3">
 
@@ -103,7 +102,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/card_recycler_view"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"/>
+                    android:layout_height="wrap_content"/>
             </TableLayout>
         </LinearLayout>
         <LinearLayout

@@ -24,8 +24,6 @@ public class HomePage extends AppCompatActivity {
     OrderCardAdapter orderCardAdapter;
     ArrayList<OrderModel> orders;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,17 +31,17 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         List<OrderCardTableModel> orderTableItems = new ArrayList<>();
-        orderTableItems.add(new OrderCardTableModel("abc","abc", "abc"));
-        orderTableItems.add(new OrderCardTableModel("abc","abc", "abc"));
-        orderTableItems.add(new OrderCardTableModel("abc","abc", "abc"));
-        orderTableItems.add(new OrderCardTableModel("abc","abc", "abc"));
-        orderTableItems.add(new OrderCardTableModel("abc","abc", "abc"));
+        orderTableItems.add(new OrderCardTableModel("Cement","Bags", "30KG"));
+        orderTableItems.add(new OrderCardTableModel("Nuts","Pkt", "5 Pkt"));
+        orderTableItems.add(new OrderCardTableModel("Brick","Cube", "5 cube"));
+        orderTableItems.add(new OrderCardTableModel("Machines","Drill", "x1"));
+        orderTableItems.add(new OrderCardTableModel("shovel","Item", "x4"));
 
         orders = new ArrayList<>();
-        orders.add(new OrderModel("name",  new Date(2014, 02, 11), orderTableItems));
-        orders.add(new OrderModel("name",  new Date(2014, 02, 11), orderTableItems));
-        orders.add(new OrderModel("name",  new Date(2014, 02, 11), orderTableItems));
-        orders.add(new OrderModel("name",  new Date(2014, 02, 11), orderTableItems));
+        orders.add(new OrderModel("Site 1",  new Date(2014, 02, 11), orderTableItems));
+        orders.add(new OrderModel("Site 2",  new Date(2014, 02, 11), orderTableItems));
+        orders.add(new OrderModel("Site 3",  new Date(2014, 02, 11), orderTableItems));
+        orders.add(new OrderModel("Site 4",  new Date(2014, 02, 11), orderTableItems));
         setMainOrderRecycler(orders);
     }
 

@@ -37,6 +37,8 @@ public class OrderCardTableAdapter extends RecyclerView.Adapter<OrderCardTableAd
             holder.item_column_data.setText(model.getItem());
             holder.types_column_data.setText(model.getTypes());
             holder.quantity_column_data.setText(model.getQuantity());
+        } else {
+            return;
         }
     }
 
