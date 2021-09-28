@@ -17,6 +17,7 @@
         <activity android:name=".ProfileView.informationSubmissionForm" />
         <activity android:name=".OrderDetails.OrderStatus" />
         <activity android:name=".HomePage.OrderForm" />
+        <activity android:name=".HomeBottomNav.HomeBottomNav" />
         <activity android:name=".IndexPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
