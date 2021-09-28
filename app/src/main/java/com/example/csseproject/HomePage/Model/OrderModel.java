@@ -8,6 +8,11 @@ public class OrderModel {
     Date createdDate;
     ArrayList<OrderCardTableModel> table_list;
 
+    public OrderModel(String siteName, Date createdDate) {
+        this.siteName = siteName;
+        this.createdDate = createdDate;
+    }
+
     public OrderModel(String siteName, Date createdDate, ArrayList<OrderCardTableModel> table_list) {
         this.siteName = siteName;
         this.createdDate = createdDate;
