@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ProfileView.LoginPage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        android:padding="15dp"
+        >
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="15dp"
+            app:srcCompat="@drawable/profile" />
+
+
+
+        <EditText
+            android:id="@+id/editTexteditpage4"
+            android:layout_height="37dp"
+            android:layout_width="match_parent"
+            android:background="#E0E0E0"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/raleway_bold"
+            android:hint="username"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            />
+        <EditText
+            android:id="@+id/editTexteditpage5"
+            android:layout_height="37dp"
+            android:layout_width="match_parent"
+            android:background="#E0E0E0"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/raleway_bold"
+            android:hint="password"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="10dp"
+            />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:background="@drawable/round_btn2"
+            android:shadowColor="@color/black"
+            android:fontFamily="@font/raleway_bold"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Login"
+            android:layout_marginRight="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingTop="6dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:paddingBottom="6dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_bold"
+                android:textColor="#808080"
+                android:id="@+id/settingstitle1"
+                android:gravity="center"
+                android:text="Having issues in login?"
+            />
+
+            <TextView
+                android:id="@+id/settingstitle2"
+                android:text="Contact Administrator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway"
+                android:gravity="center"
+                android:textColor="#7A8FFF"
+                android:textSize="11sp"
+                android:textStyle="normal"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
