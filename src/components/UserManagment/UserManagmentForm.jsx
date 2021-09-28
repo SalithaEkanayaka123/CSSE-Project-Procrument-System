@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import {
     Grid,
     FormControl,
-    TextField, makeStyles, InputLabel, Select, MenuItem,
+    TextField, makeStyles, InputLabel, Select, MenuItem, Button,
 } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
@@ -54,6 +54,23 @@ const UserManagementForm = () => {
                 <Grid item xs={12} sm={6}>
                     <TextField id="outlined-basic" label="Password" variant="outlined" type="password"/>
                 </Grid>
+                <Button
+                    style={{ marginLeft: "15px"}}
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    // onClick={handleReset}
+                >
+                    SUBMIT
+                </Button>
+                <Button
+                    style={{ marginLeft: "15px"}}
+                    variant="contained"
+                    color="secondary"
+                    size="large"
+                >
+                    RESET
+                </Button>
             </Grid>
         </form>
     )
