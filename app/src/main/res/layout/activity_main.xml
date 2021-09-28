@@ -47,6 +47,12 @@
         android:layout_height="60dp"
         android:text="View Status" />
 
+    <Button
+        android:id="@+id/order_list"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Order List" />
+
 
     <TextView
         android:layout_width="match_parent"

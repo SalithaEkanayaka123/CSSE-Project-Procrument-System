@@ -40,6 +40,7 @@ public class OrderCardAdapter extends RecyclerView.Adapter<OrderCardAdapter.View
             OrderModel model = item_list.get(position);
             holder.card_site_name.setText(model.getSiteName());
             holder.card_created_date.setText(model.getCreatedDate().toString());
+            setTableItems(holder.card_recycler_view, item_list.get(position).getTable_list());
         }
 
     }

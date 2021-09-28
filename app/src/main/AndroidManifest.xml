@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CSSEProject">
-        <activity android:name=".ProfileView.ProfileView"></activity>
+        <activity android:name=".HomePage.HomePage"></activity>
+        <activity android:name=".ProfileView.ProfileView" />
         <activity android:name=".OrderDetails.OrderStatus" />
         <activity android:name=".HomePage.OrderForm" />
         <activity android:name=".IndexPage">
