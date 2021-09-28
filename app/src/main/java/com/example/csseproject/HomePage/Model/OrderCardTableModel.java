@@ -1,11 +1,11 @@
 package com.example.csseproject.HomePage.Model;
 
-public class OrderCardModel {
+public class OrderCardTableModel {
     String Item;
     String Types;
     String Quantity;
 
-    public OrderCardModel(String item, String types, String quantity) {
+    public OrderCardTableModel(String item, String types, String quantity) {
         Item = item;
         Types = types;
         Quantity = quantity;
