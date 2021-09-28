@@ -24,9 +24,13 @@ const UserManagment = () => {
                 <UserManagmentForm />
             </Paper>
                 <Divider style={{margin: `14px 0`}} />
-                {/*<Paper>*/}
-                    <UserManagmentTable/>
-                {/*</Paper>*/}
+                <div style={{width:'1500px', marginLeft:'120px'}}>
+                    <paper>
+                        <UserManagmentTable/>
+                    </paper>
+
+                </div>
+
         </>
     );
 }
