@@ -27,7 +27,7 @@ const Payment = () => {
                 subTitle="Handle Payment"
                 icon={<PeopleOutlineTwoToneIcon fontSize="large" />}
             />
-            <PaymentHeader/>
+            {/*<PaymentHeader/>*/}
             <Divider style={{margin: `14px 0`}} />
             <Searchbar/>
             <div style={{width:'1500px', marginLeft:'120px'}}>

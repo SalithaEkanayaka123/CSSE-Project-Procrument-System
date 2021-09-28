@@ -42,9 +42,9 @@ export default function UserManagmentTable() {
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead className="teacher-table-header">
                         <TableRow>
-                            <TableCell align="center" className={classes.userTableHeader}>ItemName</TableCell>
-                            <TableCell align="center" className={classes.userTableHeader}>Quantiy</TableCell>
-                            <TableCell align="center" className={classes.userTableHeader}>Amount (perI)</TableCell>
+                            <TableCell align="center" className={classes.userTableHeader}>Name</TableCell>
+                            <TableCell align="center" className={classes.userTableHeader}>Email</TableCell>
+                            <TableCell align="center" className={classes.userTableHeader}>Age</TableCell>
                             <TableCell align="center" className={classes.userTableHeader}>User Name</TableCell>
                             <TableCell align="center" className={classes.userTableHeader}>Status</TableCell>
                         </TableRow>

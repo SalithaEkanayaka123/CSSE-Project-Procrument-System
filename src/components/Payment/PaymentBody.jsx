@@ -9,14 +9,14 @@ import TableBody from "@mui/material/TableBody";
 import {makeStyles} from "@material-ui/core";
 
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
+function createData(name, calories, fat, carbs, protein, protein2) {
+    return { name, calories, fat, carbs, protein, protein2 };
 }
 
 const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
+    createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 5),
+    createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 5),
+    createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 5),
 ];
 
 const useStyles = makeStyles({
@@ -42,11 +42,12 @@ const PaymentBody = () => {
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead className="teacher-table-header">
                         <TableRow>
-                            <TableCell align="center" className={classes.userTableHeader}>Name</TableCell>
-                            <TableCell align="center" className={classes.userTableHeader}>Email</TableCell>
-                            <TableCell align="center" className={classes.userTableHeader}>Age</TableCell>
-                            <TableCell align="center" className={classes.userTableHeader}>User Name</TableCell>
-                            <TableCell align="center" className={classes.userTableHeader}>Status</TableCell>
+                            <TableCell align="center" className={classes.userTableHeader}>ItemName</TableCell>
+                            <TableCell align="center" className={classes.userTableHeader}>Quantiy</TableCell>
+                            <TableCell align="center" className={classes.userTableHeader}>Amount (perI)</TableCell>
+                            <TableCell align="center" className={classes.userTableHeader}>Total Amount</TableCell>
+                            <TableCell align="center" className={classes.userTableHeader}>Discount</TableCell>
+                            <TableCell align="center" className={classes.userTableHeader}>Net Amount</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -55,13 +56,14 @@ const PaymentBody = () => {
                                 key={row.name}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                             >
-                                <TableCell component="th" scope="row">
+                                <TableCell align="center" component="th" scope="row">
                                     {row.name}
                                 </TableCell>
-                                <TableCell align="right">{row.calories}</TableCell>
-                                <TableCell align="right">{row.calories}</TableCell>
-                                <TableCell align="right">{row.carbs}</TableCell>
-                                <TableCell align="right">{row.protein}</TableCell>
+                                <TableCell align="center">{row.calories}</TableCell>
+                                <TableCell align="center">{row.calories}</TableCell>
+                                <TableCell align="center">{row.carbs}</TableCell>
+                                <TableCell align="center">{row.protein}</TableCell>
+                                <TableCell align="center">{row.protein2}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
