@@ -4,6 +4,7 @@ import UserManagmentForm from "../../components/UserManagment/UserManagmentForm"
 import PageHeader from "../../components/PageHeader/PageHeader";
 import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
 import UserManagmentTable from "../../components/UserManagment/UserManagmentTable";
+import Searchbar from "../../components/Searchbar/Searchbar";
 
 const useStyles = makeStyles(theme => ({
     pageContent: {
@@ -21,6 +22,7 @@ const UserManagment = () => {
                 subTitle="New user can add using this form"
                 icon={<PeopleOutlineTwoToneIcon fontSize="large" />}
             />
+            <Searchbar/>
             <Paper className={classes.pageContent}>
                 <UserManagmentForm />
             </Paper>
