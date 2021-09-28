@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import UserManagement from "./pages/UserManagment/UserManagment";
 import Navbar from "./components/Navbar/Navbar";
 import PageHeader from "./components/PageHeader/PageHeader";
+import Payment from "./pages/Payment/Payment";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
             <Switch>
                 <Route exact path = "/home" />
                 <Route exact path = "/usermanage" component={UserManagement}/>
+                <Route exact path = "/payment" component={Payment}/>
             </Switch>
         </BrowserRouter>
     </div>
