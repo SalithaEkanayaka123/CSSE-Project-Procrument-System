@@ -3,6 +3,7 @@ import {Divider, Grid, makeStyles, Paper} from "@material-ui/core";
 import UserManagmentForm from "../../components/UserManagment/UserManagmentForm";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
+import UserManagmentTable from "../../components/UserManagment/UserManagmentTable";
 const useStyles = makeStyles(theme => ({
     pageContent: {
         margin: theme.spacing(5),
@@ -23,6 +24,9 @@ const UserManagment = () => {
                 <UserManagmentForm />
             </Paper>
                 <Divider style={{margin: `14px 0`}} />
+                {/*<Paper>*/}
+                    <UserManagmentTable/>
+                {/*</Paper>*/}
         </>
     );
 }
