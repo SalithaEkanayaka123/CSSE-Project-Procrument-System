@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         app:cardCornerRadius="15dp"
+
         >
 
         <LinearLayout
@@ -30,18 +31,21 @@
                 android:layout_height="37dp"
                 android:textSize="15dp"
                 android:textColor="@color/black"
+                android:fontFamily="@font/raleway_bold"
+                android:hint="email"
                 android:paddingLeft="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="taneesha@gmail.com" />
+                 />
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="37dp"
                 android:textColor="@color/black"
                 android:paddingLeft="10dp"
+                android:fontFamily="@font/raleway_bold"
                 android:textSize="15dp"
                 android:layout_marginBottom="10dp"
-                android:text="************" />
+                android:hint="password"/>
 
 
             <TextView
@@ -49,32 +53,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="37dp"
                 android:textColor="@color/black"
+                android:fontFamily="@font/raleway_bold"
                 android:paddingLeft="10dp"
                 android:textSize="15dp"
                 android:layout_marginBottom="10dp"
-                android:text="+123456788" />
+                android:hint="Phone" />
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="37dp"
                 android:textSize="15dp"
                 android:layout_marginBottom="10dp"
+                android:fontFamily="@font/raleway_bold"
                 android:textColor="@color/black"
                 android:paddingLeft="10dp"
-                android:text="Malabe" />
+                android:hint="city" />
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="37dp"
                 android:textSize="15dp"
                 android:textColor="@color/black"
+                android:fontFamily="@font/raleway_bold"
                 android:paddingLeft="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="Sri lanka" />
+                android:hint="country" />
             <Button
                 android:id="@+id/button1"
                 android:layout_width="wrap_content"
                 android:background="@drawable/round_btn1"
+                android:fontFamily="@font/raleway_bold"
                 android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:text="Edit"
