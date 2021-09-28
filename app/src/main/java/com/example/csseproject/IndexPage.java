@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.csseproject.HomeBottomNav.HomeBottomNav;
 import com.example.csseproject.HomePage.HomePage;
 import com.example.csseproject.HomePage.Model.OrderModel;
 import com.example.csseproject.OrderDetails.OrderStatus;
@@ -14,6 +15,7 @@ import com.example.csseproject.OrderDetails.OrderStatus;
 public class IndexPage extends AppCompatActivity {
 
     Button settingButton;
+    Button BottomNav;
     Button orderStatus;
 
     @Override
@@ -22,6 +24,8 @@ public class IndexPage extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         settingButton = findViewById(R.id.order_list);
         orderStatus = findViewById(R.id.view_status);
+        BottomNav = findViewById(R.id.bottomNav);
+
 
         settingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +43,13 @@ public class IndexPage extends AppCompatActivity {
             }
         });
 
+        BottomNav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), HomeBottomNav.class);
+                view.getContext().startActivity(intent);
+            }
+        });
 
     }
 }
