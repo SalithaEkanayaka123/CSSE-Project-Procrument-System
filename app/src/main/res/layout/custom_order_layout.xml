@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/long_card_view_item"
+        android:layout_width="330dp"
+        android:layout_height="190dp"
+        android:elevation="2dp"
+        android:layout_marginStart="5dp"
+        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="#FFFFFF"
+        >
+       <LinearLayout
+           android:layout_width="330dp"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:background="@color/black"
+           >
+           <ImageView
+               android:paddingLeft="10dp"
+               android:layout_width="50dp"
+               android:layout_height="50dp"
+               android:src="@drawable/helmet" />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Site 1"
+               android:textColor="@color/white"
+               android:textStyle="bold"
+               android:fontFamily="@font/raleway_bold"
+               android:paddingLeft="10dp"
+               android:layout_marginTop="8dp"
+               android:textSize="30dp"
+               />
+
+           <View
+               android:layout_width="120dp"
+               android:layout_height="match_parent" />
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="4d ago"
+               android:textColor="@color/white"
+               android:textStyle="normal"
+               android:fontFamily="@font/raleway"
+               android:paddingLeft="10dp"
+               android:layout_marginTop="3dp"
+               android:textSize="15dp"
+               />
+
+       </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</androidx.appcompat.widget.LinearLayoutCompat>
