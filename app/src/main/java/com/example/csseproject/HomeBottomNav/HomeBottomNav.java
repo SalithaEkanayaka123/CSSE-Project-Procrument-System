@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.csseproject.*;
@@ -18,6 +19,13 @@ public class HomeBottomNav extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_bottom_nav);
+
+        BottomNavigationView bottomNavView  = findViewById(R.id.bottom_nav);
+        bottomNavView.setOnNavigationItemSelectedListener( navListener);
+
+        Menu menu = bottomNavView.getMenu();
+        MenuItem menuItem = menu.getItem(0);
+        menuItem.setChecked(true);
     }
 
     private  BottomNavigationView.OnNavigationItemSelectedListener navListener = new
