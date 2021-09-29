@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CSSEProject">
-        <activity android:name=".HomePage.HomePage"></activity>
+        <activity android:name=".ProfileView.adapters.ProfileAdapter1"></activity>
+        <activity android:name=".HomePage.HomePage" />
         <activity android:name=".ProfileView.ProfileView" />
-        <activity android:name=".ProfileView.LoginPage"></activity>
+        <activity android:name=".ProfileView.LoginPage" />
         <activity android:name=".ProfileView.ProfilePageEditting" />
         <activity android:name=".ProfileView.ProfilePage" />
         <activity android:name=".ProfileView.informationSubmissionForm" />
