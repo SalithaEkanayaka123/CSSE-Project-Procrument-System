@@ -51,7 +51,17 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="Infromation submission" />
+    <Button
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Bottom NavBar" />
 
+    <Button
+        android:id="@+id/order_list"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Order List" />
 
     <TextView
         android:layout_width="match_parent"

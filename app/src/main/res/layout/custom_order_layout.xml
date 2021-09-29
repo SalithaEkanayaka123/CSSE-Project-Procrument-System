@@ -1,6 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/long_card_view_item"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:elevation="2dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:id="@+id/card_header"
+            android:layout_width="330dp"
+            android:layout_height="50dp"
+            android:background="@drawable/custom_button_layout"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:paddingLeft="10dp"
+                android:src="@drawable/helmet" />
+
+            <TextView
+                android:id="@+id/card_site_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/raleway_bold"
+                android:paddingLeft="10dp"
+                android:text="Site 1"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="120dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/card_created_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway"
+                android:paddingLeft="10dp"
+                android:text="4d ago"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="normal" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/card_body"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="vertical">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:stretchColumns="1,2,3">
+
+                <TableRow
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    >
+                    <TextView
+                        android:text="Items"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/raleway_bold"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:layout_column="1"
+                        />
+
+                    <TextView
+                        android:text="Types"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/raleway_bold"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:layout_column="1"
+                        />
+
+                    <TextView
+                        android:text="Quantity"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/raleway_bold"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        android:layout_column="1"
+                        />
+                </TableRow>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/card_recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </TableLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                android:backgroundTint="#02CE36"/>
+
+            <Button
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                android:backgroundTint="#F44336"/>
+
+            <Button
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"/>
+        </LinearLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

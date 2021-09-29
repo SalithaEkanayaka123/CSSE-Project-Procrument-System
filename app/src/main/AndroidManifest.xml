@@ -9,13 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CSSEProject">
+        <activity android:name=".HomePage.HomePage"></activity>
+        <activity android:name=".ProfileView.ProfileView" />
         <activity android:name=".ProfileView.LoginPage"></activity>
         <activity android:name=".ProfileView.ProfilePageEditting" />
         <activity android:name=".ProfileView.ProfilePage" />
         <activity android:name=".ProfileView.informationSubmissionForm" />
-        <activity android:name=".ProfileView.ProfileView" />
         <activity android:name=".OrderDetails.OrderStatus" />
         <activity android:name=".HomePage.OrderForm" />
+        <activity android:name=".HomeBottomNav.HomeBottomNav" />
         <activity android:name=".IndexPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

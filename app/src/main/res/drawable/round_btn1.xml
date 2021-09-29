@@ -10,7 +10,7 @@
                     android:right="1dp"
                     android:top="1dp"
                     android:bottom="1dp"/>
-                <solid android:color="#FFFFFF" />
+                <solid android:color="@color/white" />
             </shape>
         </item>
         <item android:bottom="2dp" android:right="2dp">
@@ -25,5 +25,4 @@
         </item>
     </layer-list>
 </item>
-
 </selector>
