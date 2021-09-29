@@ -22,36 +22,52 @@
             android:layout_marginBottom="15dp"
             app:srcCompat="@drawable/profile" />
 
-
-
-        <EditText
-            android:id="@+id/editTexteditpage4"
-            android:layout_height="37dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:background="#E0E0E0"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textSize="15dp"
+            app:hintEnabled="true"
+            app:expandedHintEnabled="false"
+            android:background="#808080"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/black"
             android:fontFamily="@font/raleway_bold"
             android:hint="username"
-            android:paddingLeft="10dp"
-            android:layout_marginBottom="10dp"
-            />
-        <EditText
-            android:id="@+id/editTexteditpage5"
-            android:layout_height="37dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextloginpage1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:textSize="15dp"
+                android:textColor="#454545"
+                android:fontFamily="@font/raleway_bold"
+                android:hint="taneeesha@gmail.com"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:background="#E0E0E0"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:textSize="15dp"
+            app:hintEnabled="true"
+            app:expandedHintEnabled="false"
+            android:background="#808080"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/black"
             android:fontFamily="@font/raleway_bold"
             android:hint="password"
-            android:paddingLeft="10dp"
-            android:layout_marginBottom="10dp"
-            />
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextloginpage2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textSize="15dp"
+                android:textColor="#454545"
+                android:fontFamily="@font/raleway_bold"
+                android:hint="..........."/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/button1"
