@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-<item>
-    <layer-list>
-        <item android:left="5dp" android:top="5dp">
-            <shape>
-                <corners android:radius="10dp" />
-                <padding
-                    android:left="1dp"
-                    android:right="1dp"
-                    android:top="1dp"
-                    android:bottom="1dp"/>
-                <solid android:color="@color/white" />
-            </shape>
-        </item>
-        <item android:bottom="2dp" android:right="2dp">
-            <shape>
-                <gradient android:angle="270"
-                    android:endColor="#ffffff" android:startColor="#ffffff" />
-                <stroke android:width="1dp" android:color="#000000" />
-                <corners android:radius="4dp" />
-                <padding android:bottom="2dp" android:left="2dp"
-                    android:right="2dp" android:top="2dp" />
-            </shape>
-        </item>
-    </layer-list>
-</item>
-</selector>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners
+        android:radius="10dp" />
+
+    <padding
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp"
+        android:bottom="1dp"/>
+
+    <solid android:color="@color/white"/>
+</shape>
+<!--<selector xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--<item>-->
+<!--    <layer-list>-->
+<!--        <item android:left="5dp" android:top="5dp">-->
+<!--            <shape>-->
+<!--                <corners android:radius="10dp" />-->
+<!--                <padding-->
+<!--                    android:left="1dp"-->
+<!--                    android:right="1dp"-->
+<!--                    android:top="1dp"-->
+<!--                    android:bottom="1dp"/>-->
+<!--                <solid android:color="@color/white" />-->
+<!--            </shape>-->
+<!--        </item>-->
+<!--&lt;!&ndash;        <item android:bottom="2dp" android:right="2dp">&ndash;&gt;-->
+<!--&lt;!&ndash;            <shape>&ndash;&gt;-->
+<!--&lt;!&ndash;                <gradient android:angle="270"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:endColor="#ffffff" android:startColor="#ffffff" />&ndash;&gt;-->
+<!--&lt;!&ndash;                <stroke android:width="1dp" android:color="#000000" />&ndash;&gt;-->
+<!--&lt;!&ndash;                <corners android:radius="4dp" />&ndash;&gt;-->
+<!--&lt;!&ndash;                <padding android:bottom="2dp" android:left="2dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                    android:right="2dp" android:top="2dp" />&ndash;&gt;-->
+<!--&lt;!&ndash;            </shape>&ndash;&gt;-->
+<!--&lt;!&ndash;        </item>&ndash;&gt;-->
+<!--    </layer-list>-->
+<!--</item>-->
+<!--</selector>-->

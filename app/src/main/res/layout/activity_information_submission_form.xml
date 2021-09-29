@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -182,16 +183,17 @@
             android:layout_width="wrap_content"
             android:background="@drawable/round_btn1"
             android:textColor="@color/black"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="Create"
             android:layout_marginRight="15dp"/>
+
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
+            android:layout_height="40dp"
             android:background="@drawable/round_btn"
-            android:textColor="@color/black"
-            android:layout_height="wrap_content"
-            android:text="cancel" />
+            android:text="cancel"
+            android:textColor="@color/black" />
     </LinearLayout>
 
 

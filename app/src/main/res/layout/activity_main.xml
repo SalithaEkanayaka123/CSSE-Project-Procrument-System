@@ -52,6 +52,16 @@
         android:layout_height="60dp"
         android:text="Infromation submission" />
     <Button
+        android:id="@+id/loginPage"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Login Page" />
+    <Button
+        android:id="@+id/profilepageEdit"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Profile Page Editting" />
+    <Button
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="60dp"
