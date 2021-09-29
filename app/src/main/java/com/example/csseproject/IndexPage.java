@@ -11,6 +11,9 @@ import com.example.csseproject.HomeBottomNav.HomeBottomNav;
 import com.example.csseproject.HomePage.HomePage;
 import com.example.csseproject.HomePage.Model.OrderModel;
 import com.example.csseproject.OrderDetails.OrderStatus;
+import com.example.csseproject.ProfileView.LoginPage;
+import com.example.csseproject.ProfileView.ProfilePage;
+import com.example.csseproject.ProfileView.ProfilePageEditting;
 import com.example.csseproject.ProfileView.informationSubmissionForm;
 
 public class IndexPage extends AppCompatActivity {
@@ -18,7 +21,7 @@ public class IndexPage extends AppCompatActivity {
     Button settingButton;
     Button BottomNav;
     Button orderStatus;
-    Button informationSubmissionForm1;
+    Button informationSubmissionForm1, profile, profileEditing, Login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,9 @@ public class IndexPage extends AppCompatActivity {
         orderStatus = findViewById(R.id.view_status);
         BottomNav = findViewById(R.id.bottomNav);//informationsubmissionform
         informationSubmissionForm1 = findViewById(R.id.informationsubmissionform);//
-
+        profile = findViewById(R.id.profile);
+        profileEditing = findViewById(R.id.profilepageEdit);
+        Login = findViewById(R.id.loginPage);
 
         settingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +66,31 @@ public class IndexPage extends AppCompatActivity {
                 view.getContext().startActivity(intent);
             }
         });//informationSubmissionForm
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ProfilePage.class);
+                view.getContext().startActivity(intent);
+            }
+        });
+
+        profileEditing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), ProfilePageEditting.class);
+                view.getContext().startActivity(intent);
+            }
+        });
+
+        Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), LoginPage.class);
+                view.getContext().startActivity(intent);
+            }
+        });
+
 
     }
 }
