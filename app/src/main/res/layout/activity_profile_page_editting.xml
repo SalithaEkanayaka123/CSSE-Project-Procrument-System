@@ -22,82 +22,136 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="15dp"
             app:srcCompat="@drawable/profile" />
-        <EditText
-            android:id="@+id/editTexteditpage1"
-            android:layout_height="37dp"
+<!--        <EditText-->
+<!--            -->
+<!--            android:layout_height="37dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:background="#E0E0E0"-->
+<!--            android:ems="10"-->
+<!--            android:inputType="textPersonName"-->
+<!--            android:textSize="15dp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:fontFamily="@font/raleway_bold"-->
+<!--            android:hint="email"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--             />-->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:background="#E0E0E0"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textSize="15dp"
+            app:hintEnabled="true"
+            app:expandedHintEnabled="false"
+            android:background="#808080"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/black"
             android:fontFamily="@font/raleway_bold"
             android:hint="email"
-            android:paddingLeft="10dp"
-            android:layout_marginBottom="10dp"
-             />
+            >
 
-        <EditText
-            android:id="@+id/editTexteditpage2"
-            android:layout_height="37dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTexteditpage1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:textSize="15dp"
+                android:textColor="#454545"
+                android:fontFamily="@font/raleway_bold"
+                android:hint="email"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:background="#E0E0E0"
-            android:textSize="15dp"
+            app:hintEnabled="true"
+            app:expandedHintEnabled="false"
+            android:background="#808080"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/black"
             android:fontFamily="@font/raleway_bold"
             android:hint="password"
-            android:paddingLeft="10dp"
-            android:layout_marginBottom="10dp"
-            />
+            >
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTexteditpage2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textSize="15dp"
+                android:textColor="#454545"
+                android:fontFamily="@font/raleway_bold"
+                android:hint="password"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/editTexteditpage3"
-            android:layout_height="37dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:background="#E0E0E0"
-            android:ems="10"
-            android:inputType="number"
-            android:textSize="15dp"
+            app:hintEnabled="true"
+            app:expandedHintEnabled="false"
+            android:background="#808080"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/black"
             android:fontFamily="@font/raleway_bold"
             android:hint="phone"
-            android:paddingLeft="10dp"
-            android:layout_marginBottom="10dp"
-            />
+            >
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTexteditpage3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textSize="15dp"
+                android:textColor="#454545"
+                android:fontFamily="@font/raleway_bold"
+                android:hint="phone"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-
-        <EditText
-            android:id="@+id/editTexteditpage4"
-            android:layout_height="37dp"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:background="#E0E0E0"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textSize="15dp"
+            app:hintEnabled="true"
+            app:expandedHintEnabled="false"
+            android:background="#808080"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/black"
             android:fontFamily="@font/raleway_bold"
             android:hint="city"
-            android:paddingLeft="10dp"
-            android:layout_marginBottom="10dp"
-            />
-        <EditText
-            android:id="@+id/editTexteditpage5"
-            android:layout_height="37dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTexteditpage4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:textSize="15dp"
+                android:textColor="#454545"
+                android:fontFamily="@font/raleway_bold"
+                android:hint="city"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:background="#E0E0E0"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textSize="15dp"
+            app:hintEnabled="true"
+            app:expandedHintEnabled="false"
+            android:background="#808080"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/black"
             android:fontFamily="@font/raleway_bold"
             android:hint="country"
-            android:paddingLeft="10dp"
-            android:layout_marginBottom="10dp"
-            />
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTexteditpage5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:textSize="15dp"
+                android:textColor="#454545"
+                android:fontFamily="@font/raleway_bold"
+                android:hint="country"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <Button
             android:id="@+id/button1"
