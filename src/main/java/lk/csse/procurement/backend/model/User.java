@@ -23,7 +23,7 @@ public class User {
     private String password;
 
     @Column(name = "type")
-    private String type;
+    private String type; ////////////////7
 
     public User(String userID, String firstName, String lastName, String email, String phoneNo, String password, String type) {
         this.userID = userID;
@@ -90,4 +90,6 @@ public class User {
     public void setType(String type) {
         this.type = type;
     }
+
+
 }

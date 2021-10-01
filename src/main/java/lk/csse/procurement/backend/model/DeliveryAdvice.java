@@ -17,7 +17,7 @@ public class DeliveryAdvice {
     private String note;
 
     @Column(name = "orderID")
-    private String orderID;
+    private String orderID; /////5
 
     public DeliveryAdvice(String deliveryID, String address, ArrayList<Item> ltemList, String note, String orderID) {
         this.deliveryID = deliveryID;

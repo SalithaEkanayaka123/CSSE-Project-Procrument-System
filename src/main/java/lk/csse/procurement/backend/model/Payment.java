@@ -12,15 +12,19 @@ public class Payment {
     private String description;
 
     @Column(name = "amount")
-    private float amount;
+    private double amount;
 
     @Column(name = "date")
     private Date date;
 
     @Column(name = "invoiceNo")
-    private String invoiceNo;
+    private String invoiceNo; /////////////////5 
 
-    
+
+
+
+
+
 
 
 

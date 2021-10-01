@@ -1,7 +1,7 @@
 package lk.csse.procurement.backend.model;
 
 public class Check {
-    private int checkNo;
+    private int checkNo;////1
 
     public Check(int checkNo) {
         this.checkNo = checkNo;

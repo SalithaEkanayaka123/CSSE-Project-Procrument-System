@@ -10,7 +10,7 @@ public class Invoice {
     private String paymentStatus;
     private Date date;
     private ArrayList<Item> itemList;
-    private double amount;
+    private double amount;  ////6
 
     public Invoice(String invoiceNo, String orderID, String paymentStatus, Date date, ArrayList<Item> itemList, double amount) {
         this.invoiceNo = invoiceNo;
