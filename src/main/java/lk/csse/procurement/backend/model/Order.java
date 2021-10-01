@@ -12,7 +12,7 @@ public class Order {
     private String siteLocation;
 
     @Column(name = "siteManager")
-    private String siteManager;////////////////////////////////////
+    private String siteManager;
 
     @Column(name = "itemList")
     private ArrayList<Item> itemList;
@@ -36,7 +36,11 @@ public class Order {
     private String status;
 
     @Column(name = "suplierID")
-    private String supplierId; ////
+    private String supplierId;
+
+    public Order() {
+
+    }
 
     public Order(String orderId, String siteLocation, ArrayList<Item> itemList, Date purchaseDate, Date requiredDate, String deliveryAddress, String description, float totalPrice, String status, String supplierId) {
         this.orderId = orderId;
