@@ -4,7 +4,11 @@ public class Account {
     private int accountNo;
     private String accountName;
     private String description;
-    private double totalFund;  //////4
+    private double totalFund;
+
+    public Account (){
+
+    }
 
     public Account(int accountNo, String accountName, String description, double totalFund) {
         this.accountNo = accountNo;

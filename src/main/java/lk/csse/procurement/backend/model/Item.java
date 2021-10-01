@@ -6,6 +6,10 @@ public class Item {
     private String description;
     private int qty;
 
+    public Item() {
+
+    }
+
     public Item(int itemId, String itemName, String description, int qty) {
         this.itemId = itemId;
         this.itemName = itemName;

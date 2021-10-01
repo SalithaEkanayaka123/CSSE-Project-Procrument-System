@@ -1,5 +1,6 @@
 package lk.csse.procurement.backend.service.impl;
 
+import lk.csse.procurement.backend.model.Account;
 import lk.csse.procurement.backend.model.Item;
 import lk.csse.procurement.backend.model.Order;
 import lk.csse.procurement.backend.service.OrderService;
@@ -38,5 +39,48 @@ public class OrderServices implements OrderService {
        // Get Order Item from the Repository.
         return null;
     }
+
+    /**
+     * Account Service Methods.
+     * **/
+
+    public Account getAccounts(){
+        // Get Order Item from the Repository.
+        return null;
+    }
+    public Account AddAccountDetails(int UserId){
+
+        Account account  = new Account();
+        // Call the DB method.
+        return null;
+    }
+
+    public Account getAccount(int userId){
+
+        // Call the DB method.
+        return null;
+    }
+
+    /**
+     * Supplier and Item List
+     * **/
+
+    public ArrayList<Item> getItems(){
+        // Get Order Item from the Repository.
+        return null;
+    }
+    public Item AddItem(int UserId){
+
+        Item account  = new Item(); // Item inheritance Use a pattern
+        // Call the DB method.
+        return null;
+    }
+
+    public Item getItem(int itemId){
+        // Call the DB method.
+        return null;
+    }
+
+
 
 }
