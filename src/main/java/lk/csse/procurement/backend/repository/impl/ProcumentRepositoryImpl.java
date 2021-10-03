@@ -1,16 +1,15 @@
 package lk.csse.procurement.backend.repository.impl;
 
 import lk.csse.procurement.backend.model.Order;
+import lk.csse.procurement.backend.model.Supplier;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
 @Repository
 public class ProcumentRepositoryImpl implements ProcumentRepository {
 
@@ -42,6 +41,11 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public Order getAllOrderDetails(Order order) {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Supplier> getArrayList() {
         return null;
     }
 

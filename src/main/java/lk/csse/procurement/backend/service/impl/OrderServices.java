@@ -28,6 +28,7 @@ public class OrderServices implements OrderService {
 
     @Override
     public ArrayList<Supplier> RequestAvailableSuppliers(String availability) {
+        ArrayList<Supplier> availableSuppliers;
         return null;
     }
 
