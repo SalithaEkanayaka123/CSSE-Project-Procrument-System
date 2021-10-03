@@ -44,7 +44,7 @@ class OrderServicesTest {
         ArrayList<Item> itemList = new ArrayList<>();
         itemList.add(item1);
         itemList.add(item2);
-        java.util.Date date = new java.util.Date();
+        java.util.Date date=new java.util.Date();
 
 
         Order order = new Order();
@@ -57,6 +57,22 @@ class OrderServicesTest {
     public void TestingcalculateTotalCostForOrder(){
         double cost = orderServices.calculateTotalCostForOrder("12");
     }
+
+    /**
+     *
+     * Anawaratne M.A.N.A. Method Testing.
+     *          ||||||||||||||||
+     * **/
+
+
+
+
+    @Test
+    public void RequestAvailableSuppliers() {
+        orderServices.RequestAvailableSuppliers("false");
+    }
+
+
 
 
 
