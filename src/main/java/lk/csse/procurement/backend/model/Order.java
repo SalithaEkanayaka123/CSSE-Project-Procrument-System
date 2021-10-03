@@ -1,10 +1,18 @@
 package lk.csse.procurement.backend.model;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+@Entity
+@Table(name = "orders")
 public class Order {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
     @Column(name = "orderId")
     private String orderId;
 

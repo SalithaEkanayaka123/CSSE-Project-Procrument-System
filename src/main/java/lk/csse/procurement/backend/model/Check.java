@@ -1,7 +1,16 @@
 package lk.csse.procurement.backend.model;
+import javax.persistence.*;
 
-public class Check {
-    private int checkNo;////1
+@Entity
+@Table(name = "check" ,schema="csse")
+public class Check extends Payment {
+
+    @Column(name = "checkNo")
+    private int checkNo;
+
+    public Check() {
+
+    }
 
     public Check(int checkNo) {
         this.checkNo = checkNo;

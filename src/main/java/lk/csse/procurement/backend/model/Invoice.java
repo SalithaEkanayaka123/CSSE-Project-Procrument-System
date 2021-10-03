@@ -1,14 +1,29 @@
 package lk.csse.procurement.backend.model;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
+@Entity
+@Table(name = "invoice")
 public class Invoice {
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(name = "invoiceNo")
     private String invoiceNo;
+    @Column(name = "orderID")
     private String orderID;
+    @Column(name = "paymentStatus")
     private String paymentStatus;
+    @Column(name = "date")
     private Date date;
+    @Column(name = "itemList")
     private ArrayList<Item> itemList;
     @Column(name = "amount")
     private double amount;

@@ -2,6 +2,9 @@ package lk.csse.procurement.backend.model;
 import javax.persistence.*;
 import java.util.Date;
 
+
+@Entity
+@Table(name = "payment")
 public class Payment {
 
     @Id

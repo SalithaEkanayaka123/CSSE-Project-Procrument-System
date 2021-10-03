@@ -1,9 +1,21 @@
 package lk.csse.procurement.backend.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "account")
 public class Account {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(name = "accountNo")
     private int accountNo;
+    @Column(name = "accountName")
     private String accountName;
+    @Column(name = "description")
     private String description;
+    @Column(name = "totalFund")
     private double totalFund;
 
     public Account (){

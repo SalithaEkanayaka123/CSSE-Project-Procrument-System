@@ -1,9 +1,18 @@
 package lk.csse.procurement.backend.model;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 import java.util.ArrayList;
 
+
+@Entity
+@Table(name = "deliveryadvice")
 public class DeliveryAdvice {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+
     @Column(name = "deliveryID")
     private String deliveryID;
 

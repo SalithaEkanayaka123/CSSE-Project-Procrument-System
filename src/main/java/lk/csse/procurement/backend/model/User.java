@@ -1,8 +1,15 @@
 package lk.csse.procurement.backend.model;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 
+
+@Entity
+@Table(name = "users")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     @Column(name = "userID")
     private String userID;
