@@ -142,17 +142,17 @@ public class OrderServices implements OrderService {
     @Override
     public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject) {
         /**
+         *
          * Create a DeliveryAdvice insert method to store the daobjects in the database.
          * create a model acceptedDeliveryAdviceNotices model class and store them in the database.
          *
          * **/
+        AcceptedDelivery acceptedDelivery = new AcceptedDelivery();
+        acceptedDelivery.setOrderId(orderid);
+        acceptedDelivery.setSiteManagerId(Integer.parseInt(Id.getUserID()));
+        acceptedDelivery.setDeliveryId(Integer.parseInt(daobject.getDeliveryID()));
 
-
-
-
-
-
-
+        procumentRepository.saveTheDeliveryAdivce(acceptedDelivery);
         return null;
     }
 

@@ -1,6 +1,6 @@
 package lk.csse.procurement.backend.repository.impl;
-
 import lk.csse.procurement.backend.mapper.SupplierMapper;
+import lk.csse.procurement.backend.model.AcceptedDelivery;
 import lk.csse.procurement.backend.model.Item;
 import lk.csse.procurement.backend.model.Order;
 import lk.csse.procurement.backend.model.Supplier;
@@ -8,9 +8,6 @@ import lk.csse.procurement.backend.repository.ProcumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
-
-import java.lang.reflect.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
@@ -81,6 +78,13 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         params.put("orderid", orderId);
         List<Item> list = namedParameterJdbcTemplate.query(query, params, (rs, i) -> getOrderItemArray(rs));
         return list != null && list.size() != 0 ? list : null;
+    }
+
+    @Override
+    public int saveTheDeliveryAdivce(AcceptedDelivery acceptedDelivery) {
+        Map<String, Object> params = new HashMap<>();
+        String sql = "INSERT INTO accepted_delivery VALUES()"; //Complete the code.
+        return 0;
     }
 
     public Item getOrderItemArray(ResultSet rs) throws SQLException {
