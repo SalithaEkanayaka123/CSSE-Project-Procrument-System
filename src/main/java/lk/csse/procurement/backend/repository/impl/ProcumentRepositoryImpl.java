@@ -1,5 +1,6 @@
 package lk.csse.procurement.backend.repository.impl;
 
+import lk.csse.procurement.backend.mapper.SupplierMapper;
 import lk.csse.procurement.backend.model.Item;
 import lk.csse.procurement.backend.model.Order;
 import lk.csse.procurement.backend.model.Supplier;
@@ -50,7 +51,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     @Override
     public ArrayList<Supplier> getAllAvailableSuppliers() {
         String sql = "SELECT * FROM users WHERE availability = 'true'";
-        ArrayList<Supplier> sup = new ArrayList<>();
+        ArrayList<Supplier> sup = namedParameterJdbcTemplate.query(sql, new SupplierMapper());
         return null;
     }
 
