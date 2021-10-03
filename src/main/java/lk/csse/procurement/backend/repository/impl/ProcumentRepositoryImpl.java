@@ -4,13 +4,14 @@ import lk.csse.procurement.backend.model.Order;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
+@Repository
 public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Autowired

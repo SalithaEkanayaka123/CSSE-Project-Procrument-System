@@ -7,6 +7,10 @@ public class Check {
         this.checkNo = checkNo;
     }
 
+    public Check() {
+
+    }
+
     public int getCheckNo() {
         return checkNo;
     }
