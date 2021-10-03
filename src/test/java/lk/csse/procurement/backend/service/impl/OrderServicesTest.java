@@ -1,14 +1,11 @@
 package lk.csse.procurement.backend.service.impl;
 import lk.csse.procurement.backend.model.Item;
 import lk.csse.procurement.backend.model.Order;
-import lk.csse.procurement.backend.service.OrderService;
-import org.assertj.core.util.VisibleForTesting;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
 import java.util.ArrayList;
 
 @RunWith(SpringRunner.class)
@@ -24,8 +21,15 @@ class OrderServicesTest {
         System.out.println("");
     }
 
+    /**
+     *
+     * Anawaratne M.A.N.A. Method Testing.
+     *
+     * **/
+
     @Test
     public void TestingCreateUser() {
+
         orderServices.createUser();
     }
 
@@ -38,8 +42,7 @@ class OrderServicesTest {
         ArrayList<Item> itemList = new ArrayList<>();
         itemList.add(item1);
         itemList.add(item2);
-        java.util.Date date=new java.util.Date();
-
+        java.util.Date date =new java.util.Date();
 
         Order order = new Order();
         order.setOrderId("12");
@@ -48,9 +51,22 @@ class OrderServicesTest {
     }
 
     @Test
+    public void TestingcalculateTotalCostForOrder(){
+        double cost = orderServices.calculateTotalCostForOrder("12");
+    }
+
+    /**
+     *
+     * Anawaratne M.A.N.A. Method Testing.
+     *         ||||||||||||||||
+     * **/
+
+    @Test
     public void RequestAvailableSuppliers() {
         orderServices.RequestAvailableSuppliers("true");
     }
+
+
 
 
 

@@ -6,7 +6,10 @@ import lk.csse.procurement.backend.repository.UserRepository;
 import lk.csse.procurement.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +33,7 @@ public class OrderServices implements OrderService {
 
     @Override
     public void createUser() {
-        Supplier supplier = new Supplier("2", "Salitha", "Ekanayaka", "salitha@gmail.com", "", "", "true");
+        Supplier supplier = new Supplier("", "Salitha", "Ekanayaka", "salitha@gmail.com", "", "", "true");
         supplier.setAvailability(true);
         userRepository.save(supplier);
     }
@@ -38,15 +41,20 @@ public class OrderServices implements OrderService {
     @Override
     public void AddOrder() {
         Order order = new Order();
-        order.setDeliveryAddress("address1");
-        order.setDescription("description");
-        order.setSupplierId("2");
-        order.setOrderId("3");
+        order.setDeliveryAddress("No 6, Malabe");
+        order.setDescription("This is new order");
+//        order.setItemList();
+        order.setOrderId("O112");
+//      order.setPurchaseDate("2021.10.03");
+//        order.setRequiredDate();
+        order.setSiteLocation("Malabe");
+        order.setSiteManager("manager_1");
+        order.setStatus("Approved");
+        order.setSupplierId("S001");
+        order.setTotalPrice(23000);
         orderRepository.save(order);
-//        System.out.println("This is Add order method");
-//        System.out.println("This is Add order method");
-//        System.out.println("This is Add order method");
-//        System.out.println("This is Add order method");
+
+
     }
 
     @Override
@@ -86,13 +94,17 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public void calculateTotalCostForOrder(int orderId) {
+    public double calculateTotalCostForOrder(String orderId) {
         /**
          * Process: Calculate the Total Cost for Orders
          * User: Manager.
          * **/
-
-
+        double totalCost = 0;
+        List<Item> itemList = procumentRepository.getOrderItemList(orderId);
+        for(Item item : itemList){
+            totalCost = totalCost + item.getPrice();
+        }
+        return totalCost;
     }
 
     @Override
@@ -101,20 +113,23 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public double calculateTotalCostForOrder(Order orderItem) {
-
-
-
-        return 0;
+    public boolean compareDeliveryAdviceProductOrder(ArrayList<Order> order, ArrayList<Order> daobject) {
+        /**
+         *
+         * This method compare the delivery.
+         *
+         * **/
+        System.out.println(order.equals(daobject));
+        boolean status = order.equals(daobject);
+        return status;
     }
 
-    @Override
-    public boolean compareDeliveryAdviceProductOrder(Order order, DeliveryAdvice daobject) {
-        return false;
-    }
+
+
 
     @Override
     public Item addReturnItems(ArrayList<Item> list) {
+
         return null;
     }
 
@@ -129,7 +144,19 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject, String stage) {
+    public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject) {
+        /**
+         *
+         * Create a DeliveryAdvice insert method to store the daobjects in the database.
+         * create a model acceptedDeliveryAdviceNotices model class and store them in the database.
+         *
+         * **/
+        AcceptedDelivery acceptedDelivery = new AcceptedDelivery();
+        acceptedDelivery.setOrderId(orderid);
+        acceptedDelivery.setSiteManagerId(Integer.parseInt(Id.getUserID()));
+        acceptedDelivery.setDeliveryId(Integer.parseInt(daobject.getDeliveryID()));
+
+        procumentRepository.saveTheDeliveryAdivce(acceptedDelivery);
         return null;
     }
 

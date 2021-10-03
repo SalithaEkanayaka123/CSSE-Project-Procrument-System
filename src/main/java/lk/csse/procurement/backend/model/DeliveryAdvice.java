@@ -3,7 +3,6 @@ package lk.csse.procurement.backend.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 
-
 @Entity
 @Table(name = "deliveryadvice")
 public class DeliveryAdvice {
@@ -11,7 +10,6 @@ public class DeliveryAdvice {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
 
     @Column(name = "deliveryID")
     private String deliveryID;
@@ -25,8 +23,11 @@ public class DeliveryAdvice {
     @Column(name = "note")
     private String note;
 
+    @Column (name="stage")
+    private String stage;
+
     @Column(name = "orderID")
-    private String orderID; /////5
+    private String orderID;
 
     public DeliveryAdvice(String deliveryID, String address, ArrayList<Item> ltemList, String note, String orderID) {
         this.deliveryID = deliveryID;
@@ -34,6 +35,10 @@ public class DeliveryAdvice {
         this.ltemList = ltemList;
         this.note = note;
         this.orderID = orderID;
+    }
+
+    public DeliveryAdvice() {
+
     }
 
     public String getDeliveryID() {
