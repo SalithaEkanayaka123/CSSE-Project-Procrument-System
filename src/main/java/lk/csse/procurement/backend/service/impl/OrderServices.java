@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 @Service
 public class OrderServices implements OrderService {
 
@@ -38,9 +40,8 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public ArrayList<Supplier> RequestAvailableSuppliers(String availability) {
-        ArrayList<Supplier> availableSuppliers = procumentRepository.getAllAvailableSuppliers();
-        System.out.println(availableSuppliers.get(2));
+    public List<Supplier> RequestAvailableSuppliers(String availability) {
+        List<Supplier> availableSuppliers = procumentRepository.getAllAvailableSuppliers();
         return availableSuppliers;
     }
 
