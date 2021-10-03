@@ -11,6 +11,7 @@ import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Array;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
 @Repository
@@ -74,8 +75,12 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         return list != null && list.size() != 0 ? list : null;
     }
 
-    public Item getOrderItemArray(ResultSet rs){
+    public Item getOrderItemArray(ResultSet rs) throws SQLException {
         Item item = new Item();
+        item.setItemId(Integer.parseInt(rs.getString("item_id")));
+        /*
+        * Code should be changed to a join query and parameters should ne updated.
+        * */
         return item;
     }
 
