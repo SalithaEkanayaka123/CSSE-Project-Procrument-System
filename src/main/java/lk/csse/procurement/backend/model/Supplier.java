@@ -1,5 +1,7 @@
 package lk.csse.procurement.backend.model;
 
+import net.bytebuddy.implementation.bind.annotation.Super;
+
 import javax.persistence.*;
 
 
@@ -16,5 +18,13 @@ public class Supplier extends User{
 
     public Supplier() {
 
+    }
+
+    public boolean isAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
     }
 }

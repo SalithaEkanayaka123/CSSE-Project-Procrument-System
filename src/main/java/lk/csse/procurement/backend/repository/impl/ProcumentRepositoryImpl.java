@@ -46,7 +46,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public ArrayList<Supplier> getAllAvailableSuppliers() {
-        String sql = "SELECT * FROM suppliers WHERE ";
+        String sql = "SELECT * FROM users WHERE availability";
         return null;
     }
 

@@ -9,6 +9,7 @@ import java.util.Date;
 public interface OrderService {
 
     public void test();
+    public void createUser();
     public void AddOrder ();
     public ArrayList<Supplier> RequestAvailableSuppliers(String availability);
     public void getSuppliersByOrder(Order orderId);

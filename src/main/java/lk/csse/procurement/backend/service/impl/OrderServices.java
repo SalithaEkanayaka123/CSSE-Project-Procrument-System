@@ -1,6 +1,7 @@
 package lk.csse.procurement.backend.service.impl;
 import lk.csse.procurement.backend.model.*;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
+import lk.csse.procurement.backend.repository.UserRepository;
 import lk.csse.procurement.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +13,21 @@ public class OrderServices implements OrderService {
     @Autowired
     ProcumentRepository procumentRepository;
 
+    @Autowired
+    UserRepository userRepository;
+
 
     @Override
     public void test() {
         System.out.println("Done");
+    }
+
+    @Override
+    public void createUser() {
+        User supplier = new Supplier();
+        supplier.setLastName("Ekanayaka");
+        supplier.setFirstName("Salitha");
+        userRepository.save(supplier);
     }
 
     @Override
@@ -28,8 +40,8 @@ public class OrderServices implements OrderService {
 
     @Override
     public ArrayList<Supplier> RequestAvailableSuppliers(String availability) {
-        ArrayList<Supplier> availableSuppliers;
-        return null;
+        ArrayList<Supplier> availableSuppliers = procumentRepository.getAllAvailableSuppliers();
+        return availableSuppliers;
     }
 
     @Override

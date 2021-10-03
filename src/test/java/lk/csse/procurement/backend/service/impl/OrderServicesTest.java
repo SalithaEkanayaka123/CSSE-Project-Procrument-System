@@ -14,9 +14,14 @@ class OrderServicesTest {
     OrderServices orderServices;
 
     @Test
-    public void testingAddOrder() {
+    public void TestingAddOrder() {
         orderServices.AddOrder();
         System.out.println("");
+    }
+
+    @Test
+    public void TestingCreateUser() {
+        orderServices.createUser();
     }
 
 
