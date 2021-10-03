@@ -50,10 +50,10 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     }
 
     @Override
-    public ArrayList<Supplier> getAllAvailableSuppliers() {
+    public List<Supplier> getAllAvailableSuppliers() {
         String sql = "SELECT * FROM users WHERE availability = 'true'";
-        ArrayList<Supplier> sup = namedParameterJdbcTemplate.query(sql, new SupplierMapper());
-        return null;
+        List<Supplier> sup = namedParameterJdbcTemplate.query(sql, new SupplierMapper());
+        return sup;
     }
 
     @Override
