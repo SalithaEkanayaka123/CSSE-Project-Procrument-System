@@ -1,5 +1,6 @@
 package lk.csse.procurement.backend.service.impl;
 import lk.csse.procurement.backend.model.*;
+import lk.csse.procurement.backend.repository.ItemRepository;
 import lk.csse.procurement.backend.repository.OrderRepository;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
 import lk.csse.procurement.backend.repository.UserRepository;
@@ -25,6 +26,9 @@ public class OrderServices implements OrderService {
     @Autowired
     OrderRepository orderRepository;
 
+    @Autowired
+    ItemRepository itemRepository;
+
 
     @Override
     public void test() {
@@ -39,12 +43,25 @@ public class OrderServices implements OrderService {
     }
 
     @Override
+    public void AddItems() {
+        Item item = new Item();
+        item.setItemId(1);
+        item.setItemName("item1");
+        item.setDescription("description");
+        item.setPrice(1200);
+        item.setQty(5);
+
+        itemRepository.save(item);
+
+    }
+
+    @Override
     public void AddOrder() {
         Order order = new Order();
         order.setDeliveryAddress("No 6, Malabe");
         order.setDescription("This is new order");
 //        order.setItemList();
-        order.setOrderId("O112");
+        order.setOrderId("3");
 //      order.setPurchaseDate("2021.10.03");
 //        order.setRequiredDate();
         order.setSiteLocation("Malabe");
@@ -64,16 +81,15 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public List<Order> getSuppliersByOrder(String orderId) {
-        List<Order> orderlist = null;
-
+    public List<Supplier> getSuppliersByOrder(String orderId) {
+        List<Supplier> orderlist = procumentRepository.getSuppliersByOrder(orderId);
         return  orderlist;
 
     }
 
     @Override
-    public void getOrderItemList(int orderId) {
-
+    public List<Item> getOrderItemList(String orderId) {
+        return procumentRepository.getOrderItemList(orderId);
     }
 
     @Override
@@ -139,8 +155,8 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public String getOrderItemListByStatus(boolean status, int supplierId) {
-        return null;
+    public List<Item> getOrderItemListByStatus(String status, String supplierId) {
+        return procumentRepository.getOrderItemListByStatus(supplierId, status);
     }
 
     @Override

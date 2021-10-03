@@ -1,4 +1,6 @@
 package lk.csse.procurement.backend.repository.impl;
+import lk.csse.procurement.backend.mapper.ItemMapper;
+import lk.csse.procurement.backend.mapper.OrderMapper;
 import lk.csse.procurement.backend.mapper.SupplierMapper;
 import lk.csse.procurement.backend.model.AcceptedDelivery;
 import lk.csse.procurement.backend.model.Item;
@@ -6,6 +8,8 @@ import lk.csse.procurement.backend.model.Order;
 import lk.csse.procurement.backend.model.Supplier;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
@@ -17,6 +21,9 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
     @Override
     public Order addOrder(Order order) {
@@ -81,10 +88,25 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     }
 
     @Override
+    public List<Supplier> getSuppliersByOrder(String orderID) {
+        Object[] parameters = new Object[]{orderID};
+        String sql = "SELECT * FROM orders ot INNER JOIN users u  ON u.userid = ot.suplierid WHERE u.availability = true and ot.order_id = ?";;
+        return jdbcTemplate.query(sql, parameters,new SupplierMapper());//new MapSqlParameterSource()
+        //new String[]{ orderID }, new OrderMapper()
+    }
+
+    @Override
     public int saveTheDeliveryAdivce(AcceptedDelivery acceptedDelivery) {
         Map<String, Object> params = new HashMap<>();
         String sql = "INSERT INTO accepted_delivery VALUES()"; //Complete the code.
         return 0;
+    }
+
+    @Override
+    public List<Item> getOrderItemListByStatus(String supplierID, String status) {
+        Object[] parameters = new Object[]{supplierID, status};
+        String sql = "SELECT * FROM order_items o INNER JOIN orders ot  ON ot.order_id = o.order_id INNER JOIN item i on o.item_id = i.item_id WHERE ot.status = 'Approved' AND ot.suplierid = 'S001'";
+        return jdbcTemplate.query(sql, parameters,new ItemMapper());
     }
 
     public Item getOrderItemArray(ResultSet rs) throws SQLException {
