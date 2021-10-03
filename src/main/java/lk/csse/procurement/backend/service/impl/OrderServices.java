@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 @Service
 public class OrderServices implements OrderService {
 
@@ -72,25 +74,24 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public void calculateTotalCostForOrder(int orderId) {
+    public double calculateTotalCostForOrder(String orderId) {
         /**
          * Process: Calculate the Total Cost for Orders
          * User: Manager.
          * **/
+        double totalCost = 0;
+        List<Item> itemList = procumentRepository.getOrderItemList(orderId);
+        for(Item item : itemList){
+            totalCost = totalCost + item.getPrice();
+        }
+
+        return totalCost;
 
 
     }
 
     @Override
     public double calculateTotalCostForSupplier(Supplier supplierId) {
-        return 0;
-    }
-
-    @Override
-    public double calculateTotalCostForOrder(Order orderItem) {
-
-
-
         return 0;
     }
 
