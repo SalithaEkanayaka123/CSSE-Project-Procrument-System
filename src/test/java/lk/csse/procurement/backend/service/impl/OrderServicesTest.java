@@ -24,6 +24,11 @@ class OrderServicesTest {
         orderServices.createUser();
     }
 
+    @Test
+    public void RequestAvailableSuppliers() {
+        orderServices.RequestAvailableSuppliers("false");
+    }
+
 
 
 

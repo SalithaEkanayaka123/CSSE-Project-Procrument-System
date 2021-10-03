@@ -24,9 +24,8 @@ public class OrderServices implements OrderService {
 
     @Override
     public void createUser() {
-        User supplier = new Supplier();
-        supplier.setLastName("Ekanayaka");
-        supplier.setFirstName("Salitha");
+        Supplier supplier = new Supplier("", "Salitha", "Ekanayaka", "salitha@gmail.com", "", "", "true");
+        supplier.setAvailability(true);
         userRepository.save(supplier);
     }
 
@@ -41,6 +40,7 @@ public class OrderServices implements OrderService {
     @Override
     public ArrayList<Supplier> RequestAvailableSuppliers(String availability) {
         ArrayList<Supplier> availableSuppliers = procumentRepository.getAllAvailableSuppliers();
+        System.out.println(availableSuppliers.get(2));
         return availableSuppliers;
     }
 
