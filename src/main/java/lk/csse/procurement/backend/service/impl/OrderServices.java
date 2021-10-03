@@ -3,7 +3,9 @@ package lk.csse.procurement.backend.service.impl;
 import lk.csse.procurement.backend.model.Account;
 import lk.csse.procurement.backend.model.Item;
 import lk.csse.procurement.backend.model.Order;
+import lk.csse.procurement.backend.repository.ProcumentRepository;
 import lk.csse.procurement.backend.service.OrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,6 +13,9 @@ import java.util.Date;
 
 @Service
 public class OrderServices implements OrderService {
+
+    @Autowired
+    ProcumentRepository procumentRepository;
 
     /**
      * Place Order method.
@@ -29,6 +34,10 @@ public class OrderServices implements OrderService {
         order.setDeliveryAddress(deliveryAddress);
         order.setDescription(description);
         order.setSiteLocation(siteLocation);
+
+        //Store the Order in Database.
+
+
         return order;
     }
 
