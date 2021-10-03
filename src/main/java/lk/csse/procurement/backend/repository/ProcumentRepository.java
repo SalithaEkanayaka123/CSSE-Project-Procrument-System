@@ -10,6 +10,6 @@ public interface ProcumentRepository {
 
     public Order addOrder(Order order);
     public Order getAllOrderDetails(Order order);
-    public ArrayList<Supplier> getArrayList();
+    public ArrayList<Supplier> getAllAvailableSuppliers();
 
 }
