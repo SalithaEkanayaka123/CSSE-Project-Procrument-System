@@ -67,9 +67,15 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public List<Item> getOrderItemList(String orderId) {
+        // Format the String into '' If error.
         Map<String, Object> params = new HashMap<>();
-        String query = "SELECT * FROM order_items " +
-                "WHERE order_id = :orderid";
+        //Join Query
+        String query = "SELECT i.item_name, i.description " +
+                "FROM order_items o " +
+                "INNER JOIN orders ot  ON ot.order_id = o.order_id " +
+                "INNER JOIN item i on o.item_id = i.item_id " +
+                "WHERE ot.order_id = :orderId ";
+
         params.put("orderid", orderId);
         List<Item> list = namedParameterJdbcTemplate.query(query, params, (rs, i) -> getOrderItemArray(rs));
         return list != null && list.size() != 0 ? list : null;
@@ -77,7 +83,8 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     public Item getOrderItemArray(ResultSet rs) throws SQLException {
         Item item = new Item();
-        item.setItemId(Integer.parseInt(rs.getString("item_id")));
+        item.setItemId(Integer.parseInt(rs.getString("item_name")));
+        item.setItemId(Integer.parseInt(rs.getString("description")));
         /*
         * Code should be changed to a join query and parameters should ne updated.
         * */
