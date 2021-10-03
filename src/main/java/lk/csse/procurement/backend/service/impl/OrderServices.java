@@ -73,6 +73,11 @@ public class OrderServices implements OrderService {
 
     @Override
     public void calculateTotalCostForOrder(int orderId) {
+        /**
+         * Process: Calculate the Total Cost for Orders
+         * User: Manager.
+         * **/
+
 
     }
 
@@ -83,6 +88,9 @@ public class OrderServices implements OrderService {
 
     @Override
     public double calculateTotalCostForOrder(Order orderItem) {
+
+
+
         return 0;
     }
 

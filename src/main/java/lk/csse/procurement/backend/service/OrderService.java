@@ -19,7 +19,7 @@ public interface OrderService {
     public int orderManagerApproval(Order orderId, String value ); /** Akash - done **/
     public void calculateTotalCostForOrder( int orderId); /** Taneesha **/
     public double calculateTotalCostForSupplier(Supplier supplierId);
-    public double calculateTotalCostForOrder(Order orderItem); /** Akash **/
+    public double calculateTotalCostForOrder(Order orderItem); /** Akash - done **/
     public boolean compareDeliveryAdviceProductOrder(Order order, DeliveryAdvice daobject); /** Akash **/
     public Item addReturnItems(ArrayList<Item> list); /** Taneesha **/
     public void processPayment(Order order); /** Menaka **/
