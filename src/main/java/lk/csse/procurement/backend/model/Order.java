@@ -22,6 +22,14 @@ public class Order {
     @Column(name = "siteManager")
     private String siteManager;
 
+    public String getSiteManager() {
+        return siteManager;
+    }
+
+    public void setSiteManager(String siteManager) {
+        this.siteManager = siteManager;
+    }
+
     @Column(name = "itemList")
     private ArrayList<Item> itemList;
 
