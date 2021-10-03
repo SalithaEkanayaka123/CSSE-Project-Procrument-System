@@ -2,7 +2,7 @@ package lk.csse.procurement.backend.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "check" ,schema="csse")
+@Table(name = "check")
 public class Check extends Payment {
 
     @Column(name = "checkNo")

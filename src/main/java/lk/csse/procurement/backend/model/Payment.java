@@ -5,6 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "payment")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Payment {
 
     @Id
