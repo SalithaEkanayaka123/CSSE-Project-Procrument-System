@@ -11,6 +11,10 @@ public class Card {
         this.cardNo = cardNo;
     }
 
+    public Card() {
+
+    }
+
     public int getCardNo() {
         return cardNo;
     }

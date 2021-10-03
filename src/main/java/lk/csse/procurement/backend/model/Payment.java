@@ -6,7 +6,7 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int paymentID;
+    private long paymentID;
 
     @Column(name = "description")
     private String description;

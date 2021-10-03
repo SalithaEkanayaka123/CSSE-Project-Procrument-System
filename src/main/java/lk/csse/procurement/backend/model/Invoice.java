@@ -22,6 +22,10 @@ public class Invoice {
         this.amount = amount;
     }
 
+    public Invoice() {
+
+    }
+
     public String getInvoiceNo() {
         return invoiceNo;
     }
