@@ -19,6 +19,7 @@ public class Item {
     private String description;
     @Column(name = "qty")
     private int qty;
+    @Column(name = "price")
     private double price;
 
     public Item() {

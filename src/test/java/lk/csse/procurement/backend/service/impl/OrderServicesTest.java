@@ -24,6 +24,12 @@ class OrderServicesTest {
         System.out.println("");
     }
 
+    /**
+     *
+     * Anawaratne M.A.N.A. Method Testing.
+     *
+     * **/
+
     @Test
     public void TestingCreateUser() {
         orderServices.createUser();
@@ -38,13 +44,18 @@ class OrderServicesTest {
         ArrayList<Item> itemList = new ArrayList<>();
         itemList.add(item1);
         itemList.add(item2);
-        java.util.Date date=new java.util.Date();
+        java.util.Date date = new java.util.Date();
 
 
         Order order = new Order();
         order.setOrderId("12");
         order.setStatus("true");
         orderServices.procumentRepository.updateOrderApprovalStatus(order.getOrderId(), "ture");
+    }
+
+    @Test
+    public void TestingcalculateTotalCostForOrder(){
+        double cost = orderServices.calculateTotalCostForOrder("12");
     }
 
 

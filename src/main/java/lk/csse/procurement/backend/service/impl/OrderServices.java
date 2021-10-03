@@ -97,6 +97,10 @@ public class OrderServices implements OrderService {
 
     @Override
     public boolean compareDeliveryAdviceProductOrder(Order order, DeliveryAdvice daobject) {
+        /**
+         * This method compare the delivery
+         *
+         * **/
         return false;
     }
 
