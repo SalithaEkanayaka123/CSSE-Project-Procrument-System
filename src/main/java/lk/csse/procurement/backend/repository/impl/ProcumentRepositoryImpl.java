@@ -26,10 +26,8 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         cal.add(Calendar.DAY_OF_YEAR, 0);
         Map<String, Object> params = new HashMap<>();
 
-
         String query = "INSERT INTO noc_vw_user_role(user_name, role, created_user, created_date) " +
                 "    VALUES (:user_name, :role, :created_user, :created_date)";
-
 
         params.put("user_name", );
         params.put("role", );
@@ -38,6 +36,11 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         return namedParameterJdbcTemplate.update(query, params);
          **/
 
+        return null;
+    }
+
+    @Override
+    public Order getAllOrderDetails(Order order) {
         return null;
     }
 

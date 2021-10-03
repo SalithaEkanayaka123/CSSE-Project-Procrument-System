@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 public interface ProcumentRepository {
 
     public Order addOrder(Order order);
+    public Order getAllOrderDetails(Order order);
 
 }

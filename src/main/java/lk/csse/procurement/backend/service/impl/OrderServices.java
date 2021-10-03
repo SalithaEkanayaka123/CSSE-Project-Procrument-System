@@ -1,95 +1,87 @@
 package lk.csse.procurement.backend.service.impl;
-
-import lk.csse.procurement.backend.model.Account;
-import lk.csse.procurement.backend.model.Item;
-import lk.csse.procurement.backend.model.Order;
+import lk.csse.procurement.backend.model.*;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
 import lk.csse.procurement.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Date;
-
 @Service
 public class OrderServices implements OrderService {
 
     @Autowired
     ProcumentRepository procumentRepository;
 
-    /**
-     * Place Order method.
-     * **/
-    public Order createOrder(ArrayList<Item> itemList,
-                             String siteLocation,
-                             String siteManager,
-                             Date requiredDate,
-                             String deliveryAddress,
-                             String description){
 
-        Order order = new Order();
-        order.setItemList(itemList);
-        order.setSiteLocation(siteManager);
-        order.setRequiredDate(requiredDate);
-        order.setDeliveryAddress(deliveryAddress);
-        order.setDescription(description);
-        order.setSiteLocation(siteLocation);
-
-        //Store the Order in Database.
-
-
-        return order;
+    @Override
+    public void test() {
+        System.out.println("Done");
     }
 
-    /**
-     * View Purchase Order
-     * **/
-    public Order viewOrder(String orderId){
-       // Get Order Item from the Repository.
+    @Override
+    public void AddOrder() {
+
+    }
+
+    @Override
+    public ArrayList<Supplier> RequestAvailableSuppliers(String availability) {
         return null;
     }
 
-    /**
-     * Account Service Methods.
-     * **/
+    @Override
+    public void getSuppliersByOrder(Order orderId) {
 
-    public Account getAccounts(){
-        // Get Order Item from the Repository.
-        return null;
-    }
-    public Account AddAccountDetails(int UserId){
-
-        Account account  = new Account();
-        // Call the DB method.
-        return null;
     }
 
-    public Account getAccount(int userId){
+    @Override
+    public void getOrderItemList(int orderId) {
 
-        // Call the DB method.
+    }
+
+    @Override
+    public boolean orderManagerApproval(Order orderId, boolean value) {
+        return false;
+    }
+
+    @Override
+    public void calculateTotalCostForOrder(int orderId) {
+
+    }
+
+    @Override
+    public double calculateTotalCostForSupplier(Supplier supplierId) {
+        return 0;
+    }
+
+    @Override
+    public double calculateTotalCostForOrder(Order orderItem) {
+        return 0;
+    }
+
+    @Override
+    public boolean compareDeliveryAdviceProductOrder(Order order, DeliveryAdvice daobject) {
+        return false;
+    }
+
+    @Override
+    public Item addReturnItems(ArrayList<Item> list) {
         return null;
     }
 
-    /**
-     * Supplier and Item List
-     * **/
+    @Override
+    public void processPayment(Order order) {
 
-    public ArrayList<Item> getItems(){
-        // Get Order Item from the Repository.
-        return null;
     }
-    public Item AddItem(int UserId){
 
-        Item account  = new Item(); // Item inheritance Use a pattern
-        // Call the DB method.
+    @Override
+    public String getOrderItemListByStatus(boolean status, int supplierId) {
         return null;
     }
 
-    public Item getItem(int itemId){
-        // Call the DB method.
+    @Override
+    public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject, String stage) {
         return null;
     }
-
 
 
 }
