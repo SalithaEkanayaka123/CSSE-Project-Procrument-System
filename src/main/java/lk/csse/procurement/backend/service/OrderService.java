@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public interface OrderService {
 
@@ -13,7 +14,7 @@ public interface OrderService {
 
 
     public void AddOrder (); /** Taneesha **/
-    public ArrayList<Supplier> RequestAvailableSuppliers(String availability); /** Salitha **/
+    public List<Supplier> RequestAvailableSuppliers(String availability); /** OK **/
     public void getSuppliersByOrder(Order orderId); /** Salitha **/
     public void getOrderItemList(int orderId); /** Menaka **/
     public int orderManagerApproval(Order orderId, String value ); /** Akash - done **/
