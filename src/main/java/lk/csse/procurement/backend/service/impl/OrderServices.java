@@ -6,8 +6,13 @@ import lk.csse.procurement.backend.repository.UserRepository;
 import lk.csse.procurement.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
 @Service
 public class OrderServices implements OrderService {
 
@@ -27,9 +32,8 @@ public class OrderServices implements OrderService {
 
     @Override
     public void createUser() {
-        User supplier = new Supplier();
-        supplier.setLastName("Ekanayaka");
-        supplier.setFirstName("Salitha");
+        Supplier supplier = new Supplier("", "Salitha", "Ekanayaka", "salitha@gmail.com", "", "", "true");
+        supplier.setAvailability(true);
         userRepository.save(supplier);
     }
 
@@ -53,8 +57,8 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public ArrayList<Supplier> RequestAvailableSuppliers(String availability) {
-        ArrayList<Supplier> availableSuppliers = procumentRepository.getAllAvailableSuppliers();
+    public List<Supplier> RequestAvailableSuppliers(String availability) {
+        List<Supplier> availableSuppliers = procumentRepository.getAllAvailableSuppliers();
         return availableSuppliers;
     }
 
@@ -86,11 +90,18 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public void calculateTotalCostForOrder(int orderId) {
+    public double calculateTotalCostForOrder(String orderId) {
         /**
          * Process: Calculate the Total Cost for Orders
          * User: Manager.
          * **/
+        double totalCost = 0;
+        List<Item> itemList = procumentRepository.getOrderItemList(orderId);
+        for(Item item : itemList){
+            totalCost = totalCost + item.getPrice();
+        }
+
+        return totalCost;
 
 
     }
@@ -101,17 +112,18 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public double calculateTotalCostForOrder(Order orderItem) {
-
-
-
-        return 0;
+    public boolean compareDeliveryAdviceProductOrder(ArrayList<Order> order, ArrayList<Order> daobject) {
+        /**
+         *
+         * This method compare the delivery.
+         *
+         * **/
+        System.out.println(order.equals(daobject));
+        boolean status = order.equals(daobject);
+        return status;
     }
 
-    @Override
-    public boolean compareDeliveryAdviceProductOrder(Order order, DeliveryAdvice daobject) {
-        return false;
-    }
+
 
 
     @Override

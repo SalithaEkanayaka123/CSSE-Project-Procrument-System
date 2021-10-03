@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public interface OrderService {
 
@@ -13,14 +14,13 @@ public interface OrderService {
 
 
     public void AddOrder (); /** Taneesha **/
-    public ArrayList<Supplier> RequestAvailableSuppliers(String availability); /** Salitha **/
+    public List<Supplier> RequestAvailableSuppliers(String availability); /** OK **/
     public void getSuppliersByOrder(Order orderId); /** Salitha **/
     public void getOrderItemList(int orderId); /** Menaka **/
     public int orderManagerApproval(Order orderId, String value ); /** Akash - done **/
-    public void calculateTotalCostForOrder( int orderId); /** Taneesha **/
+    public double calculateTotalCostForOrder(String orderId); /** Akash - done **/
     public double calculateTotalCostForSupplier(Supplier supplierId);
-    public double calculateTotalCostForOrder(Order orderItem); /** Akash - done **/
-    public boolean compareDeliveryAdviceProductOrder(Order order, DeliveryAdvice daobject); /** Akash **/
+    public boolean compareDeliveryAdviceProductOrder(ArrayList<Order> order, ArrayList<Order> daobject); /** Akash **/
     public Item addReturnItems(ArrayList<Item> list); /** Taneesha **/
     public void processPayment(Order order); /** Menaka **/
     public String getOrderItemListByStatus(boolean status, int supplierId); /** Salitha **/

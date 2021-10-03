@@ -12,7 +12,7 @@ public interface ProcumentRepository {
 
     public Order addOrder(Order order);
     public Order getAllOrderDetails(Order order);
-    public ArrayList<Supplier> getAllAvailableSuppliers();
+    public List<Supplier> getAllAvailableSuppliers();
     public int updateOrderApprovalStatus(String orderId, String approvalState);
     public List<Item> getOrderItemList(String orderId);
 

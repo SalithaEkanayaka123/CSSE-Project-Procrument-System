@@ -19,16 +19,19 @@ public class Item {
     private String description;
     @Column(name = "qty")
     private int qty;
+    @Column(name = "price")
+    private double price;
 
     public Item() {
 
     }
 
-    public Item(int itemId, String itemName, String description, int qty) {
+    public Item(int itemId, String itemName, String description, int qty, double price) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.description = description;
         this.qty = qty;
+        this.price = price;
     }
 
     public int getItemId() {
@@ -61,5 +64,13 @@ public class Item {
 
     public void setQty(int qty) {
         this.qty = qty;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
