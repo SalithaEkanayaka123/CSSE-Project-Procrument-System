@@ -16,7 +16,7 @@ public interface OrderService {
     public ArrayList<Supplier> RequestAvailableSuppliers(String availability); /** Salitha **/
     public void getSuppliersByOrder(Order orderId); /** Salitha **/
     public void getOrderItemList(int orderId); /** Menaka **/
-    public boolean orderManagerApproval(Order orderId, boolean value ); /** Akash **/
+    public int orderManagerApproval(Order orderId, String value ); /** Akash - done **/
     public void calculateTotalCostForOrder( int orderId); /** Taneesha **/
     public double calculateTotalCostForSupplier(Supplier supplierId);
     public double calculateTotalCostForOrder(Order orderItem); /** Akash **/

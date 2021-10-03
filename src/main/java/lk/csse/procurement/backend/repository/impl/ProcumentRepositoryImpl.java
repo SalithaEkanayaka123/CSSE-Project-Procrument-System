@@ -50,6 +50,17 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         return null;
     }
 
+    @Override
+    public int updateOrderApprovalStatus(String orderId, String approvalState) {
+        Map<String, Object> params = new HashMap<>();
+        String query = "UPDATE orders " +
+                "SET status = :approvalstatus " +
+                "WHERE order_id = :orderid";
+        params.put("approvalstatus", approvalState);
+        params.put("orderid", orderId);
+        return namedParameterJdbcTemplate.update(query, params);
+    }
+
     /**
      *
      * PostgresSQL DB Methods.

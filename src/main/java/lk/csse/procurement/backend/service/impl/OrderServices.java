@@ -55,8 +55,20 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public boolean orderManagerApproval(Order orderId, boolean value) {
-        return false;
+    public int orderManagerApproval(Order orderId, String value) {
+        /**
+         * Process: Update the Approval Status of the Order
+         * User: Manager.
+         * **/
+        String OrderId = orderId.getOrderId();
+        int status = procumentRepository.updateOrderApprovalStatus(OrderId, value);
+        if(status == 1){
+            System.out.println("Completed");
+        } else {
+            System.out.println("Error");
+        }
+
+        return status;
     }
 
     @Override
