@@ -20,7 +20,10 @@ public class OrderServices implements OrderService {
 
     @Override
     public void AddOrder() {
-
+        System.out.println("This is Add order method");
+        System.out.println("This is Add order method");
+        System.out.println("This is Add order method");
+        System.out.println("This is Add order method");
     }
 
     @Override

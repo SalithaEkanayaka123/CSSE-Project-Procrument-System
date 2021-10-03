@@ -20,8 +20,6 @@ public interface OrderService {
     public boolean compareDeliveryAdviceProductOrder(Order order, DeliveryAdvice daobject);
     public Item addReturnItems(ArrayList<Item> list);
     public void processPayment(Order order);
-
-
     public String getOrderItemListByStatus(boolean status, int supplierId);
     public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject, String stage); //State (final | intermediate).
 
