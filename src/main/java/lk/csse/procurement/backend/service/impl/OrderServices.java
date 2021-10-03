@@ -1,5 +1,6 @@
 package lk.csse.procurement.backend.service.impl;
 import lk.csse.procurement.backend.model.*;
+import lk.csse.procurement.backend.repository.OrderRepository;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
 import lk.csse.procurement.backend.repository.UserRepository;
 import lk.csse.procurement.backend.service.OrderService;
@@ -16,6 +17,8 @@ public class OrderServices implements OrderService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    OrderRepository orderRepository;
 
     @Override
     public void test() {
@@ -32,10 +35,21 @@ public class OrderServices implements OrderService {
 
     @Override
     public void AddOrder() {
-        System.out.println("This is Add order method");
-        System.out.println("This is Add order method");
-        System.out.println("This is Add order method");
-        System.out.println("This is Add order method");
+        Order order = new Order();
+        order.setDeliveryAddress("No 6, Malabe");
+        order.setDescription("This is new order");
+//        order.setItemList();
+        order.setOrderId("O112");
+//      order.setPurchaseDate("2021.10.03");
+//        order.setRequiredDate();
+        order.setSiteLocation("Malabe");
+        order.setSiteManager("manager_1");
+        order.setStatus("Approved");
+        order.setSupplierId("S001");
+        order.setTotalPrice(23000);
+        orderRepository.save(order);
+
+
     }
 
     @Override
