@@ -1,5 +1,6 @@
 package lk.csse.procurement.backend.service.impl;
 import lk.csse.procurement.backend.model.*;
+import lk.csse.procurement.backend.repository.OrderRepository;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
 import lk.csse.procurement.backend.repository.UserRepository;
 import lk.csse.procurement.backend.service.OrderService;
@@ -18,6 +19,9 @@ public class OrderServices implements OrderService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    OrderRepository orderRepository;
+
 
     @Override
     public void test() {
@@ -26,17 +30,23 @@ public class OrderServices implements OrderService {
 
     @Override
     public void createUser() {
-        Supplier supplier = new Supplier("", "Salitha", "Ekanayaka", "salitha@gmail.com", "", "", "true");
+        Supplier supplier = new Supplier("2", "Salitha", "Ekanayaka", "salitha@gmail.com", "", "", "true");
         supplier.setAvailability(true);
         userRepository.save(supplier);
     }
 
     @Override
     public void AddOrder() {
-        System.out.println("This is Add order method");
-        System.out.println("This is Add order method");
-        System.out.println("This is Add order method");
-        System.out.println("This is Add order method");
+        Order order = new Order();
+        order.setDeliveryAddress("address1");
+        order.setDescription("description");
+        order.setSupplierId("2");
+        order.setOrderId("3");
+        orderRepository.save(order);
+//        System.out.println("This is Add order method");
+//        System.out.println("This is Add order method");
+//        System.out.println("This is Add order method");
+//        System.out.println("This is Add order method");
     }
 
     @Override
@@ -46,7 +56,10 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public void getSuppliersByOrder(Order orderId) {
+    public List<Order> getSuppliersByOrder(String orderId) {
+        List<Order> orderlist = null;
+
+        return  orderlist;
 
     }
 

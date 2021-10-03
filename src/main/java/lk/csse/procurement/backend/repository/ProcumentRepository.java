@@ -15,5 +15,6 @@ public interface ProcumentRepository {
     public List<Supplier> getAllAvailableSuppliers();
     public int updateOrderApprovalStatus(String orderId, String approvalState);
     public List<Item> getOrderItemList(String orderId);
+    public List<Order> getSuppliersByOrder(String orderID);
 
 }

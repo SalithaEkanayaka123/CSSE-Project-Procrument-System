@@ -49,7 +49,7 @@ class OrderServicesTest {
 
     @Test
     public void RequestAvailableSuppliers() {
-        orderServices.RequestAvailableSuppliers("false");
+        orderServices.RequestAvailableSuppliers("true");
     }
 
 
