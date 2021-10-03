@@ -20,11 +20,11 @@ public interface OrderService {
     public int orderManagerApproval(Order orderId, String value ); /** Akash - done **/
     public double calculateTotalCostForOrder(String orderId); /** Akash - done **/
     public double calculateTotalCostForSupplier(Supplier supplierId);
-    public boolean compareDeliveryAdviceProductOrder(ArrayList<Order> order, ArrayList<Order> daobject); /** Akash **/
+    public boolean compareDeliveryAdviceProductOrder(ArrayList<Order> order, ArrayList<Order> daobject); /** Akash - done **/
     public Item addReturnItems(ArrayList<Item> list); /** Taneesha **/
     public void processPayment(Order order); /** Menaka **/
     public String getOrderItemListByStatus(boolean status, int supplierId); /** Salitha **/
-    public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject, String stage); /** Akash **/ //State (final | intermediate).
+    public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject); /** Akash - done **/ //State (final | intermediate).
 
 
 

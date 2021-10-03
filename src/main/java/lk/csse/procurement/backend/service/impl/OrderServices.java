@@ -86,10 +86,7 @@ public class OrderServices implements OrderService {
         for(Item item : itemList){
             totalCost = totalCost + item.getPrice();
         }
-
         return totalCost;
-
-
     }
 
     @Override
@@ -127,7 +124,19 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject, String stage) {
+    public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject) {
+        /**
+         * Create a DeliveryAdvice insert method to store the daobjects in the database.
+         * create a model acceptedDeliveryAdviceNotices model class and store them in the database.
+         *
+         * **/
+
+
+
+
+
+
+
         return null;
     }
 
