@@ -5,7 +5,10 @@ import lk.csse.procurement.backend.repository.UserRepository;
 import lk.csse.procurement.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -95,13 +98,18 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public boolean compareDeliveryAdviceProductOrder(Order order, DeliveryAdvice daobject) {
+    public boolean compareDeliveryAdviceProductOrder(ArrayList<Order> order, ArrayList<Order> daobject) {
         /**
-         * This method compare the delivery
+         *
+         * This method compare the delivery.
          *
          * **/
-        return false;
+        System.out.println(order.equals(daobject));
+        boolean status = order.equals(daobject);
+        return status;
     }
+
+
 
     @Override
     public Item addReturnItems(ArrayList<Item> list) {
