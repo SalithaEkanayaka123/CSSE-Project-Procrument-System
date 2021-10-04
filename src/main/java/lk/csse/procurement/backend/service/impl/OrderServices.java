@@ -157,13 +157,13 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public int orderManagerApproval(Order orderId, String value) {
+    public int orderManagerApproval(String orderId, String value) {
         /**
          * Process: Update the Approval Status of the Order
          * User: Manager.
          * **/
-        String OrderId = orderId.getOrderId();
-        int status = procumentRepository.updateOrderApprovalStatus(OrderId, value);
+//        String OrderId = orderId.getOrderId();
+        int status = procumentRepository.updateOrderApprovalStatus(orderId, value);
         if(status == 1){
             System.out.println("Completed");
         } else {

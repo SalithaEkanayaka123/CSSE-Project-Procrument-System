@@ -1,7 +1,6 @@
 package lk.csse.procurement.backend.service;
 
 import lk.csse.procurement.backend.model.*;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,24 +12,38 @@ public interface OrderService {
     public void createUser();
     public void AddItems();
 
+    public List<Item> getItemListByItemID(int itemID);/** Salitha **/ /** done **/
+    public List<Supplier> RequestAvailableSuppliers(String availability); /** OK **/ /** done **/
+    public List<Supplier>  getSuppliersByOrder(String orderId); /** Done **/ /** done **/
+    public List<Item> getOrderItemList(String orderId); /** Done  **/  /** done **/
+    public int orderManagerApproval(String orderId, String value ); /** Akash - done - working **/ /** done **/
 
+    /** Order **/
+    public double calculateTotalCostForOrder(String orderId); /** Akash - done - working **/ /** wait **/
     public void AddOrder(List<Item> itemList); /** Taneesha **/ /** wait **/
     public void deleteOrder (); /** Akash **/ /** wait **/
     public void updateOder (); /** Akash **/ /** wait **/
 
-    public List<Item> getItemListByItemID(int itemID);/** Salitha **/ /** done **/
+    /** User **/
+    public double calculateTotalCostForSupplier(Supplier supplierId); /** wait **/ /** wait **/
 
-    public List<Supplier> RequestAvailableSuppliers(String availability); /** OK **/ /** done **/
-    public List<Supplier>  getSuppliersByOrder(String orderId); /** Done **/ /** done **/
-    public List<Item> getOrderItemList(String orderId); /** Done  **/  /** done **/
-    public int orderManagerApproval(Order orderId, String value ); /** Akash - done - working **/
-    public double calculateTotalCostForOrder(String orderId); /** Akash - done - working **/
-    public double calculateTotalCostForSupplier(Supplier supplierId);
-    public boolean compareDeliveryAdviceProductOrder(ArrayList<Item> order, ArrayList<Item> daobject); /** Akash - done - working**/
-    public Item addReturnItems(ArrayList<Item> list); /** Taneesha **/
-    public void processPayment(Order order); /** Akash **/
-    public List<Item> getOrderItemListByStatus(String status, String supplierId); /** Salitha - done (Test failing but sql data comming)**/
-    public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject); /** Akash - done **/ //State (final | intermediate).
+    /** Item **/
+    public Item addReturnItems(ArrayList<Item> list); /** Taneesha **/ /** wait **/ /** wait **/
+    public List<Item> getOrderItemListByStatus(String status, String supplierId); /** Salitha - done (Test failing but sql data comming)**//** wait **/
+
+
+    /** deliveryNotice **/
+    public boolean compareDeliveryAdviceProductOrder(ArrayList<Item> order, ArrayList<Item> daobject); /** Akash - done - working**//** wait **/
+    public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject); /** Akash - done **/ /** wait **/ //State (final | intermediate).
+
+
+    /**payment**/
+    public void processPayment(Order order); /** Akash **//** wait **/
+
+
+
+
+
 
 
 

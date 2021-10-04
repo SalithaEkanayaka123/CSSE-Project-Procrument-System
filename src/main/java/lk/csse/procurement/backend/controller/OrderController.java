@@ -61,4 +61,12 @@ public class OrderController {
             return new ResponseEntity<>("No items Available", HttpStatus.NOT_FOUND);
         }
     }
+
+    @PutMapping("/ordermanagerapproval/{id}")
+    public ResponseEntity<?> orderManagerApproval(@PathVariable("id") String id, @RequestBody Order order){
+        //List<Class> classes = classRepository.findAll();
+        int status = orderService.orderManagerApproval(id, order.getStatus());
+        return new ResponseEntity<>(status, HttpStatus.OK);
+
+    }
 }
