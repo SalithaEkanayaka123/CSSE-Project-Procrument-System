@@ -1,4 +1,4 @@
-package lk.csse.procurement.backend.service.impl;
+package lk.csse.procurement.backend.repository.impl;
 
 import lk.csse.procurement.backend.model.Item;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.junit.jupiter.api.Assertions.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BackendDBClassTesting {
+class ProcumentRepositoryImplTest {
 
     @Autowired
     ProcumentRepository procumentRepository;
@@ -21,4 +22,5 @@ public class BackendDBClassTesting {
         item.setItemId(4);
         procumentRepository.insertOrderItems(1, item);
     }
+
 }
