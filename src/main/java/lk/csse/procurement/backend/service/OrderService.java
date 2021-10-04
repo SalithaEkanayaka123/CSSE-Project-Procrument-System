@@ -48,6 +48,16 @@ public interface OrderService {
     public List<Item> getAdviceNoticeItemList(String orderId); /**  ? - Difficulty Level - High **/ /**  done **/
 
 
+    /**
+     * JPA Replacement Service Methods.
+     * Navigate to the repository class.
+     *
+     * **/
+
+
+
+
+
 
     /** need to done **/
     public void AddOrder(Order order); /** Taneesha **/ /** wait -- need to check later**/
