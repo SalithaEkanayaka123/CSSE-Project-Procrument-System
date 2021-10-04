@@ -107,8 +107,8 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     public Item getOrderItemArray(ResultSet rs) throws SQLException {
         Item item = new Item();
-        //item.setItemId(Integer.parseInt(String.valueOf(rs.getInt("item_name"))));
-        //item.setDescription(rs.getString("description"));
+        item.setItemName(rs.getString("item_name"));
+        item.setDescription(rs.getString("description"));
         item.setPrice(rs.getDouble("price"));
         /*
         * Code should be changed to a join query and parameters should ne updated.

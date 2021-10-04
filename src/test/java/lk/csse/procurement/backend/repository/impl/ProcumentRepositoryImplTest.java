@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -21,6 +23,14 @@ class ProcumentRepositoryImplTest {
         Item item = new Item();
         item.setItemId(4);
         procumentRepository.insertOrderItems(1, item);
+    }
+
+    @Test
+    public void TestinggetOrderItemArray() {
+        List<Item> orderItemList = procumentRepository.getOrderItemList("1");
+        for (Item order: orderItemList){
+            System.out.println(order.getDescription());
+        }
     }
 
 }
