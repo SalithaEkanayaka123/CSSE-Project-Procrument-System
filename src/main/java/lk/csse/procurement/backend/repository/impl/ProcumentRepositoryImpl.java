@@ -29,20 +29,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     public Order addOrder(Order order) {
 
         /**
-        Date dateObj = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(dateObj);
-        cal.add(Calendar.DAY_OF_YEAR, 0);
-        Map<String, Object> params = new HashMap<>();
-
-        String query = "INSERT INTO noc_vw_user_role(user_name, role, created_user, created_date) " +
-                "    VALUES (:user_name, :role, :created_user, :created_date)";
-
-        params.put("user_name", );
-        params.put("role", );
-        params.put("created_user", );
-        params.put("created_date", new Timestamp(cal.getTimeInMillis()));
-        return namedParameterJdbcTemplate.update(query, params);
+         * Main order item get saved with JPA.
          **/
 
         return null;
