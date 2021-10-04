@@ -26,7 +26,7 @@ public class OrderController {
     @PostMapping("/order")
     public ResponseEntity<?> addOrder(@RequestBody Order order){
         try {
-            orderRepository.save(order);//must be changed
+            orderService.AddOrder(order);//must be changed
             return new ResponseEntity<Order>(order, HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
@@ -79,5 +79,13 @@ public class OrderController {
         } else {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PutMapping("/updateOrder/{id}")
+    public ResponseEntity<?> updateOrder(@PathVariable("id") Long id, @RequestBody Order order){
+        //List<Class> classes = classRepository.findAll();
+        orderService.updateOder(order, id);
+        return new ResponseEntity<>("sucessfully update order", HttpStatus.OK);
+
     }
 }
