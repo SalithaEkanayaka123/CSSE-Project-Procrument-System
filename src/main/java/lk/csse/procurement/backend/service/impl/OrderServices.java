@@ -8,6 +8,7 @@ import lk.csse.procurement.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -186,11 +187,28 @@ public class OrderServices implements OrderService {
         /**
          *
          * This method compare the delivery.
-         *
+         * Following logic compare the exact objects. Regardless of the values inside.
          * **/
-        System.out.println(order.equals(daobject));
-        boolean status = order.equals(daobject);
-        return status;
+//        System.out.println(order.equals(daobject));
+//        boolean status = order.equals(daobject);
+//        return status;
+
+        int comparison_count =0;
+        // Manually comparing objects inside the array list
+        for (int i=0; i< order.size(); i++) {
+            for(int j=0; j< daobject.size(); j++){
+                if (i != j && order.get(i).getItemName().contentEquals(daobject.get(j).getItemName())) {
+                    comparison_count=+1;
+                }
+            }
+        }
+
+        // Output the result.
+        if(comparison_count == order.size()){
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
@@ -206,21 +224,22 @@ public class OrderServices implements OrderService {
     public void processPayment(String orderId) {
         /**
          *
-         * 1. check if the deliveryadvice table to check if the stage is final.
+         * 1. fetch item arrays from both delivered item List and Order item list.
          * 2. if the stage is final
          *
          * **/
-        String status = procumentRepository.getDeliveryStatus(orderId);
-        if(status.contentEquals("final")){
-            //validation for item quality and equality.
-            // Fetch order items.
-            // Fetch Delivery Items.
 
-
-        } else if(status.contentEquals("partial")){
-
+        //validation for item quality and equality.
+        // Fetch order items.
+        ArrayList<Item> order_list = (ArrayList<Item>) procumentRepository.getOrderItemList(orderId);
+        // Fetch Delivery Items.
+        ArrayList<Item> deliver_list = (ArrayList<Item>) procumentRepository.getDeliveryItemsForOrder(orderId);
+        //Calling the Array Comparison method | Check whether all the items has received in the order.
+        if (compareDeliveryAdviceProductOrder(order_list, deliver_list)) {
+            System.out.println("Eligible to proceed to the payment");
+        } else {
+            System.out.println("Not Eligible to Proceed to the payment");
         }
-
 
 
     }

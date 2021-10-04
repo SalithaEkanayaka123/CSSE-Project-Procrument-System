@@ -65,18 +65,22 @@ class OrderServicesTest {
         Item item = new Item();
         item.setItemId(1);
         Item item2 = new Item();
-        item2.setItemId(2);
+        item2.setItemId(1);
 
         //Constructing testing Arrays.
         ArrayList<Item> orderList = new ArrayList<>();
             orderList.add(item);
         ArrayList<Item> adviceOrderList = new ArrayList<>();
-            adviceOrderList.add(item);
             adviceOrderList.add(item2);
-
 
         boolean status = orderServices.compareDeliveryAdviceProductOrder(orderList, adviceOrderList);
         System.out.println(status);
+        System.out.println();
+    }
+
+    @Test
+    public void TestingprocessPayment(){
+        orderServices.processPayment("2");
     }
 
     /**

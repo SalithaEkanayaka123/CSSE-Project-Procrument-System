@@ -140,13 +140,13 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     @Override
     public List<Item> getDeliveryItemsForOrder(String orderId) {
         Map<String, Object> params = new HashMap<>();
-        String sql = "SELECT i.item_name, i.description, i.price " +
+        String sql = "SELECT i.item_name, i.description, i.price, i.qty " +
                 "FROM item_delivery_advice a " +
                 "INNER JOIN item i  ON i.item_id = a.item_id " +
                 "INNER JOIN deliveryadvice d ON d.deliveryid = a.delivery_advice_id " +
-                "WHERE d.orderid ='" + 2 + "'";
+                "WHERE d.orderid ='" + orderId + "'";
         params.put("order_id", orderId);
-        List<Item> list = namedParameterJdbcTemplate.query(sql, (rs, i) -> getDeliveryItemArray(rs));
+        List<Item> list = namedParameterJdbcTemplate.query(sql, (rs, i) -> getOrderItemArray(rs));
         return list != null && list.size() != 0 ? list : null;
     }
 
@@ -162,6 +162,9 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         return item;
     }
 
+    /**
+     * No need of use this both object are same, can use one mapper class
+     * **/
     public Item getDeliveryItemArray(ResultSet rs) throws SQLException {
         Item item = new Item();
         item.setItemName(rs.getString("item_name"));
@@ -173,13 +176,14 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         return item;
     }
 
+    // ? @Salitha
     public Item addReturnItems(ResultSet order_id) {
         Map<String, Object> params = new HashMap<>();
         String query = "SELECT i.item_name, i.description\n" +
                 "FROM order_items o\n" +
                 "INNER JOIN orders ot ON ot.order_id = o.order_id\n" +
                 "INNER JOIN item i on o.item_id = i.item_id\n" +
-                "WHERE ot.order_id = 1";
+                "WHERE ot.order_id ='" + 2 + "'";
 
         List<Item> list = namedParameterJdbcTemplate.query(query, params, (rs, i) -> addReturnItems(rs));
         return list != null && list.size() != 0 ? (Item) list : null;
