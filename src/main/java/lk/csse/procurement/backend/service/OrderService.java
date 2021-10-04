@@ -1,6 +1,7 @@
 package lk.csse.procurement.backend.service;
 
 import lk.csse.procurement.backend.model.*;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,11 +40,13 @@ public interface OrderService {
 
 
     /**payment**/
-    public void processPayment(Order order); /** Akash **//** wait **/
+    public void processPayment(String order); /** Akash **//** wait **/
 
 
 
-
+    // New Util Method for Payment Process.
+    public List<Item> getAdviceNoticeItemList(String orderId); /**  ? - Difficulty Level - High **/
+    public int writeReturnValues(List<Item> returnItems, String supplierId); /**  ? - Difficulty Level - Low **/
 
 
 

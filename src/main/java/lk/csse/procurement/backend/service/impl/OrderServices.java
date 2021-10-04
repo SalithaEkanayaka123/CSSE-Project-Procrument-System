@@ -173,6 +173,7 @@ public class OrderServices implements OrderService {
 
     @Override
     public List<Item> getOrderItemList(String orderId) {
+        // Filtering Logic Comes here.
         return procumentRepository.getOrderItemList(orderId);
     }
 
@@ -222,13 +223,23 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public void processPayment(Order order) {
+    public void processPayment(String orderId) {
         /**
          *
          * 1. check if the deliveryadvice table to check if the stage is final.
          * 2. if the stage is final
          *
          * **/
+        String status = procumentRepository.getDeliveryStatus(orderId);
+        if(status.contentEquals("final")){
+            //validation for item quality and equality.
+            // Fetch order items.
+            // Fetch Delivery Items.
+
+
+        } else if(status.contentEquals("partial")){
+
+        }
 
 
 
@@ -255,6 +266,16 @@ public class OrderServices implements OrderService {
 
         procumentRepository.saveTheDeliveryAdivce(acceptedDelivery);
         return null;
+    }
+
+    @Override
+    public List<Item> getAdviceNoticeItemList(String orderId) {
+        return procumentRepository.getOrderItemList(orderId);
+    }
+
+    @Override
+    public int writeReturnValues(List<Item> returnItems, String supplierId) {
+        return 0;
     }
 
 
