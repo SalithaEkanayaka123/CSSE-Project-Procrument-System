@@ -113,9 +113,19 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     }
 
     @Override
-    public String getDeliveryStatus() {
-
-        return null;
+    public String getDeliveryStatus(String orderId) {
+        String sql = "SELECT d.stage " +
+                "FROM deliveryadvice d " +
+                "WHERE d.orderid ='" + orderId + "'";
+        Map<String, Object> params = new HashMap<>();
+        params.put("order_id", orderId);
+        try {
+            String type = namedParameterJdbcTemplate.queryForObject(
+                    sql, params, String.class);
+            return type;
+        } catch (Exception e) {
+            return "Error";
+        }
     }
 
     public Item getOrderItemArray(ResultSet rs) throws SQLException {
