@@ -177,6 +177,7 @@ public class OrderServices implements OrderService {
         AcceptedDelivery acceptedDelivery = new AcceptedDelivery();
         acceptedDelivery.setOrderId(orderid);
         acceptedDelivery.setSiteManagerId(Integer.parseInt(Id.getUserID()));
+        acceptedDelivery.setAcceptDate(acceptDate);
         acceptedDelivery.setDeliveryId(Integer.parseInt(daobject.getDeliveryID()));
 
         procumentRepository.saveTheDeliveryAdivce(acceptedDelivery);
