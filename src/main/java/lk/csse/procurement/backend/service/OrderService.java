@@ -2,7 +2,6 @@ package lk.csse.procurement.backend.service;
 
 import lk.csse.procurement.backend.model.*;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -46,25 +45,13 @@ public interface OrderService {
 
     // New Util Method for Payment Process.
     public List<Item> getAdviceNoticeItemList(String orderId); /**  ? - Difficulty Level - High **/
-    public int writeReturnValues(List<Item> returnItems, String supplierId); /**  ? - Difficulty Level - Low **/
+    public int writeReturnValues(List<Item> returnItems, String supplierId); /**  ? - Difficulty Level - Low - Pain JPA insert **/
 
     /**
      * JPA Replacement Service Methods.
      * Navigate to the repository class.
      *
      * **/
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

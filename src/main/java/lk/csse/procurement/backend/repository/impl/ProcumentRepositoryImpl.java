@@ -109,7 +109,6 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public int saveTheDeliveryAdivce(AcceptedDelivery acceptedDelivery) {
-        Map<String, Object> params = new HashMap<>();
         String sql = "INSERT INTO accepted_delivery VALUES()"; //Complete the code.
         // This is no big deal plain input to the table.
         return 0;

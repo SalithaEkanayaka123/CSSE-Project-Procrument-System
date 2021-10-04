@@ -13,9 +13,9 @@ public class AcceptedDelivery {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name = "accountNo")
+    @Column(name = "orderId")
     private int orderId;
-    @Column(name = "accountNo")
+    @Column(name = "siteManagerNo")
     private int siteManagerId;
     @Column(name = "accountNo")
     private Date acceptDate;
