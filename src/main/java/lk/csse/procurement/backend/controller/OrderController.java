@@ -38,4 +38,10 @@ public class OrderController {
             return new ResponseEntity<>("No orders Available", HttpStatus.NOT_FOUND);
         }
     }
+
+    @DeleteMapping("/deleteorder/{id}")
+    public ResponseEntity<?> deleteOrder(@PathVariable("id") long id){
+        orderRepository.deleteById(id);
+        return new ResponseEntity<>("delete successful", HttpStatus.OK);
+    }
 }

@@ -39,4 +39,10 @@ public class ItemController {
             return new ResponseEntity<>("No orders Available", HttpStatus.NOT_FOUND);
         }
     }
+
+    @DeleteMapping("/deleteitems/{id}")
+    public ResponseEntity<?> deleteItems(@PathVariable("id") long id){
+        itemRepository.deleteById(id);
+        return new ResponseEntity<>("delete successful", HttpStatus.OK);
+    }
 }

@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api")
@@ -26,5 +28,21 @@ public class UserController {
         } catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PostMapping("/users")
+    public ResponseEntity<?> getUsers(){
+        List<User> user =  userController.findAll();
+        if(user.size() > 0){
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No users Available", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/deleteuser/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable("id") int id){
+        userController.deleteById(id);
+        return new ResponseEntity<>("delete successful", HttpStatus.OK);
     }
 }
