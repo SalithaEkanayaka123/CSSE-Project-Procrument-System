@@ -111,6 +111,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     public int saveTheDeliveryAdivce(AcceptedDelivery acceptedDelivery) {
         Map<String, Object> params = new HashMap<>();
         String sql = "INSERT INTO accepted_delivery VALUES()"; //Complete the code.
+        // This is no big deal plain input to the table.
         return 0;
     }
 
@@ -188,6 +189,60 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         List<Item> list = namedParameterJdbcTemplate.query(query, params, (rs, i) -> addReturnItems(rs));
         return list != null && list.size() != 0 ? (Item) list : null;
     }
+
+    /**
+     *
+     * JPA Replacement Methods.
+     *
+     * **/
+
+    @Override
+    public int updateUser() {
+        return 0;
+    }
+
+    @Override
+    public int updateOrder() {
+        return 0;
+    }
+
+    @Override
+    public int updateItem() {
+        return 0;
+    }
+
+    @Override
+    public int deleteUser(String userId) {
+        Map<String, Object> params = new HashMap<>();
+        String query = "DELETE FROM users WHERE userid = (:user_id)";
+        params.put("user_id", userId);
+        return namedParameterJdbcTemplate.update(query, params);
+    }
+
+    @Override
+    public int deleteOrder(String orderId) {
+        return 0;
+    }
+
+    @Override
+    public int deleteItem(String itemId) {
+        return 0;
+    }
+
+    @Override
+    public int cleanUPOrderItemTable(String orderId) {
+        return 0;
+    }
+
+
+
+
+
+
+
+
+
+
 
     /**
      *

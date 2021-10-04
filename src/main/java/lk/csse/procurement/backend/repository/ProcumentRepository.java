@@ -25,4 +25,23 @@ public interface ProcumentRepository {
     public String getDeliveryStatus(String orderId); // Useless, Status should be determine by comparing two arrays.
     public List<Item> getDeliveryItemsForOrder(String orderId);
 
+    /**
+     * JPA Removing | Replacement Methods. | Update Methods.
+     * **/
+    public int updateUser();
+    public int updateOrder();
+    public int updateItem();
+
+    /**
+     * JPA Removing | Replacement Methods. | Delete Methods.
+     * **/
+    public int deleteUser(String userId);
+    public int deleteOrder(String orderId);
+    public int deleteItem(String itemId);
+
+    /**
+     * JPA Removing | Replacement Methods. | Cleanup Method.
+     * **/
+
+    public int cleanUPOrderItemTable(String orderId);
 }

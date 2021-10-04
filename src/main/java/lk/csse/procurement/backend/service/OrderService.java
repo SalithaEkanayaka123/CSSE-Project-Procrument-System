@@ -48,6 +48,16 @@ public interface OrderService {
     public List<Item> getAdviceNoticeItemList(String orderId); /**  ? - Difficulty Level - High **/
     public int writeReturnValues(List<Item> returnItems, String supplierId); /**  ? - Difficulty Level - Low **/
 
+    /**
+     * JPA Replacement Service Methods.
+     * Navigate to the repository class.
+     *
+     * **/
+
+
+
+
+
 
 
 
