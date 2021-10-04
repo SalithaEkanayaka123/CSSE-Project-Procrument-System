@@ -144,9 +144,9 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
                 "FROM item_delivery_advice a " +
                 "INNER JOIN item i  ON i.item_id = a.item_id " +
                 "INNER JOIN deliveryadvice d ON d.deliveryid = a.delivery_advice_id " +
-                "WHERE d.orderid ='" + orderId + "'";
+                "WHERE d.orderid ='" + 2 + "'";
         params.put("order_id", orderId);
-        List<Item> list = namedParameterJdbcTemplate.query(sql, (rs, i) -> getOrderItemArray(rs));
+        List<Item> list = namedParameterJdbcTemplate.query(sql, (rs, i) -> getDeliveryItemArray(rs));
         return list != null && list.size() != 0 ? list : null;
     }
 
@@ -159,6 +159,17 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         /*
         * Code should be changed to a join query and parameters should ne updated.
         * */
+        return item;
+    }
+
+    public Item getDeliveryItemArray(ResultSet rs) throws SQLException {
+        Item item = new Item();
+        item.setItemName(rs.getString("item_name"));
+        item.setDescription(rs.getString("description"));
+        item.setPrice(rs.getDouble("price"));
+        /*
+         * Code should be changed to a join query and parameters should ne updated.
+         * */
         return item;
     }
 
