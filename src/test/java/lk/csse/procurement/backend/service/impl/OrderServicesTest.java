@@ -65,11 +65,29 @@ class OrderServicesTest {
 
     @Test
     public void RequestAvailableSuppliers() {
-        orderServices.RequestAvailableSuppliers("false");
+        orderServices.RequestAvailableSuppliers("true");
     }
 
+    @Test
+    public void getSuppliersByOrder() {
+        orderServices.getSuppliersByOrder("3");
+    }
+
+    @Test
+    public void AddItems(){
+        orderServices.AddItems();
+    }//
+
+    @Test
+    public void getOrderItemList(){
+        orderServices.getOrderItemList("3");
+    }//
 
 
+    @Test
+    public void getOrderItemListByStatus(){
+        orderServices.getOrderItemListByStatus("S001", "Approved");
+    }
 
 
 
