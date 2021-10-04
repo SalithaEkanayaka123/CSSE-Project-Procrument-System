@@ -20,10 +20,11 @@ public interface OrderService {
     public int orderManagerApproval(String orderId, String value ); /** Akash - done - working **/ /** done **/
 
     /** Order **/
-    public double calculateTotalCostForOrder(String orderId); /** Akash - done - working **/ /** wait **/
-    public void AddOrder(List<Item> itemList); /** Taneesha **/ /** wait **/
-    public void deleteOrder (); /** Akash **/ /** wait **/
-    public void updateOder (); /** Akash **/ /** wait **/
+    public double calculateTotalCostForOrder(String orderId); /** Akash - done - working **/ /** done **/
+    public void AddOrder(Order order); /** Taneesha **/ /** wait -- need to check later**/
+    public void deleteOrder (); /** Akash **/ /** ok
+     * @param order**/
+    public void updateOder (Order order, Long id); /** Akash **/ /** ok **/
 
     /** User **/
     public double calculateTotalCostForSupplier(Supplier supplierId); /** wait **/ /** wait **/

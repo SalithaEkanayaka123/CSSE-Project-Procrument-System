@@ -6,12 +6,15 @@ import lk.csse.procurement.backend.repository.ProcumentRepository;
 import lk.csse.procurement.backend.repository.UserRepository;
 import lk.csse.procurement.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderServices implements OrderService {
@@ -85,24 +88,24 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public void AddOrder(List<Item> itemList) {
+    public void AddOrder(Order order1) {
         Order order = new Order();
-        order.setDeliveryAddress("No 6, Malabe");
-        order.setDescription("This is new order");
-        order.setOrderId("10");
-        order.setSiteLocation("Malabe");
-        order.setSiteManager("manager_1");
-        order.setStatus("Approved");
-        order.setSupplierId("1");
-        order.setTotalPrice(21000);
+        order.setDeliveryAddress(order1.getDeliveryAddress());
+        order.setDescription(order1.getDescription());
+        order.setOrderId(order1.getOrderId());
+        order.setSiteLocation(order1.getSiteLocation());
+        order.setSiteManager(order1.getSiteManager());
+        order.setStatus(order1.getStatus());
+        order.setSupplierId(order1.getSupplierId());
+        order.setTotalPrice(order1.getTotalPrice());
         orderRepository.save(order);
 
 
         //System.out.println(itemList1);
         // Iteration for adding items to the order once order is inserted.
         try {
-            for (Item I : itemList) {
-                procumentRepository.insertOrderItems(Integer.parseInt(order.getOrderId()), I);
+            for (Item I : order1.getItemList()) {
+                procumentRepository.insertOrderItems(Integer.parseInt(order1.getOrderId()), I);
             }
 
 
@@ -126,7 +129,24 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public void updateOder() {
+    public void updateOder(Order order1, Long id) {
+        Optional<Order> yetToUpdate = orderRepository.findById(id);
+        if(yetToUpdate.isPresent()) {
+            Order order = yetToUpdate.get();
+            order.setDeliveryAddress(order1.getDeliveryAddress());
+            order.setDescription(order1.getDescription());
+            order.setOrderId(order1.getOrderId());
+            order.setSiteLocation(order1.getSiteLocation());
+            order.setSiteManager(order1.getSiteManager());
+            order.setStatus(order1.getStatus());
+            order.setSupplierId(order1.getSupplierId());
+            order.setTotalPrice(order1.getTotalPrice());
+
+            //SAVE THE UPDATED USER.
+            orderRepository.save(order);
+        }{
+            yetToUpdate = null;
+        }
         /**
          * Process: Update an Order
          * User: Management Staff.
