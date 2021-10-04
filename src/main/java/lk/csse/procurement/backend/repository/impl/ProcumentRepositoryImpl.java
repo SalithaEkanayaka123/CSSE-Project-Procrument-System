@@ -44,9 +44,10 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public int insertOrderItems(int orderId, Item orderItemList) {
+        System.out.println("ssssaa " + orderItemList);
         Map<String, Object> params = new HashMap<>();
         String query = "INSERT INTO order_items(order_id, item_id) " +
-                "VALUES (:item_id, :order_id)";
+                "VALUES (:order_id, :item_id)";
         params.put("item_id", orderItemList.getItemId());
         params.put("order_id", orderId);
         return namedParameterJdbcTemplate.update(query, params);
@@ -80,7 +81,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         // Format the String into '' If error.
         Map<String, Object> params = new HashMap<>();
         //Join Query
-        String query = "SELECT i.item_name, i.description, i.price " +
+        String query = "SELECT i.item_name, i.description, i.price , i.qty " +
                 "FROM order_items o " +
                 "INNER JOIN orders ot  ON ot.order_id = o.order_id " +
                 "INNER JOIN item i ON o.item_id = i.item_id " +
@@ -88,6 +89,14 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         params.put("orderid", orderId);
         List<Item> list = namedParameterJdbcTemplate.query(query, (rs, i) -> getOrderItemArray(rs));
         return list != null && list.size() != 0 ? list : null;
+    }
+
+    @Override
+    public List<Item> getItemByID(int item_id) {
+        Object[] parameters = new Object[]{item_id};
+        String sql = "SELECT * from item where item_id = ?";
+        List<Item> sup = jdbcTemplate.query(sql, parameters, new ItemMapper());
+        return sup;
     }
 
     @Override
@@ -146,6 +155,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         item.setItemName(rs.getString("item_name"));
         item.setDescription(rs.getString("description"));
         item.setPrice(rs.getDouble("price"));
+        item.setQty(rs.getInt("qty"));
         /*
         * Code should be changed to a join query and parameters should ne updated.
         * */

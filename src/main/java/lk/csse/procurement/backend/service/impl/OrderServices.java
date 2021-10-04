@@ -27,6 +27,10 @@ public class OrderServices implements OrderService {
     @Autowired
     ItemRepository itemRepository;
 
+    @Autowired
+    OrderService orderService;
+
+
 
     @Override
     public void test() {
@@ -43,12 +47,39 @@ public class OrderServices implements OrderService {
     @Override
     public void AddItems() {
         Item item = new Item();
-        item.setItemId(2);
+        item.setItemId(3);
         item.setItemName("item2");
         item.setDescription("description3");
-        item.setPrice(2000);
+        item.setPrice(1000);
         item.setQty(5);
         itemRepository.save(item);
+
+    }
+
+    @Override
+    public double calculateTotalCostForOrder(String orderId) {
+        /**
+         * Process: Calculate the Total Cost for Orders
+         * User: Manager.
+         * **/
+        double totalCost = 0;
+        try{
+            List<Item> itemList = procumentRepository.getOrderItemList(orderId);
+            System.out.println("itemlist count " + itemList.size());
+            if(itemList.size() > 0){
+
+                for(Item item : itemList){
+                    System.out.println(item.getQty());
+                    totalCost = (double) totalCost + item.getPrice()*item.getQty();
+                }
+
+
+            }
+        } catch (NullPointerException e){
+            System.out.println(e.getMessage());
+        }
+
+        return totalCost;
 
     }
 
@@ -57,19 +88,23 @@ public class OrderServices implements OrderService {
         Order order = new Order();
         order.setDeliveryAddress("No 6, Malabe");
         order.setDescription("This is new order");
-        order.setOrderId("3");
+        order.setOrderId("10");
         order.setSiteLocation("Malabe");
         order.setSiteManager("manager_1");
         order.setStatus("Approved");
-        order.setSupplierId("3");
-        order.setTotalPrice(23000);
+        order.setSupplierId("1");
+        order.setTotalPrice(21000);
         orderRepository.save(order);
 
+
+        //System.out.println(itemList1);
         // Iteration for adding items to the order once order is inserted.
         try {
             for (Item I : itemList) {
                 procumentRepository.insertOrderItems(Integer.parseInt(order.getOrderId()), I);
             }
+
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -99,6 +134,11 @@ public class OrderServices implements OrderService {
     }
 
     @Override
+    public List<Item> getItemListByItemID(int itemID) {
+        return procumentRepository.getItemByID(itemID);
+    }
+
+    @Override
     public List<Supplier> RequestAvailableSuppliers(String availability) {
         List<Supplier> availableSuppliers = procumentRepository.getAllAvailableSuppliers();
         return availableSuppliers;
@@ -118,13 +158,13 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public int orderManagerApproval(Order orderId, String value) {
+    public int orderManagerApproval(String orderId, String value) {
         /**
          * Process: Update the Approval Status of the Order
          * User: Manager.
          * **/
-        String OrderId = orderId.getOrderId();
-        int status = procumentRepository.updateOrderApprovalStatus(OrderId, value);
+//        String OrderId = orderId.getOrderId();
+        int status = procumentRepository.updateOrderApprovalStatus(orderId, value);
         if(status == 1){
             System.out.println("Completed");
         } else {
@@ -134,26 +174,7 @@ public class OrderServices implements OrderService {
         return status;
     }
 
-    @Override
-    public double calculateTotalCostForOrder(String orderId) {
-        /**
-         * Process: Calculate the Total Cost for Orders
-         * User: Manager.
-         * **/
-        double totalCost = 0;
-        try{
-            List<Item> itemList = procumentRepository.getOrderItemList(orderId);
-            if(itemList.size() > 0){
-                for(Item item : itemList){
-                    totalCost = totalCost + item.getPrice();
-                }
-            }
-        } catch (NullPointerException e){
-            System.out.println(e.getMessage());
-        }
 
-        return totalCost;
-    }
 
     @Override
     public double calculateTotalCostForSupplier(Supplier supplierId) {
