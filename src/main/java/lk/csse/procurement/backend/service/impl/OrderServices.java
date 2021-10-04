@@ -136,7 +136,7 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public boolean compareDeliveryAdviceProductOrder(ArrayList<Order> order, ArrayList<Order> daobject) {
+    public boolean compareDeliveryAdviceProductOrder(ArrayList<Item> order, ArrayList<Item> daobject) {
         /**
          *
          * This method compare the delivery.

@@ -1,4 +1,5 @@
 package lk.csse.procurement.backend.service.impl;
+import lk.csse.procurement.backend.model.DeliveryAdvice;
 import lk.csse.procurement.backend.model.Item;
 import lk.csse.procurement.backend.model.Order;
 import org.junit.jupiter.api.Test;
@@ -55,6 +56,27 @@ class OrderServicesTest {
 
         double cost = orderServices.calculateTotalCostForOrder("1");
         System.out.println("Price of the Order - " + cost);
+    }
+
+    @Test
+    public void TestingcompareDeliveryAdviceProductOrder() {
+
+        //Item object to store in the array.
+        Item item = new Item();
+        item.setItemId(1);
+        Item item2 = new Item();
+        item2.setItemId(2);
+
+        //Constructing testing Arrays.
+        ArrayList<Item> orderList = new ArrayList<>();
+            orderList.add(item);
+        ArrayList<Item> adviceOrderList = new ArrayList<>();
+            adviceOrderList.add(item);
+            adviceOrderList.add(item2);
+
+
+        boolean status = orderServices.compareDeliveryAdviceProductOrder(orderList, adviceOrderList);
+        System.out.println(status);
     }
 
     /**
