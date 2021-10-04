@@ -26,9 +26,14 @@ public interface OrderService {
     public double calculateTotalCostForSupplier(Supplier supplierId);
     public boolean compareDeliveryAdviceProductOrder(ArrayList<Item> order, ArrayList<Item> daobject); /** Akash - done - working**/
     public Item addReturnItems(ArrayList<Item> list); /** Taneesha **/
-    public void processPayment(Order order); /** Akash **/
+    public void processPayment(String orderId); /** Akash **/
     public List<Item> getOrderItemListByStatus(String status, String supplierId); /** Salitha - done (Test failing but sql data comming)**/
     public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject); /** Akash - done **/ //State (final | intermediate).
+
+    // New Util Method for Payment Process.
+    public List<Item> getAdviceNoticeItemList(String orderId); /**  ? - Difficulty Level - High **/
+    public String updateAdvicedNoticeStageValue(String orderId);
+
 
 
 
