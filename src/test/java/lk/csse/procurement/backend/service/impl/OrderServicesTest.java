@@ -63,9 +63,9 @@ class OrderServicesTest {
 
         //Item object to store in the array.
         Item item = new Item();
-        item.setItemId(1);
+        item.setItemName("Kamal");
         Item item2 = new Item();
-        item2.setItemId(1);
+        item2.setItemName("Kamal");
 
         //Constructing testing Arrays.
         ArrayList<Item> orderList = new ArrayList<>();

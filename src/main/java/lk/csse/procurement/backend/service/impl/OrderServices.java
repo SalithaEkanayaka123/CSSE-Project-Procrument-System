@@ -197,7 +197,7 @@ public class OrderServices implements OrderService {
         // Manually comparing objects inside the array list
         for (int i=0; i< order.size(); i++) {
             for(int j=0; j< daobject.size(); j++){
-                if (i != j && order.get(i).getItemName().contentEquals(daobject.get(j).getItemName())) {
+                if (order.get(i).getItemName().contentEquals(daobject.get(j).getItemName())) {
                     comparison_count=+1;
                 }
             }
