@@ -3,6 +3,7 @@ package lk.csse.procurement.backend.controller;
 import lk.csse.procurement.backend.model.Order;
 import lk.csse.procurement.backend.repository.OrderRepository;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
+import lk.csse.procurement.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +19,13 @@ public class OrderController {
     @Autowired
     OrderRepository orderRepository;
 
+    @Autowired
+    OrderService orderService;
+
     @PostMapping("/order")
     public ResponseEntity<?> addOrder(@RequestBody Order order){
         try {
-            orderRepository.save(order);
+            orderRepository.save(order);//must be changed
             return new ResponseEntity<Order>(order, HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);

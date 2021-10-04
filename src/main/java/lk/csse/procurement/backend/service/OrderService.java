@@ -14,11 +14,11 @@ public interface OrderService {
     public void AddItems();
 
 
-    public void AddOrder(List<Item> itemList); /** Taneesha **/
-    public void deleteOrder (); /** Akash **/
-    public void updateOder (); /** Akash **/
+    public void AddOrder(List<Item> itemList); /** Taneesha **/ /** wait **/
+    public void deleteOrder (); /** Akash **/ /** wait **/
+    public void updateOder (); /** Akash **/ /** wait **/
 
-    public List<Item> getItemListByItemID(int itemID);/** Salitha **/
+    public List<Item> getItemListByItemID(int itemID);/** Salitha **/ /** done **/
 
     public List<Supplier> RequestAvailableSuppliers(String availability); /** OK **/ /** added to Controller **/
     public List<Supplier>  getSuppliersByOrder(String orderId); /** Done **/
