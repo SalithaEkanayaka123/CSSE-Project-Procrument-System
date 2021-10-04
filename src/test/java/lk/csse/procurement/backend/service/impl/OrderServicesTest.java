@@ -54,7 +54,7 @@ class OrderServicesTest {
     @Test
     public void TestingcalculateTotalCostForOrder(){
 
-        double cost = orderServices.calculateTotalCostForOrder("1");
+        double cost = orderServices.calculateTotalCostForOrder("10");
         System.out.println("Price of the Order - " + cost);
     }
 
@@ -102,7 +102,7 @@ class OrderServicesTest {
 
     @Test
     public void AddOrder(){
-        orderServices.AddOrder(null);
+        orderServices.AddOrder(orderServices.getItemListByItemID(2));
     }
 
     @Test

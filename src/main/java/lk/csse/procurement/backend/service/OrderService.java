@@ -18,6 +18,8 @@ public interface OrderService {
     public void deleteOrder (); /** Akash **/
     public void updateOder (); /** Akash **/
 
+    public List<Item> getItemListByItemID(int itemID);/** Salitha **/
+
     public List<Supplier> RequestAvailableSuppliers(String availability); /** OK **/ /** added to Controller **/
     public List<Supplier>  getSuppliersByOrder(String orderId); /** Done **/
     public List<Item> getOrderItemList(String orderId); /** Menaka - Done check error comming when testing - salitha **/
