@@ -39,7 +39,7 @@ public interface OrderService {
 
 
     /**payment**/
-    public void processPayment(Order order); /** Akash **//** wait **/
+    public void processPayment(String order); /** Akash **//** wait **/
 
 
 
