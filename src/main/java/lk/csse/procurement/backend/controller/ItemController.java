@@ -76,4 +76,17 @@ public class ItemController {
         }
     }
 
+    @GetMapping("/getadviceNoticeItemList")
+    public ResponseEntity<?> getAdviceNoticeItemList(@RequestBody Order order) {
+        try {
+            List<Item> itemList = orderService.getAdviceNoticeItemList(order.getOrderId());
+            return new ResponseEntity<>(itemList, HttpStatus.OK);
+        }
+        catch(Exception e)
+        {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+
 }
