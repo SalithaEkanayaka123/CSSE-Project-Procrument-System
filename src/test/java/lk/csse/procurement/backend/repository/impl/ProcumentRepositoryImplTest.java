@@ -33,4 +33,11 @@ class ProcumentRepositoryImplTest {
         }
     }
 
+    @Test
+    public void TestinggetDeliveryStatus() {
+        String orderId = "3";
+        String status = procumentRepository.getDeliveryStatus(orderId);
+        System.out.println(status);
+    }
+
 }
