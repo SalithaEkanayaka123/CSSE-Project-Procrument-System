@@ -70,14 +70,14 @@ public class OrderController {
 
     }
 
-    @GetMapping("/getorderitemlist/{id}")
+    @GetMapping("/calculatetotalcost/{id}")
     public ResponseEntity<?> calculateTotalCostForOrder(@PathVariable("id") String id){
         //List<Class> classes = classRepository.findAll();
-        List<Item> orders = orderService.getOrderItemList(id);
-        if(orders.size() > 0){
-            return new ResponseEntity<>(orders, HttpStatus.OK);
+        Double totalCostForOrder = orderService.calculateTotalCostForOrder(id);
+        if(totalCostForOrder > 0){
+            return new ResponseEntity<>(totalCostForOrder, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("No items Available", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 }
