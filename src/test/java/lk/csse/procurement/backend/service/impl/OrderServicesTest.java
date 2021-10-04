@@ -18,7 +18,7 @@ class OrderServicesTest {
 
     @Test
     public void TestingAddOrder() {
-        orderServices.AddOrder();
+//        orderServices.AddOrder();
         System.out.println("");
     }
 

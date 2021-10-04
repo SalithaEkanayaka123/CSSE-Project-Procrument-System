@@ -14,7 +14,7 @@ public interface OrderService {
     public void AddItems();
 
 
-    public void AddOrder (); /** Taneesha **/
+    public void AddOrder(List<Item> itemList); /** Taneesha **/
     public void deleteOrder (); /** Akash **/
     public void updateOder (); /** Akash **/
 

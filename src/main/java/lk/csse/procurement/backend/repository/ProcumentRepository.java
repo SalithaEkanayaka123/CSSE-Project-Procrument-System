@@ -12,6 +12,7 @@ import java.util.List;
 public interface ProcumentRepository {
 
     public Order addOrder(Order order);
+    int insertOrderItems(int orderId, Item orderItemList) ;
     public Order getAllOrderDetails(Order order);
     public List<Supplier> getAllAvailableSuppliers();
     public int updateOrderApprovalStatus(String orderId, String approvalState);

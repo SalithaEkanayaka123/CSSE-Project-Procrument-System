@@ -49,6 +49,16 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     }
 
     @Override
+    public int insertOrderItems(int orderId, Item orderItemList) {
+        Map<String, Object> params = new HashMap<>();
+        String query = "INSERT INTO order_items(order_id, item_id) " +
+                "VALUES (:item_id, :order_id)";
+        params.put("item_id", orderItemList.getItemId());
+        params.put("order_id", orderId);
+        return namedParameterJdbcTemplate.update(query, params);
+    }
+
+    @Override
     public Order getAllOrderDetails(Order order) {
         return null;
     }

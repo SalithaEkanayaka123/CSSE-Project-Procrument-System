@@ -56,14 +56,11 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public void AddOrder() {
+    public void AddOrder(List<Item> itemList) {
         Order order = new Order();
         order.setDeliveryAddress("No 6, Malabe");
         order.setDescription("This is new order");
-//        order.setItemList();
         order.setOrderId("3");
-//      order.setPurchaseDate("2021.10.03");
-//        order.setRequiredDate();
         order.setSiteLocation("Malabe");
         order.setSiteManager("manager_1");
         order.setStatus("Approved");
@@ -71,6 +68,36 @@ public class OrderServices implements OrderService {
         order.setTotalPrice(23000);
         orderRepository.save(order);
 
+        // Iteration for adding items to the order once order is inserted.
+        try {
+            List<Item> OrderItems = null;
+            for (Item I : OrderItems) {
+                procumentRepository.insertOrderItems(Integer.parseInt(order.getOrderId()), I);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void addOrderItems() {
+
+    }
+
+    @Override
+    public void deleteOrder() {
+        /**
+         * Process: Delete Orders
+         * User: Management Staff.
+         * **/
+
+    }
+
+    @Override
+    public void updateOder() {
+        /**
+         * Process: Update an Order
+         * User: Management Staff.
+         * **/
 
     }
 
