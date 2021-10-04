@@ -18,7 +18,7 @@ public interface OrderService {
     public void deleteOrder (); /** Akash **/
     public void updateOder (); /** Akash **/
 
-    public List<Supplier> RequestAvailableSuppliers(String availability); /** OK **/
+    public List<Supplier> RequestAvailableSuppliers(String availability); /** OK **/ /** added to Controller **/
     public List<Supplier>  getSuppliersByOrder(String orderId); /** Done **/
     public List<Item> getOrderItemList(String orderId); /** Menaka - Done check error comming when testing - salitha **/
     public int orderManagerApproval(Order orderId, String value ); /** Akash - done - working **/
@@ -29,6 +29,7 @@ public interface OrderService {
     public void processPayment(Order order); /** Menaka **/
     public List<Item> getOrderItemListByStatus(String status, String supplierId); /** Salitha - done (Test failing but sql data comming)**/
     public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject); /** Akash - done **/ //State (final | intermediate).
+
 
 
 

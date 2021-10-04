@@ -37,7 +37,7 @@ public class OrderServices implements OrderService {
 
     @Override
     public void createUser() {
-        Supplier supplier = new Supplier("", "Salitha", "Ekanayaka", "salitha@gmail.com", "", "", "true");
+        Supplier supplier = new Supplier("4", "Salitha", "Ekanayaka", "salitha@gmail.com", "", "", "supplier");
         supplier.setAvailability(true);
         userRepository.save(supplier);
     }
@@ -45,10 +45,10 @@ public class OrderServices implements OrderService {
     @Override
     public void AddItems() {
         Item item = new Item();
-        item.setItemId(1);
-        item.setItemName("item1");
-        item.setDescription("description");
-        item.setPrice(1200);
+        item.setItemId(2);
+        item.setItemName("item2");
+        item.setDescription("description3");
+        item.setPrice(2000);
         item.setQty(5);
 
         itemRepository.save(item);
@@ -64,7 +64,7 @@ public class OrderServices implements OrderService {
         order.setSiteLocation("Malabe");
         order.setSiteManager("manager_1");
         order.setStatus("Approved");
-        order.setSupplierId("S001");
+        order.setSupplierId("3");
         order.setTotalPrice(23000);
         orderRepository.save(order);
 

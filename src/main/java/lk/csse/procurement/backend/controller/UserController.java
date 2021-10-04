@@ -2,8 +2,10 @@ package lk.csse.procurement.backend.controller;
 
 import lk.csse.procurement.backend.model.Item;
 import lk.csse.procurement.backend.model.Order;
+import lk.csse.procurement.backend.model.Supplier;
 import lk.csse.procurement.backend.model.User;
 import lk.csse.procurement.backend.repository.OrderRepository;
+import lk.csse.procurement.backend.repository.ProcumentRepository;
 import lk.csse.procurement.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,9 @@ public class UserController {
 
     @Autowired
     UserRepository userController;
+
+    @Autowired
+    ProcumentRepository procumentRepository;
 
     @PostMapping("/user")
     public ResponseEntity<?> addUser(@RequestBody User user){
@@ -44,5 +49,17 @@ public class UserController {
     public ResponseEntity<?> deleteUser(@PathVariable("id") int id){
         userController.deleteById(id);
         return new ResponseEntity<>("delete successful", HttpStatus.OK);
+    }
+
+    @GetMapping("/availsupplier")
+    public ResponseEntity<?> getAvailableSuppliers(){
+        //working
+        //userController.deleteById(id);
+        List<Supplier> user =  procumentRepository.getAllAvailableSuppliers();
+        if(user.size() > 0){
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No users Available", HttpStatus.NOT_FOUND);
+        }
     }
 }
