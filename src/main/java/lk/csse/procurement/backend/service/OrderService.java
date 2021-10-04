@@ -20,8 +20,8 @@ public interface OrderService {
 
     public List<Item> getItemListByItemID(int itemID);/** Salitha **/ /** done **/
 
-    public List<Supplier> RequestAvailableSuppliers(String availability); /** OK **/ /** added to Controller **/
-    public List<Supplier>  getSuppliersByOrder(String orderId); /** Done **/
+    public List<Supplier> RequestAvailableSuppliers(String availability); /** OK **/ /** done **/
+    public List<Supplier>  getSuppliersByOrder(String orderId); /** Done **/ /** done **/
     public List<Item> getOrderItemList(String orderId); /** Menaka - Done check error comming when testing - salitha **/
     public int orderManagerApproval(Order orderId, String value ); /** Akash - done - working **/
     public double calculateTotalCostForOrder(String orderId); /** Akash - done - working **/
