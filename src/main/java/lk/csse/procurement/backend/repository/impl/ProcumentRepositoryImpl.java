@@ -81,7 +81,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
                 "FROM order_items o " +
                 "INNER JOIN orders ot  ON ot.order_id = o.order_id " +
                 "INNER JOIN item i ON o.item_id = i.item_id " +
-                "WHERE ot.order_id = :orderid ";
+                "WHERE ot.order_id = '1' ";
 
         params.put("orderid", orderId);
         List<Item> list = namedParameterJdbcTemplate.query(query, params, (rs, i) -> getOrderItemArray(rs));
