@@ -73,18 +73,17 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public List<Item> getOrderItemList(String orderId) {
-        orderId = "'"+ orderId +"'";
         // Format the String into '' If error.
         Map<String, Object> params = new HashMap<>();
         //Join Query
-        String query = "SELECT i.item_name, i.description " +
+        String query = "SELECT i.item_name, i.description, i.price " +
                 "FROM order_items o " +
                 "INNER JOIN orders ot  ON ot.order_id = o.order_id " +
                 "INNER JOIN item i ON o.item_id = i.item_id " +
                 "WHERE ot.order_id = '1' ";
 
-        params.put("orderid", orderId);
-        List<Item> list = namedParameterJdbcTemplate.query(query, params, (rs, i) -> getOrderItemArray(rs));
+          params.put("orderid", orderId);
+        List<Item> list = namedParameterJdbcTemplate.query(query, (rs, i) -> getOrderItemArray(rs));
         return list != null && list.size() != 0 ? list : null;
     }
 
@@ -112,8 +111,8 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     public Item getOrderItemArray(ResultSet rs) throws SQLException {
         Item item = new Item();
-        item.setItemId(Integer.parseInt(String.valueOf(rs.getInt("item_name"))));
-        item.setDescription(rs.getString("description"));
+        //item.setItemId(Integer.parseInt(String.valueOf(rs.getInt("item_name"))));
+        //item.setDescription(rs.getString("description"));
         item.setPrice(rs.getDouble("price"));
         /*
         * Code should be changed to a join query and parameters should ne updated.
