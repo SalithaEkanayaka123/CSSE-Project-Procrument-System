@@ -40,6 +40,7 @@ public interface OrderService {
 
 
     /**payment**/
+    public double calculateTotalCostForSupplier(String supplierId); /** done **/ /** done **/
 
 
 
@@ -65,7 +66,7 @@ public interface OrderService {
      * @param order**/
 
     public void updateOder (Order order, Long id); /** Akash **/ /** ok **/
-    public double calculateTotalCostForSupplier(Supplier supplierId); /** wait check latter **/ /** wait **/
+
     public Item addReturnItems(ArrayList<Item> list); /** Taneesha **/ /** wait  check latter **/ /** wait **/
     public int writeReturnValues(List<Item> returnItems, String supplierId); /**  ? - Difficulty Level - Low **/
     public void processPayment(String order); /** Akash **//** wait **/

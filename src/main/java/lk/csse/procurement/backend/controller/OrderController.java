@@ -89,5 +89,17 @@ public class OrderController {
 
     }
 
+    //calculateTotalCostForSupplier
+    @GetMapping("/calculatetotalcostforsupplier")
+    public ResponseEntity<?> calculateTotalCostForSupplier(@RequestBody Order order){
+        //List<Class> classes = classRepository.findAll();
+        Double totalCostForOrder = orderService.calculateTotalCostForSupplier(order.getSupplierId());
+        if(totalCostForOrder > 0){
+            return new ResponseEntity<>(totalCostForOrder, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 }
