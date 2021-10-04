@@ -40,4 +40,13 @@ class ProcumentRepositoryImplTest {
         System.out.println(status);
     }
 
+    @Test
+    public void TestinggetDeliveryItemsForOrder(){
+        String orderId = "2";
+        List<Item> deliveryItems = procumentRepository.getDeliveryItemsForOrder(orderId);
+        for(Item I : deliveryItems){
+            System.out.println(I.getDescription());
+        }
+    }
+
 }

@@ -32,7 +32,7 @@ public interface OrderService {
 
     // New Util Method for Payment Process.
     public List<Item> getAdviceNoticeItemList(String orderId); /**  ? - Difficulty Level - High **/
-    public String updateAdvicedNoticeStageValue(String orderId);
+    public int writeReturnValues(List<Item> returnItems, String supplierId); /**  ? - Difficulty Level - Low **/
 
 
 

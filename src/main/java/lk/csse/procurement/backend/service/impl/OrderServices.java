@@ -113,6 +113,7 @@ public class OrderServices implements OrderService {
 
     @Override
     public List<Item> getOrderItemList(String orderId) {
+        // Filtering Logic Comes here.
         return procumentRepository.getOrderItemList(orderId);
     }
 
@@ -228,7 +229,12 @@ public class OrderServices implements OrderService {
 
     @Override
     public List<Item> getAdviceNoticeItemList(String orderId) {
-        return null;
+        return procumentRepository.getOrderItemList(orderId);
+    }
+
+    @Override
+    public int writeReturnValues(List<Item> returnItems, String supplierId) {
+        return 0;
     }
 
 
