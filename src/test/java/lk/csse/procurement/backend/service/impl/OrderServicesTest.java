@@ -100,10 +100,10 @@ class OrderServicesTest {
         orderServices.AddItems();
     }//
 
-    @Test
-    public void AddOrder(){
-        orderServices.AddOrder(orderServices.getItemListByItemID(2));
-    }
+//    @Test
+//    public void AddOrder(){
+//        orderServices.AddOrder(orderServices.getItemListByItemID(2));
+//    }
 
     @Test
     public void getOrderItemList(){

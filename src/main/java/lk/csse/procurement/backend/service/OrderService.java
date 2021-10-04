@@ -27,11 +27,11 @@ public interface OrderService {
     public void updateOder (Order order, Long id); /** Akash **/ /** ok **/
 
     /** User **/
-    public double calculateTotalCostForSupplier(Supplier supplierId); /** wait **/ /** wait **/
+    public double calculateTotalCostForSupplier(Supplier supplierId); /** wait check latter **/ /** wait **/
 
     /** Item **/
-    public Item addReturnItems(ArrayList<Item> list); /** Taneesha **/ /** wait **/ /** wait **/
-    public List<Item> getOrderItemListByStatus(String status, String supplierId); /** Salitha - done (Test failing but sql data comming)**//** wait **/
+    public Item addReturnItems(ArrayList<Item> list); /** Taneesha **/ /** wait  check latter **/ /** wait **/
+    public List<Item> getOrderItemListByStatus(String status, String supplierId); /** done **//** done **/
 
 
     /** deliveryNotice **/

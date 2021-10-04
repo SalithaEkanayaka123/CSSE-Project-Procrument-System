@@ -61,6 +61,19 @@ public class ItemController {
         {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
-}
+    }
+
+    @GetMapping("/getOrderitemlistBystatus")
+    public ResponseEntity<?> getOrderItemListByStatus(@RequestBody Order order) {
+        try {
+            System.out.println("valus " + order.getStatus() + " dd " + order.getSupplierId());
+            List<Item> itemList = orderService.getOrderItemListByStatus(order.getStatus(), order.getSupplierId());
+            return new ResponseEntity<>(itemList, HttpStatus.OK);
+        }
+        catch(Exception e)
+        {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
 
 }

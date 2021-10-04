@@ -116,8 +116,8 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public List<Item> getOrderItemListByStatus(String supplierID, String status) {
-        Object[] parameters = new Object[]{supplierID, status};
-        String sql = "SELECT * FROM order_items o INNER JOIN orders ot  ON ot.order_id = o.order_id INNER JOIN item i on o.item_id = i.item_id WHERE ot.status = 'Approved' AND ot.suplierid = 'S001'";
+        Object[] parameters = new Object[]{status, supplierID};
+        String sql = "SELECT * FROM order_items o INNER JOIN orders ot  ON ot.order_id = o.order_id INNER JOIN item i on o.item_id = i.item_id WHERE ot.status = ? AND ot.suplierid = ?";
         return jdbcTemplate.query(sql, parameters,new ItemMapper());
     }
 
