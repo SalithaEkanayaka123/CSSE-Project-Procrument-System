@@ -150,6 +150,13 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         return list != null && list.size() != 0 ? list : null;
     }
 
+    @Override
+    public List<Item> getOrderItemListBySupplierID(String supplierId) {
+        Object[] parameters = new Object[]{supplierId};
+        String sql = "SELECT * FROM order_items o INNER JOIN orders ot  ON ot.order_id = o.order_id INNER JOIN item i ON o.item_id = i.item_id WHERE ot.suplierid = ?";
+        return jdbcTemplate.query(sql, parameters,new ItemMapper());
+    }
+
     public Item getOrderItemArray(ResultSet rs) throws SQLException {
         Item item = new Item();
         item.setItemName(rs.getString("item_name"));

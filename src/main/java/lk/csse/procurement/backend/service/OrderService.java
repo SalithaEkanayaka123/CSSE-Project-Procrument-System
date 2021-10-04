@@ -21,34 +21,45 @@ public interface OrderService {
 
     /** Order **/
     public double calculateTotalCostForOrder(String orderId); /** Akash - done - working **/ /** done **/
-    public void AddOrder(Order order); /** Taneesha **/ /** wait -- need to check later**/
-    public void deleteOrder (); /** Akash **/ /** ok
-     * @param order**/
-    public void updateOder (Order order, Long id); /** Akash **/ /** ok **/
+
+
+
 
     /** User **/
-    public double calculateTotalCostForSupplier(Supplier supplierId); /** wait check latter **/ /** wait **/
+
 
     /** Item **/
-    public Item addReturnItems(ArrayList<Item> list); /** Taneesha **/ /** wait  check latter **/ /** wait **/
+
     public List<Item> getOrderItemListByStatus(String status, String supplierId); /** done **//** done **/
+    public List<Item> getOrderItemListBySupplierID(String supplierId);
 
 
     /** deliveryNotice **/
     public boolean compareDeliveryAdviceProductOrder(ArrayList<Item> order, ArrayList<Item> daobject); /** Akash - done - working**//** wait **/
-    public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject); /** Akash - done **/ /** wait **/ //State (final | intermediate).
+
 
 
     /**payment**/
-    public void processPayment(String order); /** Akash **//** wait **/
+
 
 
 
     // New Util Method for Payment Process.
-    public List<Item> getAdviceNoticeItemList(String orderId); /**  ? - Difficulty Level - High **/
+    public List<Item> getAdviceNoticeItemList(String orderId); /**  ? - Difficulty Level - High **/ /**  done **/
+
+
+
+    /** need to done **/
+    public void AddOrder(Order order); /** Taneesha **/ /** wait -- need to check later**/
+    public void deleteOrder (); /** Akash **/ /** ok
+     * @param order**/
+
+    public void updateOder (Order order, Long id); /** Akash **/ /** ok **/
+    public double calculateTotalCostForSupplier(Supplier supplierId); /** wait check latter **/ /** wait **/
+    public Item addReturnItems(ArrayList<Item> list); /** Taneesha **/ /** wait  check latter **/ /** wait **/
     public int writeReturnValues(List<Item> returnItems, String supplierId); /**  ? - Difficulty Level - Low **/
-
-
+    public void processPayment(String order); /** Akash **//** wait **/
+    public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject); /** Akash - done **/ /** wait **/ //State (final | intermediate).
 
 
 

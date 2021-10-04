@@ -270,6 +270,11 @@ public class OrderServices implements OrderService {
     }
 
     @Override
+    public List<Item> getOrderItemListBySupplierID(String supplierId) {
+        return procumentRepository.getOrderItemListBySupplierID(supplierId);
+    }
+
+    @Override
     public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject) {
         /**
          *

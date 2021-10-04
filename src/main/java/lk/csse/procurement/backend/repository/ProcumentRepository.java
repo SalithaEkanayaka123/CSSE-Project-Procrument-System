@@ -24,5 +24,5 @@ public interface ProcumentRepository {
     public List<Item> getOrderItemListByStatus(String supplierID, String status);
     public String getDeliveryStatus(String orderId); // Useless, Status should be determine by comparing two arrays.
     public List<Item> getDeliveryItemsForOrder(String orderId);
-
+    public List<Item> getOrderItemListBySupplierID(String supplierId);
 }
