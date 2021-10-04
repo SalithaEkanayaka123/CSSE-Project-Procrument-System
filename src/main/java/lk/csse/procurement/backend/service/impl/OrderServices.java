@@ -182,6 +182,14 @@ public class OrderServices implements OrderService {
 
     @Override
     public void processPayment(Order order) {
+        /**
+         *
+         * 1. check if the deliveryadvice table to check if the stage is final.
+         * 2. if the stage is final
+         *
+         * **/
+
+
 
     }
 
