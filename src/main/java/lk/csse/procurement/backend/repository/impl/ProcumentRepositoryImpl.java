@@ -220,7 +220,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public int deleteUser(String userId) {
-        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<>();//DELETE FROM users WHERE userid = '4'
         String query = "DELETE FROM users WHERE userid = (:user_id)";
         params.put("user_id", userId);
         return namedParameterJdbcTemplate.update(query, params);
@@ -228,17 +228,26 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public int deleteOrder(String orderId) {
-        return 0;
+        Map<String, Object> params = new HashMap<>();
+        String query = "DELETE FROM orders WHERE order_id = (:order_id)";
+        params.put("order_id", orderId);
+        return namedParameterJdbcTemplate.update(query, params);
     }
 
     @Override
-    public int deleteItem(String itemId) {
-        return 0;
+    public int deleteItem(int itemId) {
+        Map<String, Object> params = new HashMap<>();//DELETE FROM item WHERE item_id = 1
+        String query = "DELETE FROM item WHERE item_id = (:item_id)";
+        params.put("item_id", itemId);
+        return namedParameterJdbcTemplate.update(query, params);
     }
 
     @Override
     public int cleanUPOrderItemTable(String orderId) {
-        return 0;
+        Map<String, Object> params = new HashMap<>();
+        String query = "DELETE FROM order_items WHERE order_id = (:order_id)";
+        params.put("order_id", orderId);
+        return namedParameterJdbcTemplate.update(query, params);
     }
 
 

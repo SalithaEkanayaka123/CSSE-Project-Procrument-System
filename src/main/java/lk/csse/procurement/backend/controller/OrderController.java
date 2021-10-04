@@ -21,6 +21,9 @@ public class OrderController {
     OrderRepository orderRepository;
 
     @Autowired
+    ProcumentRepository procumentRepository;
+
+    @Autowired
     OrderService orderService;
 
     @PostMapping("/order")
@@ -45,8 +48,9 @@ public class OrderController {
     }
 
     @DeleteMapping("/deleteorder/{id}")
-    public ResponseEntity<?> deleteOrder(@PathVariable("id") long id){
-        orderRepository.deleteById(id);
+    public ResponseEntity<?> deleteOrder(@PathVariable("id") String id){
+        procumentRepository.deleteOrder(id);
+        procumentRepository.cleanUPOrderItemTable(id);
         return new ResponseEntity<>("delete successful", HttpStatus.OK);
     }
 

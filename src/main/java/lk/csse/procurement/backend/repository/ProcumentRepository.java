@@ -4,9 +4,7 @@ import lk.csse.procurement.backend.model.AcceptedDelivery;
 import lk.csse.procurement.backend.model.Item;
 import lk.csse.procurement.backend.model.Order;
 import lk.csse.procurement.backend.model.Supplier;
-import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface ProcumentRepository {
@@ -38,7 +36,7 @@ public interface ProcumentRepository {
      * **/
     public int deleteUser(String userId);
     public int deleteOrder(String orderId);
-    public int deleteItem(String itemId);
+    public int deleteItem(int itemId);
 
     /**
      * JPA Removing | Replacement Methods. | Cleanup Method.

@@ -21,6 +21,9 @@ public class ItemController {
     ItemRepository itemRepository;
 
     @Autowired
+    ProcumentRepository procumentRepository;
+
+    @Autowired
     OrderService orderService;
 
 
@@ -46,9 +49,9 @@ public class ItemController {
     }
 
     @DeleteMapping("/deleteitems/{id}")
-    public ResponseEntity<?> deleteItems(@PathVariable("id") long id) {
-        itemRepository.deleteById(id);
-        return new ResponseEntity<>("delete successful", HttpStatus.OK);
+    public ResponseEntity<?> deleteItems(@PathVariable("id") String id) {
+        int result  = procumentRepository.deleteItem(Integer.parseInt(id));
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @GetMapping("/getitemlistbyid/{id}")
