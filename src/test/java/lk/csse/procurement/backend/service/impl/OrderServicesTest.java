@@ -45,14 +45,16 @@ class OrderServicesTest {
         java.util.Date date =new java.util.Date();
 
         Order order = new Order();
-        order.setOrderId("12");
+        order.setOrderId("1");
         order.setStatus("true");
         orderServices.procumentRepository.updateOrderApprovalStatus(order.getOrderId(), "ture");
     }
 
     @Test
     public void TestingcalculateTotalCostForOrder(){
-        double cost = orderServices.calculateTotalCostForOrder("12");
+
+        double cost = orderServices.calculateTotalCostForOrder("1");
+        System.out.println("Price of the Order - " + cost);
     }
 
     /**

@@ -96,10 +96,17 @@ public class OrderServices implements OrderService {
          * User: Manager.
          * **/
         double totalCost = 0;
-        List<Item> itemList = procumentRepository.getOrderItemList(orderId);
-        for(Item item : itemList){
-            totalCost = totalCost + item.getPrice();
+        try{
+            List<Item> itemList = procumentRepository.getOrderItemList(orderId);
+            if(itemList.size() > 0){
+                for(Item item : itemList){
+                    totalCost = totalCost + item.getPrice();
+                }
+            }
+        } catch (NullPointerException e){
+            System.out.println(e.getMessage());
         }
+
         return totalCost;
     }
 

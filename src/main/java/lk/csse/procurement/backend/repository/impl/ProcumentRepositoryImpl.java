@@ -66,14 +66,15 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public List<Item> getOrderItemList(String orderId) {
+        orderId = "'"+ orderId +"'";
         // Format the String into '' If error.
         Map<String, Object> params = new HashMap<>();
         //Join Query
         String query = "SELECT i.item_name, i.description " +
                 "FROM order_items o " +
                 "INNER JOIN orders ot  ON ot.order_id = o.order_id " +
-                "INNER JOIN item i on o.item_id = i.item_id " +
-                "WHERE ot.order_id = :orderId ";
+                "INNER JOIN item i ON o.item_id = i.item_id " +
+                "WHERE ot.order_id = :orderid ";
 
         params.put("orderid", orderId);
         List<Item> list = namedParameterJdbcTemplate.query(query, params, (rs, i) -> getOrderItemArray(rs));
@@ -89,8 +90,9 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     public Item getOrderItemArray(ResultSet rs) throws SQLException {
         Item item = new Item();
-        item.setItemId(Integer.parseInt(rs.getString("item_name")));
-        item.setItemId(Integer.parseInt(rs.getString("description")));
+        item.setItemId(Integer.parseInt(String.valueOf(rs.getInt("item_name"))));
+        item.setDescription(rs.getString("description"));
+        item.setPrice(rs.getDouble("price"));
         /*
         * Code should be changed to a join query and parameters should ne updated.
         * */
@@ -100,7 +102,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     public Item addReturnItems(ResultSet order_id) {
         Map<String, Object> params = new HashMap<>();
         String query = "SELECT i.item_name, i.description\n" +
-                "FROM order_item o\n" +
+                "FROM order_items o\n" +
                 "INNER JOIN orders ot ON ot.order_id = o.order_id\n" +
                 "INNER JOIN item i on o.item_id = i.item_id\n" +
                 "WHERE ot.order_id = 1";
@@ -108,7 +110,6 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         List<Item> list = namedParameterJdbcTemplate.query(query, params, (rs, i) -> addReturnItems(rs));
         return list != null && list.size() != 0 ? (Item) list : null;
     }
-
 
     /**
      *
