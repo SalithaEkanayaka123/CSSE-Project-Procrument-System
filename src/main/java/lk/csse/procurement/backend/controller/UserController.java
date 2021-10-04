@@ -30,7 +30,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/users")
+    @GetMapping ("/users")
     public ResponseEntity<?> getUsers(){
         List<User> user =  userController.findAll();
         if(user.size() > 0){

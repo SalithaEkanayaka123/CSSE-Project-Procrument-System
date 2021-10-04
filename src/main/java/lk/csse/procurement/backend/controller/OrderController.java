@@ -28,7 +28,7 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/order")
+    @GetMapping("/orders")
     public ResponseEntity<?> getOrders(){
         //List<Class> classes = classRepository.findAll();
         List<Order> orders = orderRepository.findAll();
