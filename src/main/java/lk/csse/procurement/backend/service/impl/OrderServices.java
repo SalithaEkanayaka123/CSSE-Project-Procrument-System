@@ -8,9 +8,7 @@ import lk.csse.procurement.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -50,7 +48,6 @@ public class OrderServices implements OrderService {
         item.setDescription("description");
         item.setPrice(1200);
         item.setQty(5);
-
         itemRepository.save(item);
 
     }
@@ -70,17 +67,12 @@ public class OrderServices implements OrderService {
 
         // Iteration for adding items to the order once order is inserted.
         try {
-            List<Item> OrderItems = null;
-            for (Item I : OrderItems) {
+            for (Item I : itemList) {
                 procumentRepository.insertOrderItems(Integer.parseInt(order.getOrderId()), I);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    public void addOrderItems() {
-
     }
 
     @Override
@@ -89,7 +81,12 @@ public class OrderServices implements OrderService {
          * Process: Delete Orders
          * User: Management Staff.
          * **/
+        Order order = new Order();
+        order.setOrderId("1");
+        orderRepository.delete(order);
 
+        // Table Clean up method to clean  the mapping table.
+        procumentRepository.cleanOrderItemTable(order);
     }
 
     @Override

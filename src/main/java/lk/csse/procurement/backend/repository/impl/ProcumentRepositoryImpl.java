@@ -36,6 +36,15 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     }
 
     @Override
+    public int cleanOrderItemTable(Order order) {
+        Map<String, Object> params = new HashMap<>();
+        String query = "DELETE FROM order_items WHERE order_id = (:username)";
+        params.put("username", order.getOrderId());
+        return namedParameterJdbcTemplate.update(query, params);
+    }
+
+
+    @Override
     public int insertOrderItems(int orderId, Item orderItemList) {
         Map<String, Object> params = new HashMap<>();
         String query = "INSERT INTO order_items(order_id, item_id) " +
