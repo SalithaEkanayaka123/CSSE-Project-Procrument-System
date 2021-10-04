@@ -140,7 +140,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     @Override
     public List<Item> getDeliveryItemsForOrder(String orderId) {
         Map<String, Object> params = new HashMap<>();
-        String sql = "SELECT i.item_name, i.description, i.price " +
+        String sql = "SELECT i.item_name, i.description, i.price, i.qty " +
                 "FROM item_delivery_advice a " +
                 "INNER JOIN item i  ON i.item_id = a.item_id " +
                 "INNER JOIN deliveryadvice d ON d.deliveryid = a.delivery_advice_id " +
@@ -162,13 +162,28 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         return item;
     }
 
+    /**
+     * No need of use this both object are same, can use one mapper class
+     * **/
+    public Item getDeliveryItemArray(ResultSet rs) throws SQLException {
+        Item item = new Item();
+        item.setItemName(rs.getString("item_name"));
+        item.setDescription(rs.getString("description"));
+        item.setPrice(rs.getDouble("price"));
+        /*
+         * Code should be changed to a join query and parameters should ne updated.
+         * */
+        return item;
+    }
+
+    // ? @Salitha
     public Item addReturnItems(ResultSet order_id) {
         Map<String, Object> params = new HashMap<>();
         String query = "SELECT i.item_name, i.description\n" +
                 "FROM order_items o\n" +
                 "INNER JOIN orders ot ON ot.order_id = o.order_id\n" +
                 "INNER JOIN item i on o.item_id = i.item_id\n" +
-                "WHERE ot.order_id = 1";
+                "WHERE ot.order_id ='" + 2 + "'";
 
         List<Item> list = namedParameterJdbcTemplate.query(query, params, (rs, i) -> addReturnItems(rs));
         return list != null && list.size() != 0 ? (Item) list : null;
