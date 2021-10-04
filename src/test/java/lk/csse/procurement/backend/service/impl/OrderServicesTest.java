@@ -101,6 +101,11 @@ class OrderServicesTest {
     }//
 
     @Test
+    public void AddOrder(){
+        orderServices.AddOrder(null);
+    }
+
+    @Test
     public void getOrderItemList(){
         orderServices.getOrderItemList("3");
     }//

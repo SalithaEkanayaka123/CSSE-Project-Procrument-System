@@ -43,10 +43,10 @@ public class OrderServices implements OrderService {
     @Override
     public void AddItems() {
         Item item = new Item();
-        item.setItemId(2);
+        item.setItemId(3);
         item.setItemName("item2");
         item.setDescription("description3");
-        item.setPrice(2000);
+        item.setPrice(1000);
         item.setQty(5);
         itemRepository.save(item);
 
@@ -57,17 +57,18 @@ public class OrderServices implements OrderService {
         Order order = new Order();
         order.setDeliveryAddress("No 6, Malabe");
         order.setDescription("This is new order");
-        order.setOrderId("3");
+        order.setOrderId("4");
         order.setSiteLocation("Malabe");
         order.setSiteManager("manager_1");
         order.setStatus("Approved");
         order.setSupplierId("3");
         order.setTotalPrice(23000);
         orderRepository.save(order);
-
+        List<Item> itemList1 = procumentRepository.getItemByID(1);
+        System.out.println(itemList1);
         // Iteration for adding items to the order once order is inserted.
         try {
-            for (Item I : itemList) {
+            for (Item I : itemList1) {
                 procumentRepository.insertOrderItems(Integer.parseInt(order.getOrderId()), I);
             }
         } catch (Exception e) {
@@ -144,7 +145,7 @@ public class OrderServices implements OrderService {
             List<Item> itemList = procumentRepository.getOrderItemList(orderId);
             if(itemList.size() > 0){
                 for(Item item : itemList){
-                    totalCost = totalCost + item.getPrice();
+                    totalCost = totalCost + item.getPrice()*item.getQty();
                 }
             }
         } catch (NullPointerException e){
