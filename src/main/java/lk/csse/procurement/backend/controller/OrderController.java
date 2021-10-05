@@ -86,7 +86,7 @@ public class OrderController {
     }
 
     @PutMapping("/updateOrder/{id}")
-    public ResponseEntity<?> updateOrder(@PathVariable("id") Long id, @RequestBody Order order){
+    public ResponseEntity<?> updateOrder(@PathVariable("id") String id, @RequestBody Order order){
         //List<Class> classes = classRepository.findAll();
         orderService.updateOder(order, id);
         return new ResponseEntity<>("sucessfully update order", HttpStatus.OK);

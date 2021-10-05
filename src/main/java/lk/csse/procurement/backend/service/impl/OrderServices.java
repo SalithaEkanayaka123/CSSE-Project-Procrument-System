@@ -6,11 +6,8 @@ import lk.csse.procurement.backend.repository.ProcumentRepository;
 import lk.csse.procurement.backend.repository.UserRepository;
 import lk.csse.procurement.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -129,10 +126,9 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public void updateOder(Order order1, Long id) {
-        Optional<Order> yetToUpdate = orderRepository.findById(id);
-        if(yetToUpdate.isPresent()) {
-            Order order = yetToUpdate.get();
+    public void updateOder(Order order1, String id) {
+        Order order = procumentRepository.selectOrder(id);
+        if(order != null) {
             order.setDeliveryAddress(order1.getDeliveryAddress());
             order.setDescription(order1.getDescription());
             order.setOrderId(order1.getOrderId());
@@ -145,7 +141,7 @@ public class OrderServices implements OrderService {
             //SAVE THE UPDATED USER.
             orderRepository.save(order);
         }{
-            yetToUpdate = null;
+            order = null;
         }
         /**
          * Process: Update an Order
@@ -156,18 +152,33 @@ public class OrderServices implements OrderService {
 
     @Override
     public Item updateItem(Item item, int id) {
-        List<Item> yetToUpdate = procumentRepository.selectItem(id);
-        Item items = yetToUpdate.get(id);
-        if(!yetToUpdate.isEmpty()) {
+        Item items = procumentRepository.selectItem(id);
+        if(items != null) {
             items.setDescription(item.getDescription());
             items.setItemName(item.getItemName());
             items.setQty(item.getQty());
             items.setPrice(item.getPrice());
             //SAVE THE UPDATED USER.
             itemRepository.save(items);
-
         }
         return items;
+    }
+
+    @Override
+    public User updateUser(User user, String id) {
+        User person = procumentRepository.selectUser(id);
+        if(person != null) {
+            //person.setUserID(user.getUserID());
+            person.setEmail(user.getEmail());
+            person.setFirstName(user.getFirstName());
+            person.setLastName(user.getLastName());
+            person.setPassword(user.getPassword());
+            person.setPhoneNo(user.getPhoneNo());
+            person.setType(user.getType());
+            //SAVE THE UPDATED USER.
+            userRepository.save(person);
+        }
+        return person;
     }
 
     @Override

@@ -39,6 +39,14 @@ public class UserController {
         }
     }
 
+    @PutMapping("/updateUser/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable("id") String id, @RequestBody User user){
+        //List<Class> classes = classRepository.findAll();
+        User us = orderService.updateUser(user, id);
+        return new ResponseEntity<>(us, HttpStatus.OK);
+
+    }
+
     @GetMapping ("/users")
     public ResponseEntity<?> getUsers(){
         List<User> user =  userController.findAll();

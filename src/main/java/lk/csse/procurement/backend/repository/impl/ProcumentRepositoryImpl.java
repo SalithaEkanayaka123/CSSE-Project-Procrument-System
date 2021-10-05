@@ -1,6 +1,8 @@
 package lk.csse.procurement.backend.repository.impl;
 import lk.csse.procurement.backend.mapper.ItemMapper;
+import lk.csse.procurement.backend.mapper.OrderMapper;
 import lk.csse.procurement.backend.mapper.SupplierMapper;
+import lk.csse.procurement.backend.mapper.UserMapper;
 import lk.csse.procurement.backend.model.*;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -189,23 +191,30 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
      *
      * JPA Replacement Methods.
      *
-     * **/
+     *
+     * @param id**/
 
     @Override
-    public List<User> selectUser(int id) {
-        return null;
+    public User selectUser(String id) {
+        Object[] parameters = new Object[]{id};
+        String sql = "select * from users where userid = ?";
+        return jdbcTemplate.queryForObject(sql, parameters,new UserMapper());
+    }
+
+//    jdbcTemplateObject.queryForObject(
+//    SQL, new Object[]{id}, new StudentMapper());
+    @Override
+    public Order selectOrder(String id) {
+        Object[] parameters = new Object[]{id};
+        String sql = "select * from orders where order_id = ?";
+        return jdbcTemplate.queryForObject(sql, parameters,new OrderMapper());
     }
 
     @Override
-    public List<Order> selectOrder(String id) {
-        return null;
-    }
-
-    @Override
-    public List<Item> selectItem(int id) {
+    public Item selectItem(int id) {
         Object[] parameters = new Object[]{id};
         String sql = "select * from item where item_id = ?";
-        return jdbcTemplate.query(sql, parameters,new ItemMapper());
+        return jdbcTemplate.queryForObject(sql, parameters,new ItemMapper());
     }
 
     @Override
