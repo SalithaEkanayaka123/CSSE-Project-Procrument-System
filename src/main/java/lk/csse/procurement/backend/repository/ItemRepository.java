@@ -5,4 +5,5 @@ import lk.csse.procurement.backend.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
+
 }

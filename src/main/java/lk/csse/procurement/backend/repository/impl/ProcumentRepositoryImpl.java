@@ -110,7 +110,6 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     @Override
     public int saveTheDeliveryAdivce(AcceptedDelivery acceptedDelivery) {
         String sql = "INSERT INTO accepted_delivery VALUES()"; //Complete the code.
-        // This is no big deal plain input to the table.
         return 0;
     }
 
@@ -156,9 +155,6 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         item.setDescription(rs.getString("description"));
         item.setPrice(rs.getDouble("price"));
         item.setQty(rs.getInt("qty"));
-        /*
-        * Code should be changed to a join query and parameters should ne updated.
-        * */
         return item;
     }
 
@@ -170,13 +166,9 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         item.setItemName(rs.getString("item_name"));
         item.setDescription(rs.getString("description"));
         item.setPrice(rs.getDouble("price"));
-        /*
-         * Code should be changed to a join query and parameters should ne updated.
-         * */
         return item;
     }
 
-    // ? @Salitha
     public Item addReturnItems(ResultSet order_id) {
         Map<String, Object> params = new HashMap<>();
         String query = "SELECT i.item_name, i.description\n" +

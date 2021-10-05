@@ -8,49 +8,65 @@ import java.util.List;
 
 public interface OrderService {
 
+    /** JPA Methods to Insert Data to the Table **/
     public void test();
     public void createUser();
     public void AddItems();
 
-    public List<Item> getItemListByItemID(int itemID);/** Salitha **/ /** done **/
-    public List<Supplier> RequestAvailableSuppliers(String availability); /** OK **/ /** done **/
-    public List<Supplier>  getSuppliersByOrder(String orderId); /** Done **/ /** done **/
-    public List<Item> getOrderItemList(String orderId); /** Done  **/  /** done **/
-    public int orderManagerApproval(String orderId, String value ); /** Akash - done - working **/ /** done **/
+    /** Getting a Item list based on the orderId **/
+    public List<Item> getItemListByItemID(int itemID);
 
-    /** Order **/
-    public double calculateTotalCostForOrder(String orderId); /** Akash - done - working **/ /** done **/
-    public void AddOrder(Order order); /** Taneesha **/ /** wait -- need to check later**/
-    public void deleteOrder (); /** Akash **/ /** ok
-     * @param order**/
-    public void updateOder (Order order, Long id); /** Akash **/ /** ok **/
+    /** Check the availability status of each supplier and getting a list. **/
+    public List<Supplier> RequestAvailableSuppliers(String availability);
 
-    /** User **/
-    public double calculateTotalCostForSupplier(Supplier supplierId); /** wait **/ /** wait **/
+    /** Getting a list of supplier by order Id **/
+    public List<Supplier>  getSuppliersByOrder(String orderId);
 
-    /** Item **/
-    public Item addReturnItems(ArrayList<Item> list); /** Taneesha **/ /** wait **/ /** wait **/
-    public List<Item> getOrderItemListByStatus(String status, String supplierId); /** Salitha - done (Test failing but sql data comming)**//** wait **/
+    /** Getting a order item list by order Id **/
+    public List<Item> getOrderItemList(String orderId);
 
+    /** Method for Manager to approve the order (Applicable only for orders more than 100,000/=) **/
+    public int orderManagerApproval(String orderId, String value );
 
-    /** deliveryNotice **/
-    public boolean compareDeliveryAdviceProductOrder(ArrayList<Item> order, ArrayList<Item> daobject); /** Akash - done - working**//** wait **/
-    public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject); /** Akash - done **/ /** wait **/ //State (final | intermediate).
+    /** Calculate the total cost for one order by Id **/
+    public double calculateTotalCostForOrder(String orderId);
 
+    /** Add order method using JPA **/
+    public void AddOrder(Order order);
 
-    /**payment**/
-    public void processPayment(String order); /** Akash **//** wait **/
+    /** Delete order using the order Id **/
+    public void deleteOrder ();
 
+    /** Update the order content using order Id **/
+    public void updateOder (Order order, Long id);
 
+    /** Calculate the total cost for each supplier **/
+    public double calculateTotalCostForSupplier(Supplier supplierId);
 
-    // New Util Method for Payment Process.
-    public List<Item> getAdviceNoticeItemList(String orderId); /**  ? - Difficulty Level - High **/
-    public int writeReturnValues(List<Item> returnItems, String supplierId); /**  ? - Difficulty Level - Low - Pain JPA insert **/
+    /** Add return Items **/
+    public Item addReturnItems(ArrayList<Item> list);
+
+    /** Getting a Item list based on the orderId **/
+    public List<Item> getOrderItemListByStatus(String status, String supplierId);
+
+    /** This method is to compare the items in product order and delivery advice **/
+    public boolean compareDeliveryAdviceProductOrder(ArrayList<Item> order, ArrayList<Item> daobject);
+
+    /** Accept the delivery Advice Notice and saved in the database **/
+    public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject);  //State (final | intermediate).
+
+    /** This method process the payment using the item validate methods defined above **/
+    public void processPayment(String order);
+
+    /** Fetch the list of items included in the Delivery Advice notice **/
+    public List<Item> getAdviceNoticeItemList(String orderId);
+
+    /** This method process the payment using the item validate methods defined above **/
+    public int writeReturnValues(List<Item> returnItems, String supplierId);
 
     /**
      * JPA Replacement Service Methods.
      * Navigate to the repository class.
-     *
      * **/
 
 
