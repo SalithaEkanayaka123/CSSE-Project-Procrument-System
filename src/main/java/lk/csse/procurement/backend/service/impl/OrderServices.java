@@ -196,7 +196,6 @@ public class OrderServices implements OrderService {
     }
 
 
-
     @Override
     public double calculateTotalCostForSupplier(String supplierId) {
         double totalCost = 0;

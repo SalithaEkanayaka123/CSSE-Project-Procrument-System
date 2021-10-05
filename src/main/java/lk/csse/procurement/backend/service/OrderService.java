@@ -42,7 +42,7 @@ public interface OrderService {
     public void updateOder (Order order, Long id);
 
     /** Calculate the total cost for each supplier **/
-    public double calculateTotalCostForSupplier(Supplier supplierId);
+    public double calculateTotalCostForSupplier(String supplierId);
 
     /** Add return Items **/
     public Item addReturnItems(ArrayList<Item> list);
@@ -64,6 +64,8 @@ public interface OrderService {
 
     /** This method process the payment using the item validate methods defined above **/
     public int writeReturnValues(List<Item> returnItems, String supplierId);
+
+    public List<Item> getOrderItemListBySupplierID(String supplierId);
 
     /**
      * JPA Replacement Service Methods.
