@@ -1,11 +1,9 @@
 package lk.csse.procurement.backend.repository;
 
-import lk.csse.procurement.backend.model.AcceptedDelivery;
-import lk.csse.procurement.backend.model.Item;
-import lk.csse.procurement.backend.model.Order;
-import lk.csse.procurement.backend.model.Supplier;
+import lk.csse.procurement.backend.model.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProcumentRepository {
 
@@ -52,9 +50,9 @@ public interface ProcumentRepository {
     /**
      * JPA Removing | Replacement Methods. | Update Methods.
      * **/
-    public int updateUser();
-    public int updateOrder();
-    public int updateItem();
+    public List<User> selectUser(int id);
+    public List<Order> selectOrder(String id);
+    public List<Item> selectItem(int id);
 
     /**
      * JPA Removing | Replacement Methods. | Delete Methods.

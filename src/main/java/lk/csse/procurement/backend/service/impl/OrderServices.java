@@ -155,6 +155,22 @@ public class OrderServices implements OrderService {
     }
 
     @Override
+    public Item updateItem(Item item, int id) {
+        List<Item> yetToUpdate = procumentRepository.selectItem(id);
+        Item items = yetToUpdate.get(id);
+        if(!yetToUpdate.isEmpty()) {
+            items.setDescription(item.getDescription());
+            items.setItemName(item.getItemName());
+            items.setQty(item.getQty());
+            items.setPrice(item.getPrice());
+            //SAVE THE UPDATED USER.
+            itemRepository.save(items);
+
+        }
+        return items;
+    }
+
+    @Override
     public List<Item> getItemListByItemID(int itemID) {
         return procumentRepository.getItemByID(itemID);
     }

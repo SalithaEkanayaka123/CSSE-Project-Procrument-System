@@ -41,6 +41,10 @@ public interface OrderService {
     /** Update the order content using order Id **/
     public void updateOder (Order order, Long id);
 
+    /** Update the order content using order Id **/
+    public Item updateItem (Item item, int id);
+
+
     /** Calculate the total cost for each supplier **/
     public double calculateTotalCostForSupplier(String supplierId);
 

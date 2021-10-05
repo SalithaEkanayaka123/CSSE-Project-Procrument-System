@@ -1,10 +1,7 @@
 package lk.csse.procurement.backend.repository.impl;
 import lk.csse.procurement.backend.mapper.ItemMapper;
 import lk.csse.procurement.backend.mapper.SupplierMapper;
-import lk.csse.procurement.backend.model.AcceptedDelivery;
-import lk.csse.procurement.backend.model.Item;
-import lk.csse.procurement.backend.model.Order;
-import lk.csse.procurement.backend.model.Supplier;
+import lk.csse.procurement.backend.model.*;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -195,18 +192,20 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
      * **/
 
     @Override
-    public int updateUser() {
-        return 0;
+    public List<User> selectUser(int id) {
+        return null;
     }
 
     @Override
-    public int updateOrder() {
-        return 0;
+    public List<Order> selectOrder(String id) {
+        return null;
     }
 
     @Override
-    public int updateItem() {
-        return 0;
+    public List<Item> selectItem(int id) {
+        Object[] parameters = new Object[]{id};
+        String sql = "select * from item where item_id = ?";
+        return jdbcTemplate.query(sql, parameters,new ItemMapper());
     }
 
     @Override
