@@ -198,8 +198,21 @@ public class OrderServices implements OrderService {
 
 
     @Override
-    public double calculateTotalCostForSupplier(Supplier supplierId) {
-        return 0;
+    public double calculateTotalCostForSupplier(String supplierId) {
+        double totalCost = 0;
+        try{
+            List<Item> itemList = orderService.getOrderItemListBySupplierID(supplierId);
+            System.out.println("itemlist count " + itemList.size());
+            if(itemList.size() > 0){
+                for(Item item : itemList){
+                    System.out.println(item.getQty());
+                    totalCost = (double) totalCost + item.getPrice()*item.getQty();
+                }
+            }
+        } catch (NullPointerException e){
+            System.out.println(e.getMessage());
+        }
+        return totalCost;
     }
 
     @Override
@@ -267,6 +280,11 @@ public class OrderServices implements OrderService {
     @Override
     public List<Item> getOrderItemListByStatus(String status, String supplierId) {
         return procumentRepository.getOrderItemListByStatus(supplierId, status);
+    }
+
+    @Override
+    public List<Item> getOrderItemListBySupplierID(String supplierId) {
+        return procumentRepository.getOrderItemListBySupplierID(supplierId);
     }
 
     @Override

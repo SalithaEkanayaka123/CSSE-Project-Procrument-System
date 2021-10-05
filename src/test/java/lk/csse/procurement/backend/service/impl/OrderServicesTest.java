@@ -59,6 +59,13 @@ class OrderServicesTest {
     }
 
     @Test
+    public void calculateTotalCostForSupplier(){
+
+        double cost = orderServices.calculateTotalCostForSupplier("1");
+        System.out.println("Price of the Order - " + cost);
+    }
+
+    @Test
     public void TestingcompareDeliveryAdviceProductOrder() {
 
         //Item object to store in the array.
@@ -104,10 +111,10 @@ class OrderServicesTest {
         orderServices.AddItems();
     }//
 
-    @Test
-    public void AddOrder(){
+//    @Test
+//    public void AddOrder(){
 //        orderServices.AddOrder(orderServices.getItemListByItemID(2));
-    }
+//    }
 
     @Test
     public void getOrderItemList(){

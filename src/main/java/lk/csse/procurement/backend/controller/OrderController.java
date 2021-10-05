@@ -21,6 +21,9 @@ public class OrderController {
     OrderRepository orderRepository;
 
     @Autowired
+    ProcumentRepository procumentRepository;
+
+    @Autowired
     OrderService orderService;
 
     @PostMapping("/order")
@@ -45,8 +48,9 @@ public class OrderController {
     }
 
     @DeleteMapping("/deleteorder/{id}")
-    public ResponseEntity<?> deleteOrder(@PathVariable("id") long id){
-        orderRepository.deleteById(id);
+    public ResponseEntity<?> deleteOrder(@PathVariable("id") String id){
+        procumentRepository.deleteOrder(id);
+        procumentRepository.cleanUPOrderItemTable(id);
         return new ResponseEntity<>("delete successful", HttpStatus.OK);
     }
 
@@ -88,4 +92,18 @@ public class OrderController {
         return new ResponseEntity<>("sucessfully update order", HttpStatus.OK);
 
     }
+
+    //calculateTotalCostForSupplier
+    @GetMapping("/calculatetotalcostforsupplier")
+    public ResponseEntity<?> calculateTotalCostForSupplier(@RequestBody Order order){
+        //List<Class> classes = classRepository.findAll();
+        Double totalCostForOrder = orderService.calculateTotalCostForSupplier(order.getSupplierId());
+        if(totalCostForOrder > 0){
+            return new ResponseEntity<>(totalCostForOrder, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+
 }

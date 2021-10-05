@@ -21,6 +21,9 @@ public class ItemController {
     ItemRepository itemRepository;
 
     @Autowired
+    ProcumentRepository procumentRepository;
+
+    @Autowired
     OrderService orderService;
 
 
@@ -46,9 +49,9 @@ public class ItemController {
     }
 
     @DeleteMapping("/deleteitems/{id}")
-    public ResponseEntity<?> deleteItems(@PathVariable("id") long id) {
-        itemRepository.deleteById(id);
-        return new ResponseEntity<>("delete successful", HttpStatus.OK);
+    public ResponseEntity<?> deleteItems(@PathVariable("id") String id) {
+        int result  = procumentRepository.deleteItem(Integer.parseInt(id));
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @GetMapping("/getitemlistbyid/{id}")
@@ -61,6 +64,34 @@ public class ItemController {
         {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
-}
+    }
+
+    @GetMapping("/getOrderitemlistBystatus")
+    public ResponseEntity<?> getOrderItemListByStatus(@RequestBody Order order) {
+        try {
+            System.out.println("valus " + order.getStatus() + " dd " + order.getSupplierId());
+            List<Item> itemList = orderService.getOrderItemListByStatus(order.getStatus(), order.getSupplierId());
+            return new ResponseEntity<>(itemList, HttpStatus.OK);
+        }
+        catch(Exception e)
+        {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/getadviceNoticeItemList")
+    public ResponseEntity<?> getAdviceNoticeItemList(@RequestBody Order order) {
+        try {
+            List<Item> itemList = orderService.getAdviceNoticeItemList(order.getOrderId());
+            return new ResponseEntity<>(itemList, HttpStatus.OK);
+        }
+        catch(Exception e)
+        {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+
+
 
 }

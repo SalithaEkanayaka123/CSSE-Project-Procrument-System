@@ -115,8 +115,8 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public List<Item> getOrderItemListByStatus(String supplierID, String status) {
-        Object[] parameters = new Object[]{supplierID, status};
-        String sql = "SELECT * FROM order_items o INNER JOIN orders ot  ON ot.order_id = o.order_id INNER JOIN item i on o.item_id = i.item_id WHERE ot.status = 'Approved' AND ot.suplierid = 'S001'";
+        Object[] parameters = new Object[]{status, supplierID};
+        String sql = "SELECT * FROM order_items o INNER JOIN orders ot  ON ot.order_id = o.order_id INNER JOIN item i on o.item_id = i.item_id WHERE ot.status = ? AND ot.suplierid = ?";
         return jdbcTemplate.query(sql, parameters,new ItemMapper());
     }
 
@@ -147,6 +147,13 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         params.put("order_id", orderId);
         List<Item> list = namedParameterJdbcTemplate.query(sql, (rs, i) -> getOrderItemArray(rs));
         return list != null && list.size() != 0 ? list : null;
+    }
+
+    @Override
+    public List<Item> getOrderItemListBySupplierID(String supplierId) {
+        Object[] parameters = new Object[]{supplierId};
+        String sql = "SELECT * FROM order_items o INNER JOIN orders ot  ON ot.order_id = o.order_id INNER JOIN item i ON o.item_id = i.item_id WHERE ot.suplierid = ?";
+        return jdbcTemplate.query(sql, parameters,new ItemMapper());
     }
 
     public Item getOrderItemArray(ResultSet rs) throws SQLException {
@@ -204,7 +211,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public int deleteUser(String userId) {
-        Map<String, Object> params = new HashMap<>();
+        Map<String, Object> params = new HashMap<>();//DELETE FROM users WHERE userid = '4'
         String query = "DELETE FROM users WHERE userid = (:user_id)";
         params.put("user_id", userId);
         return namedParameterJdbcTemplate.update(query, params);
@@ -212,17 +219,26 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public int deleteOrder(String orderId) {
-        return 0;
+        Map<String, Object> params = new HashMap<>();
+        String query = "DELETE FROM orders WHERE order_id = (:order_id)";
+        params.put("order_id", orderId);
+        return namedParameterJdbcTemplate.update(query, params);
     }
 
     @Override
-    public int deleteItem(String itemId) {
-        return 0;
+    public int deleteItem(int itemId) {
+        Map<String, Object> params = new HashMap<>();//DELETE FROM item WHERE item_id = 1
+        String query = "DELETE FROM item WHERE item_id = (:item_id)";
+        params.put("item_id", itemId);
+        return namedParameterJdbcTemplate.update(query, params);
     }
 
     @Override
     public int cleanUPOrderItemTable(String orderId) {
-        return 0;
+        Map<String, Object> params = new HashMap<>();
+        String query = "DELETE FROM order_items WHERE order_id = (:order_id)";
+        params.put("order_id", orderId);
+        return namedParameterJdbcTemplate.update(query, params);
     }
 
 
