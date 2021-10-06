@@ -6,11 +6,8 @@ import lk.csse.procurement.backend.repository.ProcumentRepository;
 import lk.csse.procurement.backend.repository.UserRepository;
 import lk.csse.procurement.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -92,12 +89,15 @@ public class OrderServices implements OrderService {
         Order order = new Order();
         order.setDeliveryAddress(order1.getDeliveryAddress());
         order.setDescription(order1.getDescription());
+        //order.setItemList(order1.getItemList());
         order.setOrderId(order1.getOrderId());
         order.setSiteLocation(order1.getSiteLocation());
         order.setSiteManager(order1.getSiteManager());
         order.setStatus(order1.getStatus());
         order.setSupplierId(order1.getSupplierId());
         order.setTotalPrice(order1.getTotalPrice());
+        order.setRequiredDate(order1.getRequiredDate());
+        order.setPurchaseDate(order1.getPurchaseDate());
         orderRepository.save(order);
 
 
@@ -129,29 +129,42 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public void updateOder(Order order1, Long id) {
-        Optional<Order> yetToUpdate = orderRepository.findById(id);
-        if(yetToUpdate.isPresent()) {
-            Order order = yetToUpdate.get();
-            order.setDeliveryAddress(order1.getDeliveryAddress());
-            order.setDescription(order1.getDescription());
-            order.setOrderId(order1.getOrderId());
-            order.setSiteLocation(order1.getSiteLocation());
-            order.setSiteManager(order1.getSiteManager());
-            order.setStatus(order1.getStatus());
-            order.setSupplierId(order1.getSupplierId());
-            order.setTotalPrice(order1.getTotalPrice());
-
-            //SAVE THE UPDATED USER.
-            orderRepository.save(order);
-        }{
-            yetToUpdate = null;
+    public void updateOder(Order order1, String id) {
+        Order order = procumentRepository.selectOrder(id);
+        if(order != null) {
+            procumentRepository.updateOrder(order1, id);
+        }else{
+            order = null;
         }
         /**
          * Process: Update an Order
          * User: Management Staff.
          * **/
 
+    }
+
+    @Override
+    public Item updateItem(Item item, int id) {
+        Item items = procumentRepository.selectItem(id);
+        if(items != null) {
+            procumentRepository.updateItem(item, id);
+        }else{
+            itemRepository.save(item);
+        }
+        return items;
+    }
+
+    @Override
+    public User updateUser(User user, String id) {
+        User person = procumentRepository.selectUser(id);
+        System.out.println("gg " + person);
+        if(person != null) {
+            System.out.println("calling");
+            procumentRepository.updateUser(user, id);
+        }else{
+            userRepository.save(user);
+        }
+        return person;
     }
 
     @Override

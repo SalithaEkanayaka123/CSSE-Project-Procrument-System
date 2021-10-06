@@ -54,6 +54,12 @@ public class ItemController {
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
+    @PutMapping("/updateitems/{id}")
+    public ResponseEntity<?> updateItems(@PathVariable("id") String id, @RequestBody Item item) {
+        Item result = orderService.updateItem(item, Integer.parseInt(id));
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
     @GetMapping("/getitemlistbyid/{id}")
     public ResponseEntity<?> getItemListByItemID(@PathVariable("id") int id) {
         try {

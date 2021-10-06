@@ -1,17 +1,18 @@
 package lk.csse.procurement.backend.repository.impl;
 import lk.csse.procurement.backend.mapper.ItemMapper;
+import lk.csse.procurement.backend.mapper.OrderMapper;
 import lk.csse.procurement.backend.mapper.SupplierMapper;
-import lk.csse.procurement.backend.model.AcceptedDelivery;
-import lk.csse.procurement.backend.model.Item;
-import lk.csse.procurement.backend.model.Order;
-import lk.csse.procurement.backend.model.Supplier;
+import lk.csse.procurement.backend.mapper.UserMapper;
+import lk.csse.procurement.backend.model.*;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.*;
 
 @Repository
@@ -60,8 +61,15 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public List<Supplier> getAllAvailableSuppliers() {
-        String sql = "SELECT * FROM users WHERE availability = 'true'";
+        String sql = "SELECT * FROM users WHERE availability = 'true' and type = 'supplier'";
         List<Supplier> sup = namedParameterJdbcTemplate.query(sql, new SupplierMapper());
+        return sup;
+    }
+
+    @Override
+    public List<User> getAllSiteManagers() {
+        String sql = "SELECT * FROM users WHERE type = 'Site Manager'";
+        List<User> sup = namedParameterJdbcTemplate.query(sql, new UserMapper());
         return sup;
     }
 
@@ -192,21 +200,100 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
      *
      * JPA Replacement Methods.
      *
-     * **/
+     *
+     * @param id**/
 
     @Override
-    public int updateUser() {
-        return 0;
+    public User selectUser(String id) {
+        try{
+            Object[] parameters = new Object[]{id};
+            String sql = "select * from users where userid = ?";
+            User user = jdbcTemplate.queryForObject(sql, parameters,new UserMapper());
+            return user;
+        }catch (IncorrectResultSizeDataAccessException e){
+            System.out.println("calling inc " + e);
+            return  null;
+        } catch (Exception e){
+            System.out.println(e);
+            return  null;
+        }
     }
 
     @Override
-    public int updateOrder() {
-        return 0;
+    public void updateUser(User user, String id) {
+        Map<String, Object> params = new HashMap<>();//DELETE FROM users WHERE userid = '4'
+        String query = "UPDATE users SET email = (:email), first_name = (:first_name), last_name = (:last_name), password = (:password) , phone_no = (:phone_no) , type = (:type) WHERE userid = (:user_id)";
+        params.put("email", user.getEmail());
+        params.put("first_name", user.getFirstName());
+        params.put("last_name", user.getLastName());
+        params.put("password", user.getPassword());
+        params.put("phone_no", user.getPhoneNo());
+        params.put("type", user.getType());
+        params.put("user_id", id);
+        namedParameterJdbcTemplate.update(query, params);
     }
 
     @Override
-    public int updateItem() {
-        return 0;
+    public void updateOrder(Order order, String id) {
+        Map<String, Object> params = new HashMap<>();//DELETE FROM users WHERE userid = '4'
+        String query = "UPDATE orders SET delivery_address = '(:email)', description = '(:first_name)', purchase_date = '(:last_name)', required_date = '(:password)' , site_location = '(:phone_no)' , site_manager = '(:type)', status = '(:status)', suplierid = '(:suplierid)', total_price = '(:total_price)'  WHERE order_id =  (:user_id)";
+        params.put("email", order.getDeliveryAddress());
+        params.put("first_name", order.getDescription());
+        params.put("last_name", order.getPurchaseDate());
+        params.put("password", order.getRequiredDate());
+        params.put("phone_no", order.getSiteLocation());
+        params.put("status", order.getStatus());
+        params.put("suplierid", order.getSupplierId());
+        params.put("total_price", order.getTotalPrice());
+        params.put("type", order.getSiteManager());
+        params.put("user_id", id);
+        namedParameterJdbcTemplate.update(query, params);
+    }
+
+    @Override
+    public void updateItem(Item item, int id) {
+        Map<String, Object> params = new HashMap<>();//DELETE FROM users WHERE userid = '4'
+        String query = "UPDATE item SET description = '(:email)', item_name = '(:first_name)', qty = '(:last_name)', price = '(:password)' WHERE item_id =  (:user_id)";
+        params.put("email", item.getDescription());
+        params.put("first_name", item.getItemName());
+        params.put("last_name", item.getQty());
+        params.put("password", item.getPrice());
+        params.put("user_id", id);
+        namedParameterJdbcTemplate.update(query, params);
+    }
+
+    //    jdbcTemplateObject.queryForObject(
+//    SQL, new Object[]{id}, new StudentMapper());
+    @Override
+    public Order selectOrder(String id) {
+        try{
+            Object[] parameters = new Object[]{id};
+            String sql = "select * from orders where order_id = ?";
+            Order res = jdbcTemplate.queryForObject(sql, parameters,new OrderMapper());
+            return res ;
+        }catch (IncorrectResultSizeDataAccessException e){
+            return  null;
+        } catch (Exception e){
+            System.out.println(e);
+            return  null;
+        }
+
+    }
+
+    @Override
+    public Item selectItem(int id) {
+        try{
+            Object[] parameters = new Object[]{id};
+            String sql = "select * from item where item_id = ?";
+            Item res = jdbcTemplate.queryForObject(sql, parameters,new ItemMapper());
+            return res;
+        }catch (IncorrectResultSizeDataAccessException e){
+            return  null;
+        } catch (Exception e){
+            System.out.println(e);
+            return  null;
+        }
+
     }
 
     @Override
