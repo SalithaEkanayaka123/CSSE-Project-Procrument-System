@@ -65,6 +65,7 @@ public interface OrderService {
     /** This method process the payment using the item validate methods defined above **/
     public int writeReturnValues(List<Item> returnItems, String supplierId);
 
+    /** Get order List by Supplier Id**/
     public List<Item> getOrderItemListBySupplierID(String supplierId);
 
     /**
