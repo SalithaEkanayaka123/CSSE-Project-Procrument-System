@@ -54,6 +54,8 @@ public interface ProcumentRepository {
      * @param id**/
     public User selectUser(String id);
     public void updateUser(User user, String id);
+    public void updateOrder(Order order, String id);
+    public void updateItem(Item item, int id);
     public Order selectOrder(String id);
     public Item selectItem(int id);
 

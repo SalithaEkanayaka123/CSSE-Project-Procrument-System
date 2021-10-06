@@ -233,20 +233,67 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         namedParameterJdbcTemplate.update(query, params);
     }
 
+    @Override
+    public void updateOrder(Order order, String id) {
+        Map<String, Object> params = new HashMap<>();//DELETE FROM users WHERE userid = '4'
+        String query = "UPDATE orders SET delivery_address = '(:email)', description = '(:first_name)', purchase_date = '(:last_name)', required_date = '(:password)' , site_location = '(:phone_no)' , site_manager = '(:type)', status = '(:status)', suplierid = '(:suplierid)', total_price = '(:total_price)'  WHERE order_id =  (:user_id)";
+        params.put("email", order.getDeliveryAddress());
+        params.put("first_name", order.getDescription());
+        params.put("last_name", order.getPurchaseDate());
+        params.put("password", order.getRequiredDate());
+        params.put("phone_no", order.getSiteLocation());
+        params.put("status", order.getStatus());
+        params.put("suplierid", order.getSupplierId());
+        params.put("total_price", order.getTotalPrice());
+        params.put("type", order.getSiteManager());
+        params.put("user_id", id);
+        namedParameterJdbcTemplate.update(query, params);
+    }
+
+    @Override
+    public void updateItem(Item item, int id) {
+        Map<String, Object> params = new HashMap<>();//DELETE FROM users WHERE userid = '4'
+        String query = "UPDATE item SET description = '(:email)', item_name = '(:first_name)', qty = '(:last_name)', price = '(:password)' WHERE item_id =  (:user_id)";
+        params.put("email", item.getDescription());
+        params.put("first_name", item.getItemName());
+        params.put("last_name", item.getQty());
+        params.put("password", item.getPrice());
+        params.put("user_id", id);
+        namedParameterJdbcTemplate.update(query, params);
+    }
+
     //    jdbcTemplateObject.queryForObject(
 //    SQL, new Object[]{id}, new StudentMapper());
     @Override
     public Order selectOrder(String id) {
-        Object[] parameters = new Object[]{id};
-        String sql = "select * from orders where order_id = ?";
-        return jdbcTemplate.queryForObject(sql, parameters,new OrderMapper());
+        try{
+            Object[] parameters = new Object[]{id};
+            String sql = "select * from orders where order_id = ?";
+            Order res = jdbcTemplate.queryForObject(sql, parameters,new OrderMapper());
+            return res ;
+        }catch (IncorrectResultSizeDataAccessException e){
+            return  null;
+        } catch (Exception e){
+            System.out.println(e);
+            return  null;
+        }
+
     }
 
     @Override
     public Item selectItem(int id) {
-        Object[] parameters = new Object[]{id};
-        String sql = "select * from item where item_id = ?";
-        return jdbcTemplate.queryForObject(sql, parameters,new ItemMapper());
+        try{
+            Object[] parameters = new Object[]{id};
+            String sql = "select * from item where item_id = ?";
+            Item res = jdbcTemplate.queryForObject(sql, parameters,new ItemMapper());
+            return res;
+        }catch (IncorrectResultSizeDataAccessException e){
+            return  null;
+        } catch (Exception e){
+            System.out.println(e);
+            return  null;
+        }
+
     }
 
     @Override

@@ -132,18 +132,8 @@ public class OrderServices implements OrderService {
     public void updateOder(Order order1, String id) {
         Order order = procumentRepository.selectOrder(id);
         if(order != null) {
-            order.setDeliveryAddress(order1.getDeliveryAddress());
-            order.setDescription(order1.getDescription());
-            order.setOrderId(order1.getOrderId());
-            order.setSiteLocation(order1.getSiteLocation());
-            order.setSiteManager(order1.getSiteManager());
-            order.setStatus(order1.getStatus());
-            order.setSupplierId(order1.getSupplierId());
-            order.setTotalPrice(order1.getTotalPrice());
-
-            //SAVE THE UPDATED USER.
-            orderRepository.save(order);
-        }{
+            procumentRepository.updateOrder(order1, id);
+        }else{
             order = null;
         }
         /**
@@ -157,12 +147,9 @@ public class OrderServices implements OrderService {
     public Item updateItem(Item item, int id) {
         Item items = procumentRepository.selectItem(id);
         if(items != null) {
-            items.setDescription(item.getDescription());
-            items.setItemName(item.getItemName());
-            items.setQty(item.getQty());
-            items.setPrice(item.getPrice());
-            //SAVE THE UPDATED USER.
-            itemRepository.save(items);
+            procumentRepository.updateItem(item, id);
+        }else{
+            itemRepository.save(item);
         }
         return items;
     }
