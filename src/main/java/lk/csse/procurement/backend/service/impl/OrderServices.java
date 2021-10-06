@@ -323,8 +323,15 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public int writeReturnValues(List<Item> returnItems, String supplierId) {
-
+    public int writeReturnValues(List<Item> returnItems, String supplierId, String orderId) {
+        try{
+            for(Item item : returnItems){
+                procumentRepository.returnItems(String.valueOf(item.getItemId()), item.getItemName(), supplierId, orderId);
+            }
+        } catch (Exception e){
+            System.out.println("Error inserting return items");
+            return -1;
+        }
         return 0;
     }
 

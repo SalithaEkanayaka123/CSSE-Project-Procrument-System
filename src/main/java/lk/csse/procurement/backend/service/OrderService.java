@@ -69,7 +69,7 @@ public interface OrderService {
     public List<Item> getAdviceNoticeItemList(String orderId);
 
     /** This method process the payment using the item validate methods defined above **/
-    public int writeReturnValues(List<Item> returnItems, String supplierId);
+    public int writeReturnValues(List<Item> returnItems, String supplierId, String orderId);
 
     /** Get order List by Supplier Id**/
     public List<Item> getOrderItemListBySupplierID(String supplierId);
