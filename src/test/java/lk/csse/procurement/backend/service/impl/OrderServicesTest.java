@@ -90,6 +90,23 @@ class OrderServicesTest {
         orderServices.processPayment("2");
     }
 
+
+    @Test
+    public void TestingwriteReturnValues() {
+        ArrayList<Item> orderList = new ArrayList<>();
+        Item item = new Item();
+        item.setItemName("Kamal");
+        item.setItemId(1);
+        Item item2 = new Item();
+        item2.setItemName("Bimal");
+        item2.setItemId(3);
+
+        orderList.add(item);
+        orderList.add(item2);
+
+        orderServices.writeReturnValues(orderList, "1", "2");
+    }
+
     /**
      *
      * Anawaratne M.A.N.A. Method Testing.
