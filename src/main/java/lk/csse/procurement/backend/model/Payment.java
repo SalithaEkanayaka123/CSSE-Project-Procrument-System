@@ -22,18 +22,45 @@ public class Payment {
     private Date date;
 
     @Column(name = "invoiceNo")
-    private String invoiceNo; /////////////////5 
+    private String invoiceNo; /////////////////5
 
+    public long getPaymentID() {
+        return paymentID;
+    }
 
+    public void setPaymentID(long paymentID) {
+        this.paymentID = paymentID;
+    }
 
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
+    public double getAmount() {
+        return amount;
+    }
 
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
 
+    public Date getDate() {
+        return date;
+    }
 
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
+    public String getInvoiceNo() {
+        return invoiceNo;
+    }
 
-
-
-
+    public void setInvoiceNo(String invoiceNo) {
+        this.invoiceNo = invoiceNo;
+    }
 }

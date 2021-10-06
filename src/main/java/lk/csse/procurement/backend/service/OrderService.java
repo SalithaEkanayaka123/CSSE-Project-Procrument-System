@@ -63,7 +63,7 @@ public interface OrderService {
     public String acceptDeliveryAdviceNotice(int orderid, SiteManager Id, Date acceptDate, DeliveryAdvice daobject);  //State (final | intermediate).
 
     /** This method process the payment using the item validate methods defined above **/
-    public void processPayment(String order);
+    public void processPayment(String order);//need to update with String value return
 
     /** Fetch the list of items included in the Delivery Advice notice **/
     public List<Item> getAdviceNoticeItemList(String orderId);
