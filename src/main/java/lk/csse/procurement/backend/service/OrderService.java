@@ -32,7 +32,7 @@ public interface OrderService {
     public double calculateTotalCostForOrder(String orderId);
 
     /** Add order method using JPA **/
-    public void AddOrder(Order order);
+    public void AddOrder(Order order);//done
 
     /** Delete order using the order Id **/
     public void deleteOrder ();
