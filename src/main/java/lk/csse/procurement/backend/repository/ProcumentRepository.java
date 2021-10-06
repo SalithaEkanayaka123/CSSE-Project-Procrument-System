@@ -70,4 +70,7 @@ public interface ProcumentRepository {
      * JPA Removing | Replacement Methods. | Cleanup Method.
      * **/
     public int cleanUPOrderItemTable(String orderId);
+
+    /** Add return items list to the supplier **/
+    public int returnItems(String ItemId, String ItemName, String supplierId, String orderId);
 }

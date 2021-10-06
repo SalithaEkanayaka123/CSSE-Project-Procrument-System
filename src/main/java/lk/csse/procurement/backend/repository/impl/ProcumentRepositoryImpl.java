@@ -328,14 +328,17 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         return namedParameterJdbcTemplate.update(query, params);
     }
 
-
-
-
-
-
-
-
-
+    @Override
+    public int returnItems(String ItemId, String ItemName, String supplierId, String orderId) {
+        Map<String, Object> params = new HashMap<>();
+        String query = "INSERT INTO return_items(item_id, item_name,supplier_id, order_id) " +
+                "VALUES (:item_id, :item_name, :supplier_id, :order_id)";
+        params.put("item_id", ItemId);
+        params.put("item_name", ItemName);
+        params.put("supplier_id", supplierId);
+        params.put("order_id", orderId);
+        return namedParameterJdbcTemplate.update(query, params);
+    }
 
 
     /**
