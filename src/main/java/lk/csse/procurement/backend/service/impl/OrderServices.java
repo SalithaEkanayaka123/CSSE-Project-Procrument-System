@@ -89,12 +89,15 @@ public class OrderServices implements OrderService {
         Order order = new Order();
         order.setDeliveryAddress(order1.getDeliveryAddress());
         order.setDescription(order1.getDescription());
+        //order.setItemList(order1.getItemList());
         order.setOrderId(order1.getOrderId());
         order.setSiteLocation(order1.getSiteLocation());
         order.setSiteManager(order1.getSiteManager());
         order.setStatus(order1.getStatus());
         order.setSupplierId(order1.getSupplierId());
         order.setTotalPrice(order1.getTotalPrice());
+        order.setRequiredDate(order1.getRequiredDate());
+        order.setPurchaseDate(order1.getPurchaseDate());
         orderRepository.save(order);
 
 
@@ -167,16 +170,12 @@ public class OrderServices implements OrderService {
     @Override
     public User updateUser(User user, String id) {
         User person = procumentRepository.selectUser(id);
+        System.out.println("gg " + person);
         if(person != null) {
-            //person.setUserID(user.getUserID());
-            person.setEmail(user.getEmail());
-            person.setFirstName(user.getFirstName());
-            person.setLastName(user.getLastName());
-            person.setPassword(user.getPassword());
-            person.setPhoneNo(user.getPhoneNo());
-            person.setType(user.getType());
-            //SAVE THE UPDATED USER.
-            userRepository.save(person);
+            System.out.println("calling");
+            procumentRepository.updateUser(user, id);
+        }else{
+            userRepository.save(user);
         }
         return person;
     }

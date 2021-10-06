@@ -57,6 +57,16 @@ public class UserController {
         }
     }
 
+    @GetMapping ("/sitemanagers")
+    public ResponseEntity<?> getAllSiteManagers(){
+        List<User> user =  procumentRepository.getAllSiteManagers();
+        if(user.size() > 0){
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No users Available", HttpStatus.NOT_FOUND);
+        }
+    }
+
     @DeleteMapping("/deleteuser/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable("id") String id){
         procumentRepository.deleteUser(id);

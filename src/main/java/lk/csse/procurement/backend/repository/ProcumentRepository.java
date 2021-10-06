@@ -21,6 +21,8 @@ public interface ProcumentRepository {
     /** Query to get all suppliers **/
     public List<Supplier> getAllAvailableSuppliers();
 
+    public List<User> getAllSiteManagers();
+
     /** Query to update the approval state of Orders **/
     public int updateOrderApprovalStatus(String orderId, String approvalState);
 
@@ -51,6 +53,7 @@ public interface ProcumentRepository {
      *
      * @param id**/
     public User selectUser(String id);
+    public void updateUser(User user, String id);
     public Order selectOrder(String id);
     public Item selectItem(int id);
 

@@ -6,11 +6,13 @@ import lk.csse.procurement.backend.mapper.UserMapper;
 import lk.csse.procurement.backend.model.*;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.util.*;
 
 @Repository
@@ -59,8 +61,15 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public List<Supplier> getAllAvailableSuppliers() {
-        String sql = "SELECT * FROM users WHERE availability = 'true'";
+        String sql = "SELECT * FROM users WHERE availability = 'true' and type = 'supplier'";
         List<Supplier> sup = namedParameterJdbcTemplate.query(sql, new SupplierMapper());
+        return sup;
+    }
+
+    @Override
+    public List<User> getAllSiteManagers() {
+        String sql = "SELECT * FROM users WHERE type = 'Site Manager'";
+        List<User> sup = namedParameterJdbcTemplate.query(sql, new UserMapper());
         return sup;
     }
 
@@ -196,12 +205,35 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public User selectUser(String id) {
-        Object[] parameters = new Object[]{id};
-        String sql = "select * from users where userid = ?";
-        return jdbcTemplate.queryForObject(sql, parameters,new UserMapper());
+        try{
+            Object[] parameters = new Object[]{id};
+            String sql = "select * from users where userid = ?";
+            User user = jdbcTemplate.queryForObject(sql, parameters,new UserMapper());
+            return user;
+        }catch (IncorrectResultSizeDataAccessException e){
+            System.out.println("calling inc " + e);
+            return  null;
+        } catch (Exception e){
+            System.out.println(e);
+            return  null;
+        }
     }
 
-//    jdbcTemplateObject.queryForObject(
+    @Override
+    public void updateUser(User user, String id) {
+        Map<String, Object> params = new HashMap<>();//DELETE FROM users WHERE userid = '4'
+        String query = "UPDATE users SET email = (:email), first_name = (:first_name), last_name = (:last_name), password = (:password) , phone_no = (:phone_no) , type = (:type) WHERE userid = (:user_id)";
+        params.put("email", user.getEmail());
+        params.put("first_name", user.getFirstName());
+        params.put("last_name", user.getLastName());
+        params.put("password", user.getPassword());
+        params.put("phone_no", user.getPhoneNo());
+        params.put("type", user.getType());
+        params.put("user_id", id);
+        namedParameterJdbcTemplate.update(query, params);
+    }
+
+    //    jdbcTemplateObject.queryForObject(
 //    SQL, new Object[]{id}, new StudentMapper());
     @Override
     public Order selectOrder(String id) {
