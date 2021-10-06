@@ -330,14 +330,21 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public int returnItems(String ItemId, String ItemName, String supplierId, String orderId) {
+        // Format String
+        String itemName = "'" + ItemName + "'";
         Map<String, Object> params = new HashMap<>();
-        String query = "INSERT INTO return_items(item_id, item_name,supplier_id, order_id) " +
-                "VALUES (:item_id, :item_name, :supplier_id, :order_id)";
-        params.put("item_id", ItemId);
-        params.put("item_name", ItemName);
-        params.put("supplier_id", supplierId);
-        params.put("order_id", orderId);
-        return namedParameterJdbcTemplate.update(query, params);
+        try{
+            String query = "INSERT INTO return_items (item_id, item_name,supplier_id, order_id) " +
+                    "VALUES (1, '2', 2, 4)";
+            params.put("item_id", Integer.parseInt(ItemId));
+            params.put("item_name", itemName);
+            params.put("supplier_id", Integer.parseInt(supplierId));
+            params.put("order_id", Integer.parseInt(ItemId));
+            return namedParameterJdbcTemplate.update(query, params);
+        } catch (Exception e){
+            System.out.println("Error Parsing String Values into Integers");
+        }
+        return 0;
     }
 
 
