@@ -70,7 +70,7 @@ public class PaymentController {
     public ResponseEntity<?> getAllPayments(){
         try {
             List<AllPayments> allPayment = orderService.getAllPayment();
-            return new ResponseEntity<AllPayments>((AllPayments) allPayment, HttpStatus.OK);
+            return new ResponseEntity<>(allPayment, HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
