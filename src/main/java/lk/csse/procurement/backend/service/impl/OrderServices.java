@@ -1,9 +1,6 @@
 package lk.csse.procurement.backend.service.impl;
 import lk.csse.procurement.backend.model.*;
-import lk.csse.procurement.backend.repository.ItemRepository;
-import lk.csse.procurement.backend.repository.OrderRepository;
-import lk.csse.procurement.backend.repository.ProcumentRepository;
-import lk.csse.procurement.backend.repository.UserRepository;
+import lk.csse.procurement.backend.repository.*;
 import lk.csse.procurement.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +27,9 @@ public class OrderServices implements OrderService {
 
     @Autowired
     OrderService orderService;
+
+    @Autowired
+    DeliveryAdviceRepository deliveryAdviceRepository;
 
 
 
@@ -118,7 +118,18 @@ public class OrderServices implements OrderService {
     public void AddDeliveryData(DeliveryAdvice deliveryAdvice) {
         DeliveryAdvice deliveryAdvice1 = new DeliveryAdvice();
         deliveryAdvice1.setDeliveryID(deliveryAdvice.getDeliveryID());
+        deliveryAdvice1.setAddress(deliveryAdvice.getAddress());
+        deliveryAdvice1.setNote(deliveryAdvice.getNote());
+        deliveryAdvice1.setOrderID(deliveryAdvice.getOrderID());
+        deliveryAdviceRepository.save(deliveryAdvice1);
 
+        try {
+            for (Item I : deliveryAdvice.getLtemList()) {
+                procumentRepository.insertDeliveryItems(deliveryAdvice.getDeliveryID(), I);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
