@@ -66,7 +66,7 @@ public class PaymentController {
         }
     }
 
-    @PostMapping("/getAllPayment")
+    @GetMapping("/getAllPayment")
     public ResponseEntity<?> getAllPayments(){
         try {
             List<AllPayments> allPayment = orderService.getAllPayment();
@@ -75,8 +75,4 @@ public class PaymentController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
-
-
-
-
 }
