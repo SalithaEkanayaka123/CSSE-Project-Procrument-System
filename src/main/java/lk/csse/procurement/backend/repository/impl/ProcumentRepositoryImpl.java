@@ -54,6 +54,16 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     }
 
     @Override
+    public int insertDeliveryItems(String deliveryId, Item orderItemList) {
+        Map<String, Object> params = new HashMap<>();
+        String query = "INSERT INTO item_delivery_advice(delivery_advice_id, item_id) " +
+                "VALUES (:order_id, :item_id)";
+        params.put("item_id", orderItemList.getItemId());
+        params.put("order_id", deliveryId);
+        return namedParameterJdbcTemplate.update(query, params);
+    }
+
+    @Override
     public Order getAllOrderItemDetails() {
         return null;
     }
@@ -301,6 +311,15 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
             return  null;
         }
 
+    }
+
+    @Override
+    public void updateSupplierStatus(Supplier user, String id) {
+        Map<String, Object> params = new HashMap<>();//DELETE FROM users WHERE userid = '4'
+        String query = "UPDATE users SET availability = (:email) WHERE userid = (:user_id)";
+        params.put("email", user.isAvailability());
+        params.put("user_id", id);
+        namedParameterJdbcTemplate.update(query, params);
     }
 
     @Override

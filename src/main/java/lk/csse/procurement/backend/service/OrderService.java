@@ -34,6 +34,10 @@ public interface OrderService {
     /** Add order method using JPA **/
     public void AddOrder(Order order);//done
 
+    /** Add delivery advice method using JPA **/
+    public void AddDeliveryData(DeliveryAdvice deliveryAdvice);
+
+
     /** Delete order using the order Id **/
     public void deleteOrder ();
 
@@ -45,6 +49,7 @@ public interface OrderService {
 
     /** Update the user content using user Id **/
     public User updateUser (User user, String id);
+
 
 
     /** Calculate the total cost for each supplier **/
