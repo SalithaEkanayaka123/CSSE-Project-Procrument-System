@@ -262,11 +262,17 @@ public class OrderServices implements OrderService {
         // Manually comparing objects inside the array list
         for (int i=0; i< order.size(); i++) {
             for(int j=0; j< daobject.size(); j++){
+                System.out.println("name1 " + order.get(i).getItemName());
+                System.out.println("name2 " + daobject.get(j).getItemName());
                 if (order.get(i).getItemName().contentEquals(daobject.get(j).getItemName())) {
-                    comparison_count=+1;
+
+                    comparison_count= comparison_count + 1;
+                    System.out.println("name3 " + comparison_count);
                 }
             }
         }
+
+        System.out.println("name4 " + comparison_count);
 
         // Output the result.
         if(comparison_count == order.size()){
@@ -300,6 +306,8 @@ public class OrderServices implements OrderService {
         // Fetch Delivery Items.
         ArrayList<Item> deliver_list = (ArrayList<Item>) procumentRepository.getDeliveryItemsForOrder(orderId);
         //Calling the Array Comparison method | Check whether all the items has received in the order.
+        System.out.println("ddd " + order_list);
+        System.out.println("ddd1 " + deliver_list);
         if (compareDeliveryAdviceProductOrder(order_list, deliver_list)) {
             System.out.println("Eligible to proceed to the payment");
             return "eligible";
