@@ -1,15 +1,19 @@
 package lk.csse.procurement.backend.controller;
 
+import lk.csse.procurement.backend.dto.res.AllPayments;
 import lk.csse.procurement.backend.model.Card;
 import lk.csse.procurement.backend.model.Cash;
 import lk.csse.procurement.backend.model.Check;
 import lk.csse.procurement.backend.model.Order;
 import lk.csse.procurement.backend.repository.OrderRepository;
 import lk.csse.procurement.backend.repository.PaymentRepository;
+import lk.csse.procurement.backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -17,6 +21,9 @@ import org.springframework.web.bind.annotation.*;
 public class PaymentController {
     @Autowired
     PaymentRepository paymentRepository;
+
+    @Autowired
+    OrderService orderService;
 
 
     @PostMapping("/paymentCard")
@@ -54,6 +61,16 @@ public class PaymentController {
         try {
             paymentRepository.save(check);//must be changed
             return new ResponseEntity<Check>(check, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/getAllPayment")
+    public ResponseEntity<?> getAllPayments(){
+        try {
+            List<AllPayments> allPayment = orderService.getAllPayment();
+            return new ResponseEntity<AllPayments>((AllPayments) allPayment, HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }

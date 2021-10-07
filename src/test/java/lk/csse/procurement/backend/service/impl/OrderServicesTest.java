@@ -53,7 +53,6 @@ class OrderServicesTest {
 
     @Test
     public void TestingcalculateTotalCostForOrder(){
-
         double cost = orderServices.calculateTotalCostForOrder("10");
         System.out.println("Price of the Order - " + cost);
     }
@@ -148,8 +147,4 @@ class OrderServicesTest {
     public void getOrderItemListByStatus(){
         orderServices.getOrderItemListByStatus("S001", "Approved");
     }
-
-
-
-
 }
