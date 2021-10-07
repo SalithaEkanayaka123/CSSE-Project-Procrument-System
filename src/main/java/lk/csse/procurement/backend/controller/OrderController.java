@@ -127,7 +127,7 @@ public class OrderController {
     }
 
 
-    @GetMapping("/adddelivery")
+    @PostMapping("/adddelivery")
     public ResponseEntity<?> AddDeliveryData(@RequestBody DeliveryAdvice deliveryAdvice){
         //List<Class> classes = classRepository.findAll();
         orderService.AddDeliveryData(deliveryAdvice);
