@@ -54,7 +54,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     }
 
     @Override
-    public int insertDeliveryItems(String deliveryId, Item orderItemList) {
+    public int insertDeliveryItems(int deliveryId, Item orderItemList) {
         Map<String, Object> params = new HashMap<>();
         String query = "INSERT INTO item_delivery_advice(delivery_advice_id, item_id) " +
                 "VALUES (:order_id, :item_id)";

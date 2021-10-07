@@ -332,7 +332,7 @@ public class OrderServices implements OrderService {
         acceptedDelivery.setOrderId(orderid);
         acceptedDelivery.setSiteManagerId(Integer.parseInt(Id.getUserID()));
         acceptedDelivery.setAcceptDate(acceptDate);
-        acceptedDelivery.setDeliveryId(Integer.parseInt(daobject.getDeliveryID()));
+        acceptedDelivery.setDeliveryId(daobject.getDeliveryID());
 
         int status = procumentRepository.saveTheDeliveryAdivce(acceptedDelivery);
         return null;

@@ -3,6 +3,7 @@ package lk.csse.procurement.backend.controller;
 import lk.csse.procurement.backend.model.DeliveryAdvice;
 import lk.csse.procurement.backend.model.Item;
 import lk.csse.procurement.backend.model.Order;
+import lk.csse.procurement.backend.repository.DeliveryAdviceRepository;
 import lk.csse.procurement.backend.repository.OrderRepository;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
 import lk.csse.procurement.backend.service.OrderService;
@@ -26,6 +27,9 @@ public class OrderController {
 
     @Autowired
     OrderService orderService;
+
+    @Autowired
+    DeliveryAdviceRepository deliveryAdviceRepository;
 
     @PostMapping("/order")
     public ResponseEntity<?> addOrder(@RequestBody Order order){
@@ -129,6 +133,7 @@ public class OrderController {
 
     @PostMapping("/adddelivery")
     public ResponseEntity<?> AddDeliveryData(@RequestBody DeliveryAdvice deliveryAdvice){
+        System.out.println("data s " + deliveryAdvice);
         //List<Class> classes = classRepository.findAll();
         orderService.AddDeliveryData(deliveryAdvice);
         return new ResponseEntity<>("Data added", HttpStatus.OK);

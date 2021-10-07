@@ -17,7 +17,7 @@ public interface ProcumentRepository {
 
 
     /** Insert delivery Items to the Mapper table - This mapper table will be used to create JOIN queries **/
-    int insertDeliveryItems(String deliveryId, Item orderItemList) ;
+    int insertDeliveryItems(int deliveryId, Item orderItemList) ;
 
     /** Query to get all order details from order table **/
     public Order getAllOrderItemDetails();

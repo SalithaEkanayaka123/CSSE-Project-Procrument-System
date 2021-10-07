@@ -12,7 +12,7 @@ public class DeliveryAdvice {
     private long id;
 
     @Column(name = "deliveryID")
-    private String deliveryID;
+    private int deliveryID;
 
     @Column(name = "address")
     private String address;
@@ -29,7 +29,7 @@ public class DeliveryAdvice {
     @Column(name = "orderID")
     private String orderID;
 
-    public DeliveryAdvice(String deliveryID, String address, ArrayList<Item> ltemList, String note, String orderID) {
+    public DeliveryAdvice(int deliveryID, String address, ArrayList<Item> ltemList, String note, String orderID) {
         this.deliveryID = deliveryID;
         this.address = address;
         this.ltemList = ltemList;
@@ -41,11 +41,11 @@ public class DeliveryAdvice {
 
     }
 
-    public String getDeliveryID() {
+    public int getDeliveryID() {
         return deliveryID;
     }
 
-    public void setDeliveryID(String deliveryID) {
+    public void setDeliveryID(int deliveryID) {
         this.deliveryID = deliveryID;
     }
 
