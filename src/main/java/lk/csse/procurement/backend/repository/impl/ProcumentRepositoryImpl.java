@@ -12,7 +12,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLOutput;
 import java.util.*;
 
 @Repository
@@ -55,7 +54,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     }
 
     @Override
-    public Order getAllOrderDetails(Order order) {
+    public Order getAllOrderItemDetails() {
         return null;
     }
 

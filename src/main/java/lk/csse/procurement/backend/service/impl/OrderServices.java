@@ -267,7 +267,7 @@ public class OrderServices implements OrderService {
     }
 
     @Override
-    public void processPayment(String orderId) {
+    public String processPayment(String orderId) {
         /**
          *
          * 1. fetch item arrays from both delivered item List and Order item list.
@@ -283,8 +283,10 @@ public class OrderServices implements OrderService {
         //Calling the Array Comparison method | Check whether all the items has received in the order.
         if (compareDeliveryAdviceProductOrder(order_list, deliver_list)) {
             System.out.println("Eligible to proceed to the payment");
+            return "eligible";
         } else {
             System.out.println("Not Eligible to Proceed to the payment");
+            return "uneligible";
         }
 
 

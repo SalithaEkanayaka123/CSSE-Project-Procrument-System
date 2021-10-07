@@ -106,4 +106,13 @@ public class OrderController {
     }
 
 
+    @GetMapping("/paymentProcess/{id}")
+    public ResponseEntity<?> processPayment(@PathVariable("id") String id){
+        //List<Class> classes = classRepository.findAll();
+        String result = orderService.processPayment(id);
+            return new ResponseEntity<>(result, HttpStatus.OK);
+
+    }
+
+
 }

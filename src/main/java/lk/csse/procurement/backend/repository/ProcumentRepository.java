@@ -16,7 +16,7 @@ public interface ProcumentRepository {
     int insertOrderItems(int orderId, Item orderItemList) ;
 
     /** Query to get all order details from order table **/
-    public Order getAllOrderDetails(Order order);
+    public Order getAllOrderItemDetails();
 
     /** Query to get all suppliers **/
     public List<Supplier> getAllAvailableSuppliers();
