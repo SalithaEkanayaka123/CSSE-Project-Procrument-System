@@ -48,7 +48,7 @@ class OrderServicesTest {
         Order order = new Order();
         order.setOrderId("1");
         order.setStatus("true");
-        orderServices.procumentRepository.updateOrderApprovalStatus(order.getOrderId(), "ture");
+        orderServices.procumentRepository.updateOrderApprovalStatus("5", "true");
     }
 
     @Test
@@ -86,7 +86,7 @@ class OrderServicesTest {
 
     @Test
     public void TestingprocessPayment(){
-        orderServices.processPayment("2");
+        orderServices.processPayment("6");
     }
 
 

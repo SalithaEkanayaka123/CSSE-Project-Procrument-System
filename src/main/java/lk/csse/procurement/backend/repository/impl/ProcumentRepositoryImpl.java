@@ -165,7 +165,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     @Override
     public List<Item> getDeliveryItemsForOrder(String orderId) {
         Map<String, Object> params = new HashMap<>();
-        String sql = "SELECT i.item_name, i.description, i.price, i.qty " +
+        String sql = "SELECT i.item_id, i.item_name, i.description, i.price, i.qty " +
                 "FROM item_delivery_advice a " +
                 "INNER JOIN item i  ON i.item_id = a.item_id " +
                 "INNER JOIN deliveryadvice d ON d.deliveryid = a.delivery_advice_id " +
