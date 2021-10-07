@@ -79,7 +79,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     @Override
     public List<User> getAllSiteManagers() {
-        String sql = "SELECT * FROM users WHERE type = 'Site Manager'";
+        String sql = "SELECT * FROM users WHERE type = 'SiteManager'";
         List<User> sup = namedParameterJdbcTemplate.query(sql, new UserMapper());
         return sup;
     }

@@ -1,5 +1,6 @@
 package lk.csse.procurement.backend.controller;
 
+import lk.csse.procurement.backend.model.DeliveryAdvice;
 import lk.csse.procurement.backend.model.Item;
 import lk.csse.procurement.backend.model.Order;
 import lk.csse.procurement.backend.repository.OrderRepository;
@@ -122,6 +123,15 @@ public class OrderController {
         //List<Class> classes = classRepository.findAll();
         String result = orderService.processPayment(id);
             return new ResponseEntity<>(result, HttpStatus.OK);
+
+    }
+
+
+    @PostMapping("/adddelivery")
+    public ResponseEntity<?> AddDeliveryData(@RequestBody DeliveryAdvice deliveryAdvice){
+        //List<Class> classes = classRepository.findAll();
+        orderService.AddDeliveryData(deliveryAdvice);
+        return new ResponseEntity<>("Data added", HttpStatus.OK);
 
     }
 
