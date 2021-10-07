@@ -35,6 +35,9 @@ public interface ProcumentRepository {
     /** Query to filter suppliers by orders **/
     public List<Supplier> getSuppliersByOrder(String orderID);
 
+    /** Query to filter suppliers by orders **/
+    public List<Order> getOrdersForSupplier(String supplierID);
+
     /** Query to insert delivery advice **/
     public int saveTheDeliveryAdivce(AcceptedDelivery acceptedDelivery);
 

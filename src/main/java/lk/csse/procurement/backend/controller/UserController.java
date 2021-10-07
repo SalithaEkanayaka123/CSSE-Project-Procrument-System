@@ -98,4 +98,17 @@ public class UserController {
     }
 
 
+    @GetMapping("/getsupplierItemList/{id}")
+    public ResponseEntity<?> getSupplierItemList(@PathVariable("id") String id){
+        //working
+        //userController.deleteById(id);
+        List<Item> user =  orderService.getOrderItemListBySupplierID(id);
+        if(user.size() > 0){
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No users Available", HttpStatus.NOT_FOUND);
+        }
+    }
+
+
 }

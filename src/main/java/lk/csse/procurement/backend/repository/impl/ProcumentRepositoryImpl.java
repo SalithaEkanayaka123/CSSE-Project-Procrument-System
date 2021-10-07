@@ -115,6 +115,13 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     }
 
     @Override
+    public List<Order> getOrdersForSupplier(String supplierID) {
+        Object[] parameters = new Object[]{supplierID};
+        String sql = "SELECT * FROM orders where suplierid = ?";;
+        return jdbcTemplate.query(sql, parameters,new OrderMapper());
+    }
+
+    @Override
     public int saveTheDeliveryAdivce(AcceptedDelivery acceptedDelivery) {
         String sql = "INSERT INTO accepted_delivery VALUES()"; //Complete the code.
         return 0;

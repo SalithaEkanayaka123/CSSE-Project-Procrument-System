@@ -47,6 +47,17 @@ public class OrderController {
         }
     }
 
+    @GetMapping("/ordersforsuppliers/{id}")
+    public ResponseEntity<?> getOrdersForSupplier(@PathVariable("id") String id){
+        //List<Class> classes = classRepository.findAll();
+        List<Order> orders = procumentRepository.getOrdersForSupplier(id);
+        if(orders.size() > 0){
+            return new ResponseEntity<>(orders, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No orders Available", HttpStatus.NOT_FOUND);
+        }
+    }
+
     @DeleteMapping("/deleteorder/{id}")
     public ResponseEntity<?> deleteOrder(@PathVariable("id") String id){
         procumentRepository.deleteOrder(id);
