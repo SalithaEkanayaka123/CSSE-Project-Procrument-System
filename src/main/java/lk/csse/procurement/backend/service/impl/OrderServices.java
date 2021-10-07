@@ -1,4 +1,5 @@
 package lk.csse.procurement.backend.service.impl;
+import lk.csse.procurement.backend.dto.res.AllPayments;
 import lk.csse.procurement.backend.model.*;
 import lk.csse.procurement.backend.repository.*;
 import lk.csse.procurement.backend.service.OrderService;
@@ -318,6 +319,12 @@ public class OrderServices implements OrderService {
     @Override
     public List<Item> getOrderItemListBySupplierID(String supplierId) {
         return procumentRepository.getOrderItemListBySupplierID(supplierId);
+    }
+
+    @Override
+    public List<AllPayments> getAllPayment() {
+
+        return procumentRepository.getAllPaymentDetails();
     }
 
     @Override

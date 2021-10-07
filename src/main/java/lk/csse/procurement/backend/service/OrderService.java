@@ -1,5 +1,6 @@
 package lk.csse.procurement.backend.service;
 
+import lk.csse.procurement.backend.dto.res.AllPayments;
 import lk.csse.procurement.backend.model.*;
 
 import java.util.ArrayList;
@@ -78,6 +79,9 @@ public interface OrderService {
 
     /** Get order List by Supplier Id**/
     public List<Item> getOrderItemListBySupplierID(String supplierId);
+
+    /** Get All Payments **/
+    public List<AllPayments> getAllPayment();
 
     /**
      * JPA Replacement Service Methods.

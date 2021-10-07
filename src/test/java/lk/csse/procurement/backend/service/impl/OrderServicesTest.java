@@ -1,5 +1,5 @@
 package lk.csse.procurement.backend.service.impl;
-import lk.csse.procurement.backend.model.DeliveryAdvice;
+import lk.csse.procurement.backend.dto.res.AllPayments;
 import lk.csse.procurement.backend.model.Item;
 import lk.csse.procurement.backend.model.Order;
 import org.junit.jupiter.api.Test;
@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -18,8 +19,7 @@ class OrderServicesTest {
 
     @Test
     public void TestingAddOrder() {
-//        orderServices.AddOrder();
-        System.out.println("");
+        // Add Order
     }
 
     /**
@@ -53,7 +53,6 @@ class OrderServicesTest {
 
     @Test
     public void TestingcalculateTotalCostForOrder(){
-
         double cost = orderServices.calculateTotalCostForOrder("10");
         System.out.println("Price of the Order - " + cost);
     }
@@ -107,10 +106,20 @@ class OrderServicesTest {
         orderServices.writeReturnValues(orderList, "1", "2");
     }
 
+
+    @Test
+    public void TestinggetAllPayment() {
+        List<AllPayments> list = orderServices.getAllPayment();
+        for(AllPayments payments : list){
+            System.out.println(payments.getDescription());
+        }
+    }
+
     /**
      *
      * Anawaratne M.A.N.A. Method Testing.
-     *         ||||||||||||||||
+     *     ||||||||||||||||
+     *
      * **/
 
     @Test
@@ -126,25 +135,16 @@ class OrderServicesTest {
     @Test
     public void AddItems(){
         orderServices.AddItems();
-    }//
-
-//    @Test
-//    public void AddOrder(){
-//        orderServices.AddOrder(orderServices.getItemListByItemID(2));
-//    }
+    }
 
     @Test
     public void getOrderItemList(){
         orderServices.getOrderItemList("3");
-    }//
+    }
 
 
     @Test
     public void getOrderItemListByStatus(){
         orderServices.getOrderItemListByStatus("S001", "Approved");
     }
-
-
-
-
 }
