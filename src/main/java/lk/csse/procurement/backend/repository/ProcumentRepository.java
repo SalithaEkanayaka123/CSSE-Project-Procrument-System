@@ -15,6 +15,10 @@ public interface ProcumentRepository {
     /** Insert Order Items to the Mapper table - This mapper table will be used to create JOIN queries **/
     int insertOrderItems(int orderId, Item orderItemList) ;
 
+
+    /** Insert delivery Items to the Mapper table - This mapper table will be used to create JOIN queries **/
+    int insertDeliveryItems(String deliveryId, Item orderItemList) ;
+
     /** Query to get all order details from order table **/
     public Order getAllOrderItemDetails();
 
@@ -61,6 +65,8 @@ public interface ProcumentRepository {
     public void updateItem(Item item, int id);
     public Order selectOrder(String id);
     public Item selectItem(int id);
+
+    public void updateSupplierStatus(Supplier user, String id);
 
     /**
      * JPA Removing | Replacement Methods. | Delete Methods.

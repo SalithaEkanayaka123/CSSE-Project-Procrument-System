@@ -115,6 +115,13 @@ public class OrderServices implements OrderService {
     }
 
     @Override
+    public void AddDeliveryData(DeliveryAdvice deliveryAdvice) {
+        DeliveryAdvice deliveryAdvice1 = new DeliveryAdvice();
+        deliveryAdvice1.setDeliveryID(deliveryAdvice.getDeliveryID());
+
+    }
+
+    @Override
     public void deleteOrder() {
         /**
          * Process: Delete Orders
