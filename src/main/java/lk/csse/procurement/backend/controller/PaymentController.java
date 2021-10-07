@@ -49,5 +49,17 @@ public class PaymentController {
         }
     }
 
+    @PostMapping("/getPayment")
+    public ResponseEntity<?> getPayment(@RequestBody Check check){
+        try {
+            paymentRepository.save(check);//must be changed
+            return new ResponseEntity<Check>(check, HttpStatus.OK);
+        } catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+
+
 
 }
