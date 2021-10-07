@@ -38,7 +38,6 @@ public interface OrderService {
     /** Add delivery advice method using JPA **/
     public void AddDeliveryData(DeliveryAdvice deliveryAdvice);
 
-
     /** Delete order using the order Id **/
     public void deleteOrder ();
 
@@ -50,8 +49,6 @@ public interface OrderService {
 
     /** Update the user content using user Id **/
     public User updateUser (User user, String id);
-
-
 
     /** Calculate the total cost for each supplier **/
     public double calculateTotalCostForSupplier(String supplierId);

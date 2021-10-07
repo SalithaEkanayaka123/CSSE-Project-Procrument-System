@@ -12,3 +12,6 @@ FROM item_delivery_advice a
          INNER JOIN item i  ON i.item_id = a.item_id
          INNER JOIN deliveryadvice d ON d.deliveryid = a.delivery_advice_id
 WHERE d.orderid = '2'
+
+-- Map table truncating command.
+TRUNCATE TABLE order_items RESTART IDENTITY;
