@@ -201,7 +201,6 @@ public class OrderServices implements OrderService {
     public List<Supplier> getSuppliersByOrder(String orderId) {
         List<Supplier> orderlist = procumentRepository.getSuppliersByOrder(orderId);
         return  orderlist;
-
     }
 
     @Override
@@ -252,6 +251,7 @@ public class OrderServices implements OrderService {
          *
          * This method compare the delivery.
          * Following logic compare the exact objects. Regardless of the values inside.
+         *
          * **/
 //        System.out.println(order.equals(daobject));
 //        boolean status = order.equals(daobject);
