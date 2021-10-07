@@ -1,5 +1,6 @@
 package lk.csse.procurement.backend.repository;
 
+import lk.csse.procurement.backend.dto.res.AllPayments;
 import lk.csse.procurement.backend.model.*;
 
 import java.util.List;
@@ -82,4 +83,7 @@ public interface ProcumentRepository {
 
     /** Add return items list to the supplier **/
     public int returnItems(String ItemId, String ItemName, String supplierId, String orderId);
+
+    /** Return all the payment details **/
+    public List<AllPayments> getAllPaymentDetails();
 }

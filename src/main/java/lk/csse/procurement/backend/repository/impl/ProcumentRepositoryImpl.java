@@ -1,10 +1,12 @@
 package lk.csse.procurement.backend.repository.impl;
+import lk.csse.procurement.backend.dto.res.AllPayments;
 import lk.csse.procurement.backend.mapper.ItemMapper;
 import lk.csse.procurement.backend.mapper.OrderMapper;
 import lk.csse.procurement.backend.mapper.SupplierMapper;
 import lk.csse.procurement.backend.mapper.UserMapper;
 import lk.csse.procurement.backend.model.*;
 import lk.csse.procurement.backend.repository.ProcumentRepository;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -127,7 +129,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     @Override
     public List<Order> getOrdersForSupplier(String supplierID) {
         Object[] parameters = new Object[]{supplierID};
-        String sql = "SELECT * FROM orders where suplierid = ?";;
+        String sql = "SELECT * FROM orders where suplierid = ?";
         return jdbcTemplate.query(sql, parameters,new OrderMapper());
     }
 
@@ -371,6 +373,29 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
             System.out.println("Error Parsing String Values into Integers");
         }
         return 0;
+    }
+
+    @Override
+    public List<AllPayments> getAllPaymentDetails() {
+        Map<String, Object> params = new HashMap<>();
+        String query = "SELECT * " +
+                "FROM payment ";
+        List<AllPayments> list = namedParameterJdbcTemplate.query(query, (rs, i) -> getPaymentItemArray(rs));
+        return list != null && list.size() != 0 ? list : null;
+    }
+
+    public AllPayments getPaymentItemArray(ResultSet rs) throws SQLException {
+        AllPayments payment = new AllPayments();
+        payment.setPaymentid(rs.getInt("paymentid"));
+        payment.setAmount(rs.getDouble("amount"));
+        payment.setDate(rs.getDate("date"));
+        payment.setDescription(rs.getString("description"));
+        payment.setInvoice_no(rs.getString("invoice_no"));
+        payment.setCard_no(rs.getString("card_no"));
+        payment.setExp_date(rs.getDate("exp_date"));
+        payment.setHolder_name(rs.getString("holder_name"));
+        payment.setCheck_no(rs.getString("check_no"));
+        return payment;
     }
 
 

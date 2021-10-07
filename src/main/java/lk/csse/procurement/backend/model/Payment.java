@@ -22,7 +22,7 @@ public class Payment {
     private Date date;
 
     @Column(name = "invoiceNo")
-    private String invoiceNo; /////////////////5
+    private String invoiceNo;
 
     public long getPaymentID() {
         return paymentID;
