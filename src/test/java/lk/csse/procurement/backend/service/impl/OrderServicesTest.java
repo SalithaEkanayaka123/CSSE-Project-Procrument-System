@@ -128,10 +128,6 @@ class OrderServicesTest {
         orderServices.getSuppliersByOrder("3");
     }
 
-    @Test
-    public void AddItems(){
-        orderServices.AddItems();
-    }
 
     @Test
     public void getOrderItemList(){
@@ -174,7 +170,21 @@ class OrderServicesTest {
         orderServices.getOrderItemList("1");
     }
 
+    /**
+    *
+    * Chandrasena T.K.T.A
+    *     ||||||||||||||||
+    *
+    * **/
+    @Test
+    public void TestingGetItemListByID() {
+        orderServices. getItemListByItemID(3);
+    }
 
 
+    @Test
+    public void AddItems(){
+        orderServices.AddItems();
+    }
 
 }

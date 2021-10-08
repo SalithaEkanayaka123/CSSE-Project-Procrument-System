@@ -70,4 +70,16 @@ class ProcumentRepositoryImplTest {
         procumentRepository.deleteOrder("999");
     }
 
+
+    /**
+     * Testing method for Chandrasena T.K.T.A
+     */
+
+    @Test
+    public void TestingdeleteItem(){
+        procumentRepository.deleteItem(3);
+    }
+
+
+
 }
