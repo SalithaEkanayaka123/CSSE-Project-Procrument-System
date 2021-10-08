@@ -56,7 +56,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     }
 
     @Override
-    public int insertDeliveryItems(String deliveryId, Item orderItemList) {
+    public int insertDeliveryItems(int deliveryId, Item orderItemList) {
         Map<String, Object> params = new HashMap<>();
         String query = "INSERT INTO item_delivery_advice(delivery_advice_id, item_id) " +
                 "VALUES (:order_id, :item_id)";
@@ -100,7 +100,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
         // Format the String into '' If error.
         Map<String, Object> params = new HashMap<>();
         //Join Query
-        String query = "SELECT i.item_name, i.description, i.price , i.qty " +
+        String query = "SELECT i.item_id, i.item_name, i.description, i.price , i.qty " +
                 "FROM order_items o " +
                 "INNER JOIN orders ot  ON ot.order_id = o.order_id " +
                 "INNER JOIN item i ON o.item_id = i.item_id " +
@@ -165,7 +165,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
     @Override
     public List<Item> getDeliveryItemsForOrder(String orderId) {
         Map<String, Object> params = new HashMap<>();
-        String sql = "SELECT i.item_name, i.description, i.price, i.qty " +
+        String sql = "SELECT i.item_id, i.item_name, i.description, i.price, i.qty " +
                 "FROM item_delivery_advice a " +
                 "INNER JOIN item i  ON i.item_id = a.item_id " +
                 "INNER JOIN deliveryadvice d ON d.deliveryid = a.delivery_advice_id " +
@@ -184,6 +184,7 @@ public class ProcumentRepositoryImpl implements ProcumentRepository {
 
     public Item getOrderItemArray(ResultSet rs) throws SQLException {
         Item item = new Item();
+        item.setItemId(rs.getInt("item_id"));
         item.setItemName(rs.getString("item_name"));
         item.setDescription(rs.getString("description"));
         item.setPrice(rs.getDouble("price"));
