@@ -54,4 +54,20 @@ class ProcumentRepositoryImplTest {
         procumentRepository.returnItems("1","Nameless Item","3", "4");
     }
 
+
+
+    /**
+     * Testing method for Ekanayaka E.M.S.G
+     */
+
+    @Test
+    public void TestinggetOrdersForSupplier(){
+        procumentRepository.getOrdersForSupplier("2");
+    }
+
+    @Test
+    public void TestingdeleteOrder(){
+        procumentRepository.deleteOrder("999");
+    }
+
 }

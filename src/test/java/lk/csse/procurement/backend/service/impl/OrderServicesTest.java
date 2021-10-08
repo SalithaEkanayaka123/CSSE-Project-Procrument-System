@@ -17,10 +17,7 @@ class OrderServicesTest {
     @Autowired
     OrderServices orderServices;
 
-    @Test
-    public void TestingAddOrder() {
-        // Add Order
-    }
+
 
     /**
      *
@@ -28,32 +25,31 @@ class OrderServicesTest {
      *
      * **/
 
+    /**
+     * Testing method for adding users
+     */
     @Test
     public void TestingCreateUser() {
 
         orderServices.createUser();
     }
 
+    /**
+     * Testing method for changing the status of order
+     */
+
     @Test
     public void TestingCourseApprovalmethod() {
-
-        Item item1 = new Item();
-        Item item2 = new Item();
-
-        ArrayList<Item> itemList = new ArrayList<>();
-        itemList.add(item1);
-        itemList.add(item2);
-        java.util.Date date =new java.util.Date();
-
-        Order order = new Order();
-        order.setOrderId("1");
-        order.setStatus("true");
-        orderServices.procumentRepository.updateOrderApprovalStatus("5", "true");
+        orderServices.procumentRepository.updateOrderApprovalStatus("7", "pending");
     }
+
+    /**
+     * Testing method for calculating total cost
+     */
 
     @Test
     public void TestingcalculateTotalCostForOrder(){
-        double cost = orderServices.calculateTotalCostForOrder("10");
+        double cost = orderServices.calculateTotalCostForOrder("7");
         System.out.println("Price of the Order - " + cost);
     }
 
@@ -147,4 +143,38 @@ class OrderServicesTest {
     public void getOrderItemListByStatus(){
         orderServices.getOrderItemListByStatus("S001", "Approved");
     }
+
+    /**
+     *
+     * Ekanayaka E.M.S.G.
+     *     ||||||||||||||||
+     *
+     * **/
+
+    /**
+     * Testing method for adding orders
+     */
+    @Test
+    public void TestingAddOrder() {
+        // Add Order
+        Order order1 = new Order();
+        order1.setOrderId("1000");
+        order1.setDescription("description 1");
+        order1.setSupplierId("2");
+        order1.setTotalPrice(23000);
+        orderServices.AddOrder(order1);
+    }
+
+    /**
+     * Testing method for get Order Item List
+     */
+
+    @Test
+    public void TestingGetOrderItemList() {
+        orderServices.getOrderItemList("1");
+    }
+
+
+
+
 }
