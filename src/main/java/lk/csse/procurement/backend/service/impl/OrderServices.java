@@ -41,9 +41,38 @@ public class OrderServices implements OrderService {
 
     @Override
     public void createUser() {
-        Supplier supplier = new Supplier("4", "Salitha", "Ekanayaka", "salitha@gmail.com", "", "", "supplier");
+        /** Creating a User Creation Logic **/
+        String channel = "Supplier";
+        User user;
+        UserFactory factory = new UserFactory();
+        if(channel.contentEquals("Supplier")){
+             user = factory.createUsers("SUPPLIER");
+             setUserDetails(user, "", "", "", "");
+        } else if(channel.contentEquals("Site Manager")) {
+             user = factory.createUsers("SITEMANAGER");
+            setUserDetails(user, "", "", "", "");
+        } else if (channel.contentEquals("Manager")){
+             user = factory.createUsers("MANAGER");
+            setUserDetails(user, "", "", "", "");
+        }
+
+        /** User the created user via factory to save in the database **/
+
+        Supplier supplier = new Supplier("4", "Salitha", "Ekanayaka", "salitha@gmail.com", "", "", "supplier"); // Replace this with factory created object.
         supplier.setAvailability(true);
         userRepository.save(supplier);
+    }
+
+    /** Seperate method to set user details **/
+    public User setUserDetails(User user , String firstName, String LastName, String userId, String email){
+        user.setFirstName("First Name");
+        user.setLastName("Last Name");
+        user.setUserID("5");
+        user.setEmail("email@gmail.com");
+        user.setPassword("sample");
+        user.setPhoneNo("01235987456");
+
+        return user;
     }
 
     @Override
