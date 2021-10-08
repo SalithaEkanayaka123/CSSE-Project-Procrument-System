@@ -116,5 +116,17 @@ public class UserController {
         }
     }
 
+    @GetMapping("/getdeliveryItemList/{id}")
+    public ResponseEntity<?> getDeliveryItemList(@PathVariable("id") String id){
+        //working
+        //userController.deleteById(id);
+        List<Item> item =  procumentRepository.getDeliveryItemsForOrder(id);
+        if(item.size() > 0){
+            return new ResponseEntity<>(item, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("No users Available", HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 }
