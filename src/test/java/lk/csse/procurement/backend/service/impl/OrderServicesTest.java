@@ -34,14 +34,7 @@ class OrderServicesTest {
         orderServices.createUser();
     }
 
-    /**
-     * Testing method for changing the status of order
-     */
 
-    @Test
-    public void TestingCourseApprovalmethod() {
-        orderServices.procumentRepository.updateOrderApprovalStatus("7", "pending");
-    }
 
     /**
      * Testing method for calculating total cost
@@ -144,6 +137,8 @@ class OrderServicesTest {
         orderServices.getOrderItemListByStatus("S001", "Approved");
     }
 
+
+
     /**
      *
      * Ekanayaka E.M.S.G.
@@ -172,6 +167,15 @@ class OrderServicesTest {
     @Test
     public void TestingGetOrderItemList() {
         orderServices.getOrderItemList("1");
+    }
+
+    /**
+     * Testing method for changing the status of order
+     */
+
+    @Test
+    public void TestingCourseApprovalmethod() {
+        orderServices.procumentRepository.updateOrderApprovalStatus("7", "pending");
     }
 
 
