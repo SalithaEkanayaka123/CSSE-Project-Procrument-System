@@ -7,6 +7,7 @@ import Payment from "./pages/Payment/Payment";
 
 function App() {
   return (
+
     <div>
         <BrowserRouter>
             <Navbar/>
