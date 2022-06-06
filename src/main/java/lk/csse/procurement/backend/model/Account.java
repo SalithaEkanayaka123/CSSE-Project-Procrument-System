@@ -10,6 +10,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+
     @Column(name = "accountNo")
     private int accountNo;
     @Column(name = "accountName")
