@@ -15,6 +15,7 @@ public class HomeBottomNav extends AppCompatActivity {
 
     NavigationController Nav = new NavigationController();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
